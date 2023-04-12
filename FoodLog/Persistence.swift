@@ -7,9 +7,11 @@ struct QuantityTypeBuilder {
     
     func weight(sampleFrom sample: some SampledMeasurement) {
         let sampleMO = BodyQuantitySampleMO(context: context)
-        sampleMO.startDate = .now
-        sampleMO.endDate = .now
-        sampleMO.measurement = sample.measurement as NSMeasurement
+        sampleMO.startDate = sample.dateRange.start
+        sampleMO.endDate = sample.dateRange.end
+        
+        sampleMO.measurementValue = sample.measurement.value
+        sampleMO.measurementUnit = DimensionUnitInterpreter.baseUnit(for: sample)
         
         let identifierMO = BodyMeasurementIdentifierMO(context: context)
         identifierMO.id = sample.id
@@ -20,7 +22,6 @@ struct QuantityTypeBuilder {
         let weightSample = BodyQuantitySampleMO(context: context)
         weightSample.startDate = .now
         weightSample.endDate = .now
-        weightSample.measurement = sample.measurement as NSMeasurement
         
         let identifier = BodyMeasurementIdentifierMO(context: context)
         identifier.id = sample.id

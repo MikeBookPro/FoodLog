@@ -19,6 +19,7 @@
 		BE92CB9C29E4808F006A158E /* SampledMeasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9B29E4808F006A158E /* SampledMeasure.swift */; };
 		BE92CB9E29E4B1C5006A158E /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9D29E4B1C5006A158E /* Brand.swift */; };
 		BE92CBA029E4D07D006A158E /* QuantityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9F29E4D07D006A158E /* QuantityType.swift */; };
+		BE9C851129E67E7800E543E6 /* DimensionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		BE92CB9B29E4808F006A158E /* SampledMeasure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampledMeasure.swift; sourceTree = "<group>"; };
 		BE92CB9D29E4B1C5006A158E /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		BE92CB9F29E4D07D006A158E /* QuantityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityType.swift; sourceTree = "<group>"; };
+		BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionIdentifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		BE5825F329E60326006F75E0 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -171,7 +174,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					BE92CB8129E48046006A158E = {
 						CreatedOnToolsVersion = 14.0;
@@ -217,6 +220,7 @@
 				BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */,
 				BE435CBA29E4DD8500A8D16E /* IdentifiedMeasurement.swift in Sources */,
 				BE92CB9E29E4B1C5006A158E /* Brand.swift in Sources */,
+				BE9C851129E67E7800E543E6 /* DimensionIdentifier.swift in Sources */,
 				BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */,
 				BE92CBA029E4D07D006A158E /* QuantityType.swift in Sources */,
 				BE435CBC29E4E2A000A8D16E /* WeightHistoryView.swift in Sources */,
@@ -262,6 +266,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -320,6 +325,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -348,6 +354,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodLog/Preview Content\"";
 				DEVELOPMENT_TEAM = F9W7698934;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -387,6 +394,7 @@
 				CODE_SIGN_ENTITLEMENTS = FoodLog/FoodLog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodLog/Preview Content\"";
 				DEVELOPMENT_TEAM = F9W7698934;
 				ENABLE_HARDENED_RUNTIME = YES;

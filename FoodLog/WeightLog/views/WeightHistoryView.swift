@@ -3,11 +3,18 @@
 import SwiftUI
 import CoreData
 
+extension IdentifiedMeasurementMO {
+    var measurement: Measurement<Dimension>? {
+        guard let dimension = DimensionIdentifier(baseUnitSymbol: self.measurementUnit) else { return nil }
+        return MeasurementFactory.measurement(forDimension: dimension, value: self.measurementValue)
+    }
+}
+ 
 struct WeightHistoryView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \BodyQuantitySampleMO.startDate, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \BodyQuantitySampleMO.startDate, ascending: false)],
         animation: .default
     )
     private var samples: FetchedResults<BodyQuantitySampleMO>
@@ -15,23 +22,23 @@ struct WeightHistoryView: View {
     private typealias Sample = MeasurementSample<IdentifiedMeasurement<BodyMeasurementQuantityType, UnitMass>>
     
     @State private var isAddingNewSample: Bool = false
-    @State private var digits: (Int, Int, Int, Int) = (0, 0, 0, 0)
-    private var newMeasure: String { "\(digits.0)\(digits.1)\(digits.2).\(digits.3)" }
-    
-    private func dateText(for sample: BodyQuantitySampleMO) -> some View {
-        Text("Date: ").font(.headline) + Text(sample.startDate ?? .now, format: .dateTime.day().month(.wide).year())
-    }
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(samples) { sample in
                     LabeledContent {
-                        if let measurement = sample.measurement as? Measurement<Dimension> {
+                        if let measurement = sample.measurement {
                             Text(measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
+                        } else {
+                            Text("measurement: \(sample.measurement?.description ?? "none")")
                         }
                     } label: {
-                        Text(sample.startDate ?? .now, format: .dateTime.day().month(.wide).year())
+                        if let date = sample.startDate {
+                            Text(date, format: .dateTime.day().month(.wide).year())
+                        } else {
+                            Text("no date")
+                        }
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -53,8 +60,8 @@ struct WeightHistoryView: View {
             .navigationTitle("Weight History")
             .sheet(isPresented: $isAddingNewSample) {
                 SampleEditorView<Sample>(onSave: editorDidSave(sample:)) {
-                    isAddingNewSample.toggle()
-                }
+                        isAddingNewSample.toggle()
+                    }
                 .presentationDetents([.medium])
             }
         }
@@ -65,25 +72,6 @@ struct WeightHistoryView: View {
             isAddingNewSample.toggle()
             let builder = QuantityTypeBuilder(context: viewContext)
             builder.weight(sampleFrom: sample)
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-        
-
-    private func addItem() {
-        withAnimation {
-            guard let value = Double(newMeasure) else { return }
-            digits = (0, 0, 0, 0)
-            let newSample: IdentifiedMeasurement<BodyMeasurementQuantityType, UnitMass> = .init(identifier: .bodyMass, measurement: .init(value: value, unit: .kilograms))
-            let builder = QuantityTypeBuilder(context: viewContext)
-            builder.weightMeasurement(from: newSample)
             do {
                 try viewContext.save()
             } catch {

@@ -23,7 +23,7 @@ struct SampleEditorView<Sample: SampledMeasurementInititializable>: View {
     }
     
     private var newSample: Sample {
-        Sample(
+        let s = Sample(
             quantity: .init(
                 identifier: sample.identifier,
                 measurement: .init(value: value ?? .zero, unit: sample.measurement.unit)
@@ -31,13 +31,7 @@ struct SampleEditorView<Sample: SampledMeasurementInititializable>: View {
             dateRange: (date, date)
         )
         
-//        MeasurementSample<IdentifiedMeasurement<BodyMeasurementQuantityType, UnitMass>>(
-//            quantity: IdentifiedMeasurement<BodyMeasurementQuantityType, UnitMass>(
-//                identifier: .bodyMass,
-//                measurement: .init(value: .zero, unit: .kilograms)
-//            ),
-//            dateRange: (nil, nil)
-//        )
+        return s
     }
     
     init(sample: Sample? = nil, onSave: ((Sample) -> Void)? = nil, onCancel: (() -> Void)? = nil) {
