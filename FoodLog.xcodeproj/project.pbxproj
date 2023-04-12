@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		BE435CBA29E4DD8500A8D16E /* IdentifiedMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CB929E4DD8400A8D16E /* IdentifiedMeasurement.swift */; };
 		BE435CBC29E4E2A000A8D16E /* WeightHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CBB29E4E2A000A8D16E /* WeightHistoryView.swift */; };
-		BE5825F229E5F845006F75E0 /* QuantityEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* QuantityEditorView.swift */; };
+		BE5825F229E5F845006F75E0 /* SampleEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* SampleEditorView.swift */; };
 		BE5825F729E617C2006F75E0 /* MeasurementTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F629E617C2006F75E0 /* MeasurementTransformer.swift */; };
 		BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8529E48046006A158E /* FoodLogApp.swift */; };
 		BE92CB8829E48046006A158E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8729E48046006A158E /* Persistence.swift */; };
 		BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8929E48046006A158E /* FoodLog.xcdatamodeld */; };
 		BE92CB8F29E48047006A158E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE92CB8E29E48047006A158E /* Assets.xcassets */; };
 		BE92CB9329E48047006A158E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE92CB9229E48047006A158E /* Preview Assets.xcassets */; };
-		BE92CB9C29E4808F006A158E /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9B29E4808F006A158E /* Quantity.swift */; };
+		BE92CB9C29E4808F006A158E /* SampledMeasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9B29E4808F006A158E /* SampledMeasure.swift */; };
 		BE92CB9E29E4B1C5006A158E /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9D29E4B1C5006A158E /* Brand.swift */; };
 		BE92CBA029E4D07D006A158E /* QuantityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9F29E4D07D006A158E /* QuantityType.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +25,7 @@
 		BE435CB929E4DD8400A8D16E /* IdentifiedMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiedMeasurement.swift; sourceTree = "<group>"; };
 		BE435CBB29E4E2A000A8D16E /* WeightHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHistoryView.swift; sourceTree = "<group>"; };
 		BE435CBF29E50BE700A8D16E /* weight-data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "weight-data.json"; sourceTree = "<group>"; };
-		BE5825F129E5F845006F75E0 /* QuantityEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityEditorView.swift; sourceTree = "<group>"; };
+		BE5825F129E5F845006F75E0 /* SampleEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleEditorView.swift; sourceTree = "<group>"; };
 		BE5825F629E617C2006F75E0 /* MeasurementTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementTransformer.swift; sourceTree = "<group>"; };
 		BE92CB8229E48046006A158E /* FoodLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE92CB8529E48046006A158E /* FoodLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogApp.swift; sourceTree = "<group>"; };
@@ -34,7 +34,7 @@
 		BE92CB8E29E48047006A158E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE92CB9029E48047006A158E /* FoodLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodLog.entitlements; sourceTree = "<group>"; };
 		BE92CB9229E48047006A158E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BE92CB9B29E4808F006A158E /* Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
+		BE92CB9B29E4808F006A158E /* SampledMeasure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampledMeasure.swift; sourceTree = "<group>"; };
 		BE92CB9D29E4B1C5006A158E /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		BE92CB9F29E4D07D006A158E /* QuantityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,7 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				BE435CBB29E4E2A000A8D16E /* WeightHistoryView.swift */,
-				BE5825F129E5F845006F75E0 /* QuantityEditorView.swift */,
+				BE5825F129E5F845006F75E0 /* SampleEditorView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -135,7 +135,7 @@
 		BE92CB9A29E48077006A158E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				BE92CB9B29E4808F006A158E /* Quantity.swift */,
+				BE92CB9B29E4808F006A158E /* SampledMeasure.swift */,
 				BE92CB9F29E4D07D006A158E /* QuantityType.swift */,
 				BE92CB9D29E4B1C5006A158E /* Brand.swift */,
 				BE435CB929E4DD8400A8D16E /* IdentifiedMeasurement.swift */,
@@ -220,8 +220,8 @@
 				BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */,
 				BE92CBA029E4D07D006A158E /* QuantityType.swift in Sources */,
 				BE435CBC29E4E2A000A8D16E /* WeightHistoryView.swift in Sources */,
-				BE92CB9C29E4808F006A158E /* Quantity.swift in Sources */,
-				BE5825F229E5F845006F75E0 /* QuantityEditorView.swift in Sources */,
+				BE92CB9C29E4808F006A158E /* SampledMeasure.swift in Sources */,
+				BE5825F229E5F845006F75E0 /* SampleEditorView.swift in Sources */,
 				BE92CB8829E48046006A158E /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +344,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FoodLog/FoodLog.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodLog/Preview Content\"";
@@ -368,6 +370,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Thornton.Mike.FoodLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;

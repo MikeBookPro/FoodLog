@@ -5,7 +5,18 @@ import CoreData
 struct QuantityTypeBuilder {
     let context: NSManagedObjectContext
     
-    func build(quantitySampleFrom sample: some IdentifiableMeasurement) {
+    func weight(sampleFrom sample: some SampledMeasurement) {
+        let sampleMO = BodyQuantitySampleMO(context: context)
+        sampleMO.startDate = .now
+        sampleMO.endDate = .now
+        sampleMO.measurement = sample.measurement as NSMeasurement
+        
+        let identifierMO = BodyMeasurementIdentifierMO(context: context)
+        identifierMO.id = sample.id
+        sampleMO.identifier = identifierMO
+    }
+    
+    func weightMeasurement(from sample: some IdentifiableMeasurement) {
         let weightSample = BodyQuantitySampleMO(context: context)
         weightSample.startDate = .now
         weightSample.endDate = .now
@@ -26,7 +37,7 @@ struct PersistenceController {
         
         let builder = QuantityTypeBuilder(context: viewContext)
         for sample in SampleWeightMeasurements.samples {
-            builder.build(quantitySampleFrom: sample)
+            builder.weightMeasurement(from: sample)
         }
         do {
             try viewContext.save()

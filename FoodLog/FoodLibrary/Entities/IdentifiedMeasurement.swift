@@ -3,8 +3,8 @@ import Foundation
 // MARK: - Identifiable Measurement
 
 public protocol IdentifiableMeasurement: Identifiable where ID == String {
-    associatedtype Identifier: Identifiable where Identifier.ID == Self.ID
-    associatedtype UnitType: Unit
+    associatedtype Identifier: QuantityIdentifier where Identifier.ID == Self.ID
+    associatedtype UnitType: Dimension
     
     var id: ID { get }
     var identifier: Identifier { get }
@@ -19,7 +19,7 @@ public protocol IdentifiableMeasurementInitializable: IdentifiableMeasurement {
     init(identifier: Identifier, measurement: Measurement<UnitType>)
 }
 
-struct IdentifiedMeasurement<Identifier: Identifiable, UnitType: Unit>: IdentifiableMeasurementInitializable where Identifier.ID == String {
+struct IdentifiedMeasurement<Identifier: QuantityIdentifier, UnitType: Dimension>: IdentifiableMeasurementInitializable where Identifier.ID == String {
     let identifier: Identifier
     var measurement: Measurement<UnitType>
     

@@ -3,15 +3,17 @@ import HealthKit
 
 // MARK: - Quantity Type
 
-public protocol QuantityTypeReadable: Identifiable {
+public protocol QuantityIdentifier: Identifiable {
+    static var baseIdentifier: () -> Self { get }
+    
     var id: String { get }
 }
 
-public protocol QuantityTypeRepresentable: QuantityTypeReadable {
+public protocol QuantityIdentifierInitializable: QuantityIdentifier {
     init?(rawValue: String)
 }
 
-enum BodyMeasurementQuantityType: String, QuantityTypeRepresentable {
+enum BodyMeasurementQuantityType: String, QuantityIdentifierInitializable {
     case height = "HKQuantityTypeIdentifierHeight"
     case bodyMass = "HKQuantityTypeIdentifierBodyMass"
     case leanBodyMass = "HKQuantityTypeIdentifierLeanBodyMass"
@@ -19,5 +21,7 @@ enum BodyMeasurementQuantityType: String, QuantityTypeRepresentable {
     case waistCircumference = "HKQuantityTypeIdentifierWaistCircumference"
     
     var id: String { self.rawValue }
+    
+    static let baseIdentifier: () -> Self = { .bodyMass }
     
 }
