@@ -1,0 +1,14 @@
+{
+    {
+        "dateStart": "2023-04-10T15:22:58-07:00",
+        "dateEnd": "2023-04-10T15:22:58-07:00",
+        "quantity": {
+            "value": 128.50,
+            "unitKey": "kg"
+        },
+        "quantityType": {
+            "id": "HKQuantityTypeIdentifierBodyMass"
+        }
+    }
+}
+

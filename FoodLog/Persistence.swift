@@ -2,15 +2,31 @@
 
 import CoreData
 
+struct QuantityTypeBuilder {
+    let context: NSManagedObjectContext
+    
+    func build(quantitySampleFrom sample: some IdentifiableMeasurement) {
+        let weightSample = BodyQuantitySampleMO(context: context)
+        weightSample.startDate = .now
+        weightSample.endDate = .now
+        weightSample.measurement = sample.measurement as NSMeasurement
+        
+        let identifier = BodyMeasurementIdentifierMO(context: context)
+        identifier.id = sample.id
+        weightSample.identifier = identifier
+    }
+}
+
 struct PersistenceController {
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+        
+        let builder = QuantityTypeBuilder(context: viewContext)
+        for sample in SampleWeightMeasurements.samples {
+            builder.build(quantitySampleFrom: sample)
         }
         do {
             try viewContext.save()
@@ -26,6 +42,9 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
+        // Register the transformer
+        ValueTransformer.setValueTransformer(MeasurementTransformer(), forName: MeasurementTransformer.name)
+        
         container = NSPersistentContainer(name: "FoodLog")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")

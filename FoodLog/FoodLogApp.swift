@@ -8,7 +8,8 @@ struct FoodLogApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            WeightHistoryView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

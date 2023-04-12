@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BodyMeasurementIdentifierMO" representedClassName="BodyMeasurementIdentifierMO" parentEntity="IdentifierMO" syncable="YES" codeGenerationType="class"/>
+    <entity name="BodyQuantitySampleMO" representedClassName="BodyQuantitySampleMO" parentEntity="SampleQuantityMO" syncable="YES" codeGenerationType="class"/>
+    <entity name="Brand" representedClassName="Brand" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="productDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemDetail" inverseName="brand" inverseEntity="FoodItemDetail"/>
+    </entity>
+    <entity name="FoodItem" representedClassName="FoodItem" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="itemDetail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemDetail" inverseName="foodItem" inverseEntity="FoodItemDetail"/>
+        <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemNutrition" inverseName="foodItem" inverseEntity="FoodItemNutrition"/>
+    </entity>
+    <entity name="FoodItemDetail" representedClassName="FoodItemDetail" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="nameSecondary" optional="YES" attributeType="String"/>
+        <attribute name="preparationDetail" optional="YES" attributeType="String"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Brand" inverseName="productDetails" inverseEntity="Brand"/>
+        <relationship name="foodItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItem" inverseName="itemDetail" inverseEntity="FoodItem"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodItemDetailTag" inverseName="foodDetail" inverseEntity="FoodItemDetailTag"/>
+    </entity>
+    <entity name="FoodItemDetailTag" representedClassName="FoodItemDetailTag" parentEntity="Tag" syncable="YES" codeGenerationType="class">
+        <relationship name="foodDetail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodItemDetail" inverseName="tags" inverseEntity="FoodItemDetail"/>
+    </entity>
+    <entity name="FoodItemNutrition" representedClassName="FoodItemNutrition" parentEntity="NutritionInfo" syncable="YES" codeGenerationType="class">
+        <relationship name="foodItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItem" inverseName="nutritionInfo" inverseEntity="FoodItem"/>
+    </entity>
+    <entity name="IdentifiedMeasurementMO" representedClassName="IdentifiedMeasurementMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="measurement" optional="YES" attributeType="Transformable" valueTransformerName="MeasurementTransformer" customClassName="NSMeasurement"/>
+        <relationship name="identifier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IdentifierMO" inverseName="quantity" inverseEntity="IdentifierMO"/>
+    </entity>
+    <entity name="IdentifierMO" representedClassName="IdentifierMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <relationship name="quantity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IdentifiedMeasurementMO" inverseName="identifier" inverseEntity="IdentifiedMeasurementMO"/>
+    </entity>
+    <entity name="NutrientIdentifierMO" representedClassName="NutrientIdentifierMO" parentEntity="IdentifierMO" syncable="YES" codeGenerationType="class"/>
+    <entity name="NutrientQuantityMO" representedClassName="NutrientQuantityMO" parentEntity="IdentifiedMeasurementMO" syncable="YES" codeGenerationType="class">
+        <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NutritionInfo" inverseName="nutrientQuantities" inverseEntity="NutritionInfo"/>
+    </entity>
+    <entity name="NutritionInfo" representedClassName="NutritionInfo" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="servingSize" optional="YES" attributeType="Transformable" valueTransformerName="MeasurementTransformer" customClassName="NSMeasurement"/>
+        <relationship name="nutrientQuantities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NutrientQuantityMO" inverseName="nutritionInfo" inverseEntity="NutrientQuantityMO"/>
+    </entity>
+    <entity name="SampleQuantityMO" representedClassName="SampleQuantityMO" isAbstract="YES" parentEntity="IdentifiedMeasurementMO" syncable="YES" codeGenerationType="class">
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="text" optional="YES" attributeType="String"/>
+    </entity>
+</model>
