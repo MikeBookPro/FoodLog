@@ -4,18 +4,27 @@ struct BodyWeightSample: SampledMeasurement {
     typealias UnitType = UnitMass
     typealias IdentifiedMeasure = IdentifiedMeasurement<UnitType>
     
+    let id: UUID
     var identifier: QuantityIdentifier
     var measurement: Measurement<UnitMass>
     var dateRange: DateRange
     
     init(quantity: IdentifiedMeasurement<UnitType>, dateRange: DateRange) {
+        self.id = quantity.id
         self.identifier = quantity.identifier
         self.measurement = quantity.measurement
         self.dateRange = dateRange
     }
     
-    init(identifier: QuantityIdentifier, measurement: Measurement<UnitMass>) {
-        self.init(quantity: .init(identifier: identifier, measurement: measurement), dateRange: (nil, nil))
+    init(identifier: QuantityIdentifier, measurement: Measurement<UnitMass>, existingID: UUID? = nil) {
+        self.init(
+            quantity: .init(
+                identifier: identifier,
+                measurement: measurement,
+                existingID: existingID ?? UUID()
+            ),
+            dateRange: (nil, nil)
+        )
     }
     
 }

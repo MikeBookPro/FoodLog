@@ -9,19 +9,19 @@ public protocol SampledMeasurement: IdentifiableMeasurement, DateRangeReadable {
 }
 
 struct MeasurementSample<IdentifiedMeasure: IdentifiableMeasurement>: SampledMeasurement {
-    let dateRange: DateRange
+    let id: UUID
     let identifier: QuantityIdentifier
-    var measurement: Measurement<IdentifiedMeasure.UnitType>
+    let measurement: Measurement<IdentifiedMeasure.UnitType>
+    let dateRange: DateRange
     
     init(quantity: IdentifiedMeasure, dateRange: DateRange = (nil, nil))  {
-        self.dateRange = dateRange
-        self.identifier = quantity.identifier
-        self.measurement = quantity.measurement
+        self.init(identifier: quantity.identifier, measurement: quantity.measurement, existingID: quantity.id)
     }
     
-    init(identifier: QuantityIdentifier, measurement: Measurement<IdentifiedMeasure.UnitType>) {
-        self.dateRange = (nil, nil)
+    init(identifier: QuantityIdentifier, measurement: Measurement<IdentifiedMeasure.UnitType>, existingID: UUID?) {
+        self.id = existingID ?? UUID()
         self.identifier = identifier
         self.measurement = measurement
+        self.dateRange = (nil, nil)
     }
 }

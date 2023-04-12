@@ -27,6 +27,7 @@
         <relationship name="foodItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItem" inverseName="nutritionInfo" inverseEntity="FoodItem"/>
     </entity>
     <entity name="IdentifiedMeasurementMO" representedClassName="IdentifiedMeasurementMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="measurementUnit" optional="YES" attributeType="String"/>
         <attribute name="measurementValue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="identifier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IdentifierMO" inverseName="quantity" inverseEntity="IdentifierMO"/>
