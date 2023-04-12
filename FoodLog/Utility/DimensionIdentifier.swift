@@ -4,6 +4,7 @@ enum DimensionIdentifier {
     case mass
     case length
     case energy
+    case count
     
     init?(baseUnitSymbol: String?) {
         guard let baseUnitSymbol else { return nil }
@@ -11,6 +12,7 @@ enum DimensionIdentifier {
             case UnitMass.baseUnit().symbol: self = .mass
             case UnitLength.baseUnit().symbol: self = .length
             case UnitEnergy.baseUnit().symbol: self = .energy
+            case UnitCount.baseUnit().symbol: self = .count
             default: return nil
         }
     }
@@ -29,6 +31,7 @@ enum MeasurementFactory {
             case .mass: return UnitMass.self
             case .length: return UnitLength.self
             case .energy: return UnitEnergy.self
+            case .count: return UnitCount.self
         }
     }
     

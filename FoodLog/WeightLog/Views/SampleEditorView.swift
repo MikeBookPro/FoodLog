@@ -1,32 +1,22 @@
 import SwiftUI
 
-struct SampleEditorView<Sample: SampledMeasurementInititializable>: View {
-    
-    private let sample: Sample
-
+struct SampleEditorView<Sample: SampledMeasurement>: View {
     @State private var date: Date
     @State private var value: Double?
     @FocusState private var valueFieldHasFocus: Bool
     
+    @DimensionPreference<Sample.UnitType>
+    private var quantityIdentifier: QuantityIdentifier
+    
+    private let title: String
     private let onSave: ((Sample) -> Void)?
     private let onCancel: (() -> Void)?
-    private let title: String
-    
-    private static var emptySample: Sample {
-        Sample(
-            quantity: Sample.IdentifiedMeasure(
-                identifier: Sample.Identifier.baseIdentifier(),
-                measurement: .init(value: .zero, unit: Sample.UnitType.baseUnit())
-            ),
-            dateRange: (nil, nil)
-        )
-    }
     
     private var newSample: Sample {
         let s = Sample(
             quantity: .init(
-                identifier: sample.identifier,
-                measurement: .init(value: value ?? .zero, unit: sample.measurement.unit)
+                identifier: quantityIdentifier,
+                measurement: .init(value: value ?? .zero, unit: $quantityIdentifier)
             ),
             dateRange: (date, date)
         )
@@ -34,13 +24,21 @@ struct SampleEditorView<Sample: SampledMeasurementInititializable>: View {
         return s
     }
     
-    init(sample: Sample? = nil, onSave: ((Sample) -> Void)? = nil, onCancel: (() -> Void)? = nil) {
-        self.sample = sample ?? Self.emptySample
-        self.onSave = onSave
-        self.onCancel = onCancel
-        self._date = .init(initialValue: sample?.dateRange.start ?? .now)
-        self._value = .init(initialValue: sample?.measurement.value)
-        self.title = sample == nil ? "Add Sample" : "Edit Sample"
+    init(_ quantityIdentifier: QuantityIdentifier, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
+        self.init(quantityIdentifier, date: .now, onSave: save, onCancel: cancel)
+    }
+    
+    init(sample: Sample, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
+        self.init(sample.identifier, value: sample.measurement.value, date: sample.dateRange.start ?? .now, onSave: save, onCancel: cancel)
+    }
+    
+    private init(_ quantityIdentifier: QuantityIdentifier, value: Double? = nil, date: Date, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
+        self._date = .init(initialValue: date)
+        self._value = .init(initialValue: value)
+        self.quantityIdentifier = quantityIdentifier
+        self.onSave = save
+        self.onCancel = cancel
+        self.title = value == nil ? "Add Sample" : "Edit Sample"
     }
     
     var body: some View {
@@ -96,8 +94,9 @@ struct SampleEditorView<Sample: SampledMeasurementInititializable>: View {
 }
 
 struct SampleEditorView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        SampleEditorView<MeasurementSample<IdentifiedMeasurement<BodyMeasurementQuantityType, UnitMass>>>()
+        SampleEditorView<BodyWeightSample>(.bodyMass)
     }
 }
 

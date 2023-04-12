@@ -19,8 +19,6 @@ struct WeightHistoryView: View {
     )
     private var samples: FetchedResults<BodyQuantitySampleMO>
     
-    private typealias Sample = MeasurementSample<IdentifiedMeasurement<BodyMeasurementQuantityType, UnitMass>>
-    
     @State private var isAddingNewSample: Bool = false
 
     var body: some View {
@@ -58,8 +56,9 @@ struct WeightHistoryView: View {
                 }
             }
             .navigationTitle("Weight History")
+            
             .sheet(isPresented: $isAddingNewSample) {
-                SampleEditorView<Sample>(onSave: editorDidSave(sample:)) {
+                SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidSave(sample:)) {
                         isAddingNewSample.toggle()
                     }
                 .presentationDetents([.medium])
@@ -67,7 +66,7 @@ struct WeightHistoryView: View {
         }
     }
     
-    private func editorDidSave(sample: Sample) {
+    private func editorDidSave(sample: BodyWeightSample) {
         withAnimation {
             isAddingNewSample.toggle()
             let builder = QuantityTypeBuilder(context: viewContext)

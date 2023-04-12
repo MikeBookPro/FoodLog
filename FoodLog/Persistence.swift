@@ -54,9 +54,6 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        // Register the transformer
-        ValueTransformer.setValueTransformer(MeasurementTransformer(), forName: MeasurementTransformer.name)
-        
         container = NSPersistentContainer(name: "FoodLog")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
