@@ -7,15 +7,6 @@ struct DataManager {
     
     // MARK: - Fetch
     
-    private func fetch(identifier model: QuantityIdentifier) async -> IdentifierMO? {
-        await context.perform {
-            let fetchRequest: NSFetchRequest<IdentifierMO> = IdentifierMO.fetchRequest()
-            fetchRequest.fetchLimit = 1
-            fetchRequest.predicate = .init(format: "id == %@", model.id)
-            return try? context.fetch(fetchRequest).first
-        }
-    }
-    
     private func fetch(sample model: some SampledMeasurement) async -> BodyQuantitySampleMO? {
         guard let measurementID = model.id else { return nil }
         let sample: BodyQuantitySampleMO? = await context.perform {
@@ -30,16 +21,6 @@ struct DataManager {
     // MARK: - Create
     
     @discardableResult
-    func create<Identifier>(identifier: QuantityIdentifier) async -> Identifier where Identifier: IdentifierMO {
-        await context.perform {
-            let identifierMO = Identifier(context: context)
-            identifierMO.id = identifier.id
-            self.save()
-            return identifierMO
-        }
-    }
-    
-    @discardableResult
     func create<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: BodyQuantitySampleMO {
         let sampleMO = Sample(context: context)
         sampleMO.measurementID = UUID()
@@ -49,7 +30,7 @@ struct DataManager {
     // MARK: - Update
     
     private func update<Sample>(sample mo: Sample, with model: some SampledMeasurement, shouldSave: Bool = false) async -> Sample where Sample: BodyQuantitySampleMO {
-        mo.identifier = await upsert(quantityIdentifier: model.identifier)
+        mo.quantityIdentifier = model.identifier.rawValue
         mo.startDate = model.dateRange.start
         mo.endDate = model.dateRange.end
         mo.measurementUnit = model.measurement.unit.symbol
@@ -61,12 +42,6 @@ struct DataManager {
     }
     
     // MARK: - Upsert (Create &/or Update)
-    
-    @discardableResult
-    public func upsert<Identifier>(quantityIdentifier: QuantityIdentifier) async -> Identifier where Identifier: IdentifierMO {
-        if let existing = await fetch(identifier: quantityIdentifier) as? Identifier { return existing }
-        return await create(identifier: quantityIdentifier)
-    }
     
     @discardableResult
     public func upsert<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: BodyQuantitySampleMO {
@@ -111,34 +86,6 @@ struct DataManager {
 
 }
 
-struct QuantityTypeBuilder {
-    let context: NSManagedObjectContext
-    
-    func weight(sampleFrom sample: some SampledMeasurement) {
-        let sampleMO = BodyQuantitySampleMO(context: context)
-        sampleMO.measurementID = sample.id
-        sampleMO.startDate = sample.dateRange.start
-        sampleMO.endDate = sample.dateRange.end
-        
-        sampleMO.measurementValue = sample.measurement.value
-        sampleMO.measurementUnit = DimensionUnitInterpreter.baseUnit(for: sample)
-        
-        let identifierMO = BodyMeasurementIdentifierMO(context: context)
-        identifierMO.id = sample.identifier.id
-        sampleMO.identifier = identifierMO
-    }
-    
-    func weightMeasurement(from sample: some IdentifiableMeasurement) {
-        let weightSample = BodyQuantitySampleMO(context: context)
-        weightSample.startDate = .now
-        weightSample.endDate = .now
-        
-        let identifierMO = BodyMeasurementIdentifierMO(context: context)
-        identifierMO.id = sample.identifier.id
-        weightSample.identifier = identifierMO
-    }
-}
-
 struct PersistenceController {
     static let shared = PersistenceController()
 
@@ -146,18 +93,18 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
-        let builder = QuantityTypeBuilder(context: viewContext)
-        for sample in SampleWeightMeasurements.samples {
-            builder.weightMeasurement(from: sample)
-        }
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
+//        let builder = QuantityTypeBuilder(context: viewContext)
+//        for sample in SampleWeightMeasurements.samples {
+//            builder.weightMeasurement(from: sample)
+//        }
+//        do {
+//            try viewContext.save()
+//        } catch {
+//            // Replace this implementation with code to handle the error appropriately.
+//            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//            let nsError = error as NSError
+//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//        }
         return result
     }()
 

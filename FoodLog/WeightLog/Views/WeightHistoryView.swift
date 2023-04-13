@@ -22,27 +22,12 @@ struct WeightHistoryView: View {
     )
     private var samples: FetchedResults<BodyQuantitySampleMO>
     
-//    private func weightSamples(from results: FetchedResults<BodyQuantitySampleMO>) -> [BodyWeightSample] {
-//        results.map { BodyWeightSampleAdapter.adapt(sampleQuantity: $0) }
-//    }
-    
     @State private var isAddingNewSample: Bool = false
     @State private var selection: BodyQuantitySampleMO? = nil
 
     var body: some View {
         NavigationView {
             List {
-//                ForEach(weightSamples(from: samples)) { sample in
-//                    LabeledContent {
-//                        Text(sample.measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
-//                    } label: {
-//                        if let date = sample.dateRange.start {
-//                            Text(date, format: .dateTime.day().month(.wide).year())
-//                        } else {
-//                            Text("no date")
-//                        }
-//                    }
-//                }
                 ForEach(samples) { sample in
                     LabeledContent {
                         if let measurement = sample.measurement {
@@ -91,7 +76,7 @@ struct WeightHistoryView: View {
             
             .sheet(isPresented: $isAddingNewSample) {
                 SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidCreate(sample:)) {
-                        selection = nil
+                    isAddingNewSample.toggle()
                     }
                 .presentationDetents([.medium])
             }
@@ -105,7 +90,7 @@ struct WeightHistoryView: View {
             Task.detached {
                 await manager.upsert(sample: sample)
             }
-            
+
         }
     }
     
@@ -135,7 +120,6 @@ struct WeightHistoryView: View {
                     
                 }
             }
-//            offsets.map { samples[$0] }.forEach(viewContext.delete)
         }
     }
 }
