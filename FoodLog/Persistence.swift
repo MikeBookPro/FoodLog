@@ -11,15 +11,15 @@ struct DataManager {
         await context.perform {
             let fetchRequest: NSFetchRequest<IdentifierMO> = IdentifierMO.fetchRequest()
             fetchRequest.fetchLimit = 1
-            fetchRequest.predicate = .init(format: "id == \(model.id)")
+            fetchRequest.predicate = .init(format: "id == %@", model.id)
             return try? context.fetch(fetchRequest).first
         }
     }
     
-    private func fetch(sample model: some SampledMeasurement) async -> SampleQuantityMO? {
+    private func fetch(sample model: some SampledMeasurement) async -> BodyQuantitySampleMO? {
         guard let measurementID = model.id else { return nil }
-        let sample: SampleQuantityMO? = await context.perform {
-            let fetchRequest: NSFetchRequest<SampleQuantityMO> = SampleQuantityMO.fetchRequest()
+        let sample: BodyQuantitySampleMO? = await context.perform {
+            let fetchRequest: NSFetchRequest<BodyQuantitySampleMO> = BodyQuantitySampleMO.fetchRequest()
             fetchRequest.fetchLimit = 1
             fetchRequest.predicate = .init(format: "measurementID == %@", measurementID as CVarArg)
             return try? context.fetch(fetchRequest).first
@@ -40,7 +40,7 @@ struct DataManager {
     }
     
     @discardableResult
-    func create<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: SampleQuantityMO {
+    func create<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: BodyQuantitySampleMO {
         let sampleMO = Sample(context: context)
         sampleMO.measurementID = UUID()
         return await update(sample: sampleMO, with: model, shouldSave: true)
@@ -48,7 +48,7 @@ struct DataManager {
     
     // MARK: - Update
     
-    private func update<Sample>(sample mo: Sample, with model: some SampledMeasurement, shouldSave: Bool = false) async -> Sample where Sample: SampleQuantityMO {
+    private func update<Sample>(sample mo: Sample, with model: some SampledMeasurement, shouldSave: Bool = false) async -> Sample where Sample: BodyQuantitySampleMO {
         mo.identifier = await upsert(quantityIdentifier: model.identifier)
         mo.startDate = model.dateRange.start
         mo.endDate = model.dateRange.end
@@ -69,7 +69,7 @@ struct DataManager {
     }
     
     @discardableResult
-    public func upsert<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: SampleQuantityMO {
+    public func upsert<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: BodyQuantitySampleMO {
         if let existing = await fetch(sample: model) as? Sample {
             return await update(sample: existing, with: model)
         }

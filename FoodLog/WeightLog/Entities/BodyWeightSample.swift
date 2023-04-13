@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-struct BodyWeightSample: SampledMeasurement {
+struct BodyWeightSample: SampledMeasurement, Identifiable {
     typealias UnitType = UnitMass
     typealias IdentifiedMeasure = IdentifiedMeasurement<UnitType>
     

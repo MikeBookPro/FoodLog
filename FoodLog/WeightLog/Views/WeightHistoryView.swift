@@ -22,11 +22,27 @@ struct WeightHistoryView: View {
     )
     private var samples: FetchedResults<BodyQuantitySampleMO>
     
+//    private func weightSamples(from results: FetchedResults<BodyQuantitySampleMO>) -> [BodyWeightSample] {
+//        results.map { BodyWeightSampleAdapter.adapt(sampleQuantity: $0) }
+//    }
+    
     @State private var isAddingNewSample: Bool = false
+    @State private var selection: BodyQuantitySampleMO? = nil
 
     var body: some View {
         NavigationView {
             List {
+//                ForEach(weightSamples(from: samples)) { sample in
+//                    LabeledContent {
+//                        Text(sample.measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
+//                    } label: {
+//                        if let date = sample.dateRange.start {
+//                            Text(date, format: .dateTime.day().month(.wide).year())
+//                        } else {
+//                            Text("no date")
+//                        }
+//                    }
+//                }
                 ForEach(samples) { sample in
                     LabeledContent {
                         if let measurement = sample.measurement {
@@ -41,6 +57,10 @@ struct WeightHistoryView: View {
                             Text("no date")
                         }
                     }
+                    .onTapGesture {
+                        selection = sample
+                    }
+//                    .tag(sample)
                 }
                 .onDelete(perform: deleteItems)
             }
@@ -59,29 +79,44 @@ struct WeightHistoryView: View {
                 }
             }
             .navigationTitle("Weight History")
+            .sheet(item: $selection) { selected in
+                SampleEditorView<BodyWeightSample>(
+                    sample: BodyWeightSampleAdapter.adapt(sampleQuantity: selected),
+                    onSave: editorDidUpdate(sample:)
+                ) {
+                    selection = nil
+                }
+                .presentationDetents([.medium])
+            }
             
             .sheet(isPresented: $isAddingNewSample) {
-                SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidSave(sample:)) {
-                        isAddingNewSample.toggle()
+                SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidCreate(sample:)) {
+                        selection = nil
                     }
                 .presentationDetents([.medium])
             }
         }
     }
     
-    private func editorDidSave(sample: BodyWeightSample) {
+    private func editorDidUpdate(sample: BodyWeightSample) {
+        withAnimation {
+            selection = nil
+            let manager = DataManager(context: viewContext)
+            Task.detached {
+                await manager.upsert(sample: sample)
+            }
+            
+        }
+    }
+    
+    private func editorDidCreate(sample: BodyWeightSample) {
         withAnimation {
             isAddingNewSample.toggle()
-            let builder = QuantityTypeBuilder(context: viewContext)
-            builder.weight(sampleFrom: sample)
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            let manager = DataManager(context: viewContext)
+            Task.detached {
+                await manager.create(sample: sample)
             }
+            
         }
     }
 

@@ -7,16 +7,19 @@ struct SampleEditorView<Sample: SampledMeasurement>: View {
     
     @DimensionPreference<Sample.UnitType>
     private var quantityIdentifier: QuantityIdentifier
+    private let existingID: UUID?
     
     private let title: String
     private let onSave: ((Sample) -> Void)?
     private let onCancel: (() -> Void)?
     
+    
     private var newSample: Sample {
         let s = Sample(
             quantity: .init(
                 identifier: quantityIdentifier,
-                measurement: .init(value: value ?? .zero, unit: $quantityIdentifier)
+                measurement: .init(value: value ?? .zero, unit: $quantityIdentifier),
+                existingID: existingID
             ),
             dateRange: (date, date)
         )
@@ -24,21 +27,27 @@ struct SampleEditorView<Sample: SampledMeasurement>: View {
         return s
     }
     
+    
+    
     init(_ quantityIdentifier: QuantityIdentifier, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
-        self.init(quantityIdentifier, date: .now, onSave: save, onCancel: cancel)
-    }
-    
-    init(sample: Sample, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
-        self.init(sample.identifier, value: sample.measurement.value, date: sample.dateRange.start ?? .now, onSave: save, onCancel: cancel)
-    }
-    
-    private init(_ quantityIdentifier: QuantityIdentifier, value: Double? = nil, date: Date, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
-        self._date = .init(initialValue: date)
-        self._value = .init(initialValue: value)
+        self._date = .init(initialValue: .now)
+        self._value = .init(initialValue: nil)
+        self.existingID = nil
         self.quantityIdentifier = quantityIdentifier
         self.onSave = save
         self.onCancel = cancel
-        self.title = value == nil ? "Add Sample" : "Edit Sample"
+        self.title = "Add Sample"
+    }
+    
+    init(sample: Sample, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
+        self._date = .init(initialValue: sample.dateRange.start ?? .now)
+        self._value = .init(initialValue: sample.measurement.value)
+        self.existingID = sample.id
+        self.quantityIdentifier = sample.identifier
+        self.onSave = save
+        self.onCancel = cancel
+        self.title = "Edit Sample"
+        
     }
     
     var body: some View {
