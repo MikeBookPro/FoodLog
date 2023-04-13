@@ -2,12 +2,121 @@
 
 import CoreData
 
+struct DataManager {
+    let context: NSManagedObjectContext
+    
+    // MARK: - Fetch
+    
+    private func fetch(identifier model: QuantityIdentifier) async -> IdentifierMO? {
+        await context.perform {
+            let fetchRequest: NSFetchRequest<IdentifierMO> = IdentifierMO.fetchRequest()
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = .init(format: "id == \(model.id)")
+            return try? context.fetch(fetchRequest).first
+        }
+    }
+    
+    private func fetch(sample model: some SampledMeasurement) async -> SampleQuantityMO? {
+        guard let measurementID = model.id else { return nil }
+        let sample: SampleQuantityMO? = await context.perform {
+            let fetchRequest: NSFetchRequest<SampleQuantityMO> = SampleQuantityMO.fetchRequest()
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = .init(format: "measurementID == %@", measurementID as CVarArg)
+            return try? context.fetch(fetchRequest).first
+        }
+        return sample
+    }
+    
+    // MARK: - Create
+    
+    @discardableResult
+    func create<Identifier>(identifier: QuantityIdentifier) async -> Identifier where Identifier: IdentifierMO {
+        await context.perform {
+            let identifierMO = Identifier(context: context)
+            identifierMO.id = identifier.id
+            self.save()
+            return identifierMO
+        }
+    }
+    
+    @discardableResult
+    func create<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: SampleQuantityMO {
+        let sampleMO = Sample(context: context)
+        sampleMO.measurementID = UUID()
+        return await update(sample: sampleMO, with: model, shouldSave: true)
+    }
+    
+    // MARK: - Update
+    
+    private func update<Sample>(sample mo: Sample, with model: some SampledMeasurement, shouldSave: Bool = false) async -> Sample where Sample: SampleQuantityMO {
+        mo.identifier = await upsert(quantityIdentifier: model.identifier)
+        mo.startDate = model.dateRange.start
+        mo.endDate = model.dateRange.end
+        mo.measurementUnit = model.measurement.unit.symbol
+        mo.measurementValue = model.measurement.value
+        if shouldSave {
+            self.save()
+        }
+        return mo
+    }
+    
+    // MARK: - Upsert (Create &/or Update)
+    
+    @discardableResult
+    public func upsert<Identifier>(quantityIdentifier: QuantityIdentifier) async -> Identifier where Identifier: IdentifierMO {
+        if let existing = await fetch(identifier: quantityIdentifier) as? Identifier { return existing }
+        return await create(identifier: quantityIdentifier)
+    }
+    
+    @discardableResult
+    public func upsert<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: SampleQuantityMO {
+        if let existing = await fetch(sample: model) as? Sample {
+            return await update(sample: existing, with: model)
+        }
+        return await create(sample: model)
+    }
+    
+    // MARK: - Delete
+    @discardableResult
+    public func delete(sample model: some SampledMeasurement, shouldSave: Bool = false) async -> Bool {
+        guard let mo = await fetch(sample: model) else { return false }
+        return await delete(managedObject: mo, shouldSave: shouldSave)
+    }
+    
+    @discardableResult
+    private func delete(managedObject: NSManagedObject, shouldSave: Bool = false) async -> Bool {
+        await context.perform {
+            context.delete(managedObject)
+            if shouldSave {
+                self.save()
+            }
+            return true
+        }
+    }
+    
+    
+    // MARK: - Save
+    
+    func save() {
+        guard context.hasChanges else { return }
+        do {
+            try context.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+
+}
+
 struct QuantityTypeBuilder {
     let context: NSManagedObjectContext
     
     func weight(sampleFrom sample: some SampledMeasurement) {
         let sampleMO = BodyQuantitySampleMO(context: context)
-//        sampleMO.id = sample.id
+        sampleMO.measurementID = sample.id
         sampleMO.startDate = sample.dateRange.start
         sampleMO.endDate = sample.dateRange.end
         

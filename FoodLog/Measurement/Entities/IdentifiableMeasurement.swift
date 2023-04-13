@@ -5,7 +5,7 @@ import Foundation
 public protocol IdentifiableMeasurement: Identifiable {
     associatedtype UnitType: Dimension
     
-    var id: UUID { get }
+    var id: UUID? { get }
     var identifier: QuantityIdentifier { get }
     var measurement: Measurement<UnitType> { get }
     
@@ -21,12 +21,12 @@ extension IdentifiableMeasurement {
 }
 
 struct IdentifiedMeasurement<UnitType: Dimension>: IdentifiableMeasurement {
-    let id: UUID
+    let id: UUID?
     let identifier: QuantityIdentifier
     var measurement: Measurement<UnitType>
     
     init(identifier: QuantityIdentifier, measurement: Measurement<UnitType>, existingID: UUID?) {
-        self.id = existingID ?? UUID()
+        self.id = existingID
         self.identifier = identifier
         self.measurement = measurement
     }

@@ -10,6 +10,11 @@ public enum QuantityIdentifier: String, Identifiable, CaseIterable {
     // TODO: Add Nutrients here
     
     public var id: String { self.rawValue }
+    
+    init?(string: String?) {
+        guard let string else { return nil }
+        self.init(rawValue: string)
+    }
 }
 
 

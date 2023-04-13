@@ -9,6 +9,9 @@ extension IdentifiedMeasurementMO {
         return MeasurementFactory.measurement(forDimension: dimension, value: self.measurementValue)
     }
 }
+
+
+
  
 struct WeightHistoryView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -84,16 +87,20 @@ struct WeightHistoryView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { samples[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            let objects: [BodyQuantitySampleMO] = offsets.map { samples[$0] }
+            let weightSamples: [BodyWeightSample] = objects.map { BodyWeightSampleAdapter.adapt(sampleQuantity: $0) }
+            let manager = DataManager(context: viewContext)
+            Task.detached {
+                await withTaskGroup(of: Bool.self) { taskGroup in
+                    for sample in weightSamples {
+                        taskGroup.addTask {
+                            await manager.delete(sample: sample)
+                        }
+                    }
+                    
+                }
             }
+//            offsets.map { samples[$0] }.forEach(viewContext.delete)
         }
     }
 }

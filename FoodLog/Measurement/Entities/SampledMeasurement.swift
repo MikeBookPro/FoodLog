@@ -9,7 +9,7 @@ public protocol SampledMeasurement: IdentifiableMeasurement, DateRangeReadable {
 }
 
 struct MeasurementSample<IdentifiedMeasure: IdentifiableMeasurement>: SampledMeasurement {
-    let id: UUID
+    let id: UUID?
     let identifier: QuantityIdentifier
     let measurement: Measurement<IdentifiedMeasure.UnitType>
     let dateRange: DateRange
@@ -19,7 +19,7 @@ struct MeasurementSample<IdentifiedMeasure: IdentifiableMeasurement>: SampledMea
     }
     
     init(identifier: QuantityIdentifier, measurement: Measurement<IdentifiedMeasure.UnitType>, existingID: UUID?) {
-        self.id = existingID ?? UUID()
+        self.id = existingID
         self.identifier = identifier
         self.measurement = measurement
         self.dateRange = (nil, nil)
