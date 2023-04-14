@@ -1,20 +1,20 @@
 import Foundation
 
-public protocol SampledMeasurement: IdentifiableMeasurement, DateRangeReadable {
+public protocol SampledMeasurement: IdentifiableMeasurement {
     associatedtype IdentifiedMeasure: IdentifiableMeasurement where UnitType == IdentifiedMeasure.UnitType
     
-    var dateRange: DateRange { get }
+    var date: Date { get }
     
-    init(quantity: IdentifiedMeasure, dateRange: DateRange)
+    init(quantity: IdentifiedMeasure, date: Date)
 }
 
 struct MeasurementSample<IdentifiedMeasure: IdentifiableMeasurement>: SampledMeasurement {
     let id: UUID?
     let identifier: QuantityIdentifier
     let measurement: Measurement<IdentifiedMeasure.UnitType>
-    let dateRange: DateRange
+    let date: Date
     
-    init(quantity: IdentifiedMeasure, dateRange: DateRange = (nil, nil))  {
+    init(quantity: IdentifiedMeasure, date: Date = .now)  {
         self.init(identifier: quantity.identifier, measurement: quantity.measurement, existingID: quantity.id)
     }
     
@@ -22,6 +22,6 @@ struct MeasurementSample<IdentifiedMeasure: IdentifiableMeasurement>: SampledMea
         self.id = existingID
         self.identifier = identifier
         self.measurement = measurement
-        self.dateRange = (nil, nil)
+        self.date = .now
     }
 }

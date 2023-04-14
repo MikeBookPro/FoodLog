@@ -39,8 +39,7 @@
         <relationship name="nutrientQuantities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NutrientQuantityMO" inverseName="nutritionInfo" inverseEntity="NutrientQuantityMO"/>
     </entity>
     <entity name="SampleQuantityMO" representedClassName="SampleQuantityMO" isAbstract="YES" parentEntity="IdentifiedMeasurementMO" syncable="YES" codeGenerationType="class">
-        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="text" optional="YES" attributeType="String"/>

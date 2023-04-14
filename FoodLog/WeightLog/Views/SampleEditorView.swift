@@ -1,15 +1,12 @@
 import SwiftUI
 
 struct SampleEditorView<Sample: SampledMeasurement>: View {
-    @State private var date: Date
+    @State private var date: Date = .now
     @State private var value: Double?
     @FocusState private var valueFieldHasFocus: Bool
     
     @DimensionPreference<Sample.UnitType>
     private var quantityIdentifier: QuantityIdentifier
-    private let existingID: UUID?
-    
-    private let title: String
     private let onSave: ((Sample) -> Void)?
     private let onCancel: (() -> Void)?
     
@@ -19,9 +16,9 @@ struct SampleEditorView<Sample: SampledMeasurement>: View {
             quantity: .init(
                 identifier: quantityIdentifier,
                 measurement: .init(value: value ?? .zero, unit: $quantityIdentifier),
-                existingID: existingID
+                existingID: nil
             ),
-            dateRange: (date, date)
+            date: date
         )
         
         return s
@@ -30,24 +27,10 @@ struct SampleEditorView<Sample: SampledMeasurement>: View {
     
     
     init(_ quantityIdentifier: QuantityIdentifier, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
-        self._date = .init(initialValue: .now)
         self._value = .init(initialValue: nil)
-        self.existingID = nil
         self.quantityIdentifier = quantityIdentifier
         self.onSave = save
         self.onCancel = cancel
-        self.title = "Add Sample"
-    }
-    
-    init(sample: Sample, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
-        self._date = .init(initialValue: sample.dateRange.start ?? .now)
-        self._value = .init(initialValue: sample.measurement.value)
-        self.existingID = sample.id
-        self.quantityIdentifier = sample.identifier
-        self.onSave = save
-        self.onCancel = cancel
-        self.title = "Edit Sample"
-        
     }
     
     var body: some View {
@@ -79,7 +62,7 @@ struct SampleEditorView<Sample: SampledMeasurement>: View {
                 }
                 .padding(.vertical)
             }
-            .navigationTitle(self.title)
+            .navigationTitle("Add Sample")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(role: .cancel) {

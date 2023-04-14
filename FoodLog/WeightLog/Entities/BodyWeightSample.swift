@@ -8,13 +8,13 @@ struct BodyWeightSample: SampledMeasurement, Identifiable {
     let id: UUID?
     var identifier: QuantityIdentifier
     var measurement: Measurement<UnitMass>
-    var dateRange: DateRange
+    var date: Date
     
-    init(quantity: IdentifiedMeasurement<UnitType>, dateRange: DateRange) {
+    init(quantity: IdentifiedMeasurement<UnitType>, date: Date) {
         self.id = quantity.id
         self.identifier = quantity.identifier
         self.measurement = quantity.measurement
-        self.dateRange = dateRange
+        self.date = date
     }
     
     init(identifier: QuantityIdentifier, measurement: Measurement<UnitMass>, existingID: UUID? = nil) {
@@ -24,7 +24,7 @@ struct BodyWeightSample: SampledMeasurement, Identifiable {
                 measurement: measurement,
                 existingID: existingID ?? UUID()
             ),
-            dateRange: (nil, nil)
+            date: .now
         )
     }
     
@@ -136,7 +136,7 @@ struct BodyWeightSampleAdapter {
                 measurement: .init(value: mo.measurementValue, unit: unit),
                 existingID: mo.measurementID
             ),
-            dateRange: (mo.startDate, mo.endDate)
+            date: mo.date ?? .now
         )
     }
     

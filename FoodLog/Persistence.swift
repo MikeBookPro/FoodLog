@@ -24,15 +24,16 @@ struct DataManager {
     func create<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: BodyQuantitySampleMO {
         let sampleMO = Sample(context: context)
         sampleMO.measurementID = UUID()
-        return await update(sample: sampleMO, with: model, shouldSave: true)
+        let result = await update(sample: sampleMO, with: model, shouldSave: true)
+        print(result)
+        return sampleMO
     }
     
     // MARK: - Update
     
     private func update<Sample>(sample mo: Sample, with model: some SampledMeasurement, shouldSave: Bool = false) async -> Sample where Sample: BodyQuantitySampleMO {
         mo.quantityIdentifier = model.identifier.rawValue
-        mo.startDate = model.dateRange.start
-        mo.endDate = model.dateRange.end
+        mo.date = model.date
         mo.measurementUnit = model.measurement.unit.symbol
         mo.measurementValue = model.measurement.value
         if shouldSave {

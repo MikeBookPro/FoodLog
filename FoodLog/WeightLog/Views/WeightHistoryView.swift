@@ -10,70 +10,52 @@ extension IdentifiedMeasurementMO {
     }
 }
 
-
-
  
 struct WeightHistoryView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \BodyQuantitySampleMO.startDate, ascending: false)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \BodyQuantitySampleMO.date, ascending: false)],
         animation: .default
     )
     private var samples: FetchedResults<BodyQuantitySampleMO>
     
     @State private var isAddingNewSample: Bool = false
     @State private var selection: BodyQuantitySampleMO? = nil
+    
+    private let adapt = BodyWeightSampleAdapter.adapt(sampleQuantity:)
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(samples) { sample in
-                    LabeledContent {
-                        if let measurement = sample.measurement {
-                            Text(measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
-                        } else {
-                            Text("measurement: \(sample.measurement?.description ?? "none")")
-                        }
+                    NavigationLink {
+                        MeasurementSampleView(sample: adapt(sample))
                     } label: {
-                        if let date = sample.startDate {
-                            Text(date, format: .dateTime.day().month(.wide).year())
-                        } else {
-                            Text("no date")
+                        LabeledContent("\((sample.date ?? .distantPast).formatted(date: .abbreviated, time: .shortened))") {
+                            if let measurement = sample.measurement {
+                                Text(measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
+                            }
                         }
                     }
-                    .onTapGesture {
-                        selection = sample
-                    }
-//                    .tag(sample)
                 }
                 .onDelete(perform: deleteItems)
             }
-            .toolbar {
-    #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+            .navigationTitle("Weight History")
+            .sheet(isPresented: $isAddingNewSample) {
+                SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidCreate(sample:)) {
+                    isAddingNewSample.toggle()
                 }
-    #endif
+                .presentationDetents([.medium])
+            }
+            .toolbar {
                 ToolbarItem {
-                    Button {
-                        isAddingNewSample.toggle()
-                    } label: {
+                    Button { isAddingNewSample.toggle() } label: {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
             }
             .navigationTitle("Weight History")
-            .sheet(item: $selection) { selected in
-                SampleEditorView<BodyWeightSample>(
-                    sample: BodyWeightSampleAdapter.adapt(sampleQuantity: selected),
-                    onSave: editorDidUpdate(sample:)
-                ) {
-                    selection = nil
-                }
-                .presentationDetents([.medium])
-            }
-            
             .sheet(isPresented: $isAddingNewSample) {
                 SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidCreate(sample:)) {
                     isAddingNewSample.toggle()

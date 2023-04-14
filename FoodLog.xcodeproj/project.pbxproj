@@ -22,9 +22,9 @@
 		BE92CB9E29E4B1C5006A158E /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9D29E4B1C5006A158E /* Brand.swift */; };
 		BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */; };
 		BE9C851129E67E7800E543E6 /* DimensionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */; };
-		BED10BC429E73FBD00A75BA1 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC329E73FBD00A75BA1 /* DateRange.swift */; };
 		BED10BC729E7405700A75BA1 /* MappedAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC629E7405700A75BA1 /* MappedAdapter.swift */; };
 		BED10BCA29E740B000A75BA1 /* QuantityIdentifierAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC929E740B000A75BA1 /* QuantityIdentifierAdapters.swift */; };
+		BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,9 +46,9 @@
 		BE92CB9D29E4B1C5006A158E /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityIdentifier.swift; sourceTree = "<group>"; };
 		BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionIdentifier.swift; sourceTree = "<group>"; };
-		BED10BC329E73FBD00A75BA1 /* DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
 		BED10BC629E7405700A75BA1 /* MappedAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappedAdapter.swift; sourceTree = "<group>"; };
 		BED10BC929E740B000A75BA1 /* QuantityIdentifierAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityIdentifierAdapters.swift; sourceTree = "<group>"; };
+		BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementSampleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +85,7 @@
 			children = (
 				BE435CBB29E4E2A000A8D16E /* WeightHistoryView.swift */,
 				BE5825F129E5F845006F75E0 /* SampleEditorView.swift */,
+				BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -123,7 +124,6 @@
 				BE435CB929E4DD8400A8D16E /* IdentifiableMeasurement.swift */,
 				BE92CB9B29E4808F006A158E /* SampledMeasurement.swift */,
 				BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */,
-				BED10BC329E73FBD00A75BA1 /* DateRange.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -296,7 +296,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */,
-				BED10BC429E73FBD00A75BA1 /* DateRange.swift in Sources */,
 				BED10BCA29E740B000A75BA1 /* QuantityIdentifierAdapters.swift in Sources */,
 				BE435CBA29E4DD8500A8D16E /* IdentifiableMeasurement.swift in Sources */,
 				BE7413BF29E73852008DC255 /* DimensionPreference.swift in Sources */,
@@ -309,6 +308,7 @@
 				BE435CBC29E4E2A000A8D16E /* WeightHistoryView.swift in Sources */,
 				BE92CB9C29E4808F006A158E /* SampledMeasurement.swift in Sources */,
 				BE7413B529E6FCFB008DC255 /* BodyWeightSample.swift in Sources */,
+				BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */,
 				BE5825F229E5F845006F75E0 /* SampleEditorView.swift in Sources */,
 				BE92CB8829E48046006A158E /* Persistence.swift in Sources */,
 			);
