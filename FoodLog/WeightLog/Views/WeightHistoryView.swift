@@ -41,7 +41,7 @@ struct WeightHistoryView: View {
                 }
                 .onDelete(perform: deleteItems)
             }
-            .navigationTitle("Weight History")
+            .navigationTitle("Progress")
             .sheet(isPresented: $isAddingNewSample) {
                 SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidCreate(sample:)) {
                     isAddingNewSample.toggle()
