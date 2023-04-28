@@ -19,7 +19,6 @@
 		BE92CB8F29E48047006A158E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE92CB8E29E48047006A158E /* Assets.xcassets */; };
 		BE92CB9329E48047006A158E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE92CB9229E48047006A158E /* Preview Assets.xcassets */; };
 		BE92CB9C29E4808F006A158E /* SampledMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9B29E4808F006A158E /* SampledMeasurement.swift */; };
-		BE92CB9E29E4B1C5006A158E /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9D29E4B1C5006A158E /* Brand.swift */; };
 		BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */; };
 		BE9C851129E67E7800E543E6 /* DimensionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */; };
 		BED10BC729E7405700A75BA1 /* MappedAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC629E7405700A75BA1 /* MappedAdapter.swift */; };
@@ -44,7 +43,6 @@
 		BE92CB9029E48047006A158E /* FoodLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodLog.entitlements; sourceTree = "<group>"; };
 		BE92CB9229E48047006A158E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BE92CB9B29E4808F006A158E /* SampledMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampledMeasurement.swift; sourceTree = "<group>"; };
-		BE92CB9D29E4B1C5006A158E /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityIdentifier.swift; sourceTree = "<group>"; };
 		BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionIdentifier.swift; sourceTree = "<group>"; };
 		BED10BC629E7405700A75BA1 /* MappedAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappedAdapter.swift; sourceTree = "<group>"; };
@@ -198,18 +196,8 @@
 		BE92CB9929E4805A006A158E /* FoodLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				BE92CB9A29E48077006A158E /* Entities */,
-				BE92CB8929E48046006A158E /* FoodLog.xcdatamodeld */,
 			);
 			path = FoodLibrary;
-			sourceTree = "<group>";
-		};
-		BE92CB9A29E48077006A158E /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				BE92CB9D29E4B1C5006A158E /* Brand.swift */,
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		BED10BC529E7404400A75BA1 /* Protocols */ = {
@@ -248,6 +236,7 @@
 		BED7082E29FC1EC000ADFBBD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BE92CB8929E48046006A158E /* FoodLog.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,7 +318,6 @@
 				BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */,
 				BED7082D29FC186000ADFBBD /* PersistedContentList.swift in Sources */,
 				BED10BC729E7405700A75BA1 /* MappedAdapter.swift in Sources */,
-				BE92CB9E29E4B1C5006A158E /* Brand.swift in Sources */,
 				BE9C851129E67E7800E543E6 /* DimensionIdentifier.swift in Sources */,
 				BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */,
 				BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */,
@@ -567,7 +555,8 @@
 				BE92CB8A29E48046006A158E /* FoodLog.xcdatamodel */,
 			);
 			currentVersion = BE92CB8A29E48046006A158E /* FoodLog.xcdatamodel */;
-			path = FoodLog.xcdatamodeld;
+			name = FoodLog.xcdatamodeld;
+			path = ../../FoodLibrary/FoodLog.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
