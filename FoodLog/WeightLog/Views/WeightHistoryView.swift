@@ -15,10 +15,10 @@ struct WeightHistoryView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \BodyQuantitySampleMO.date, ascending: false)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \SampleQuantityMO.date, ascending: false)],
         animation: .default
     )
-    private var samples: FetchedResults<BodyQuantitySampleMO>
+    private var samples: FetchedResults<SampleQuantityMO>
     
     @State private var isShowingEditor: Bool = false
     @State private var selectionID: ObjectIdentifier? = nil
@@ -92,7 +92,7 @@ struct WeightHistoryView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            let objects: [BodyQuantitySampleMO] = offsets.map { samples[$0] }
+            let objects: [SampleQuantityMO] = offsets.map { samples[$0] }
             let weightSamples: [BodyWeightSample] = objects.map { BodyWeightSampleAdapter.adapt(sampleQuantity: $0) }
             let manager = DataManager(context: viewContext)
             Task.detached {

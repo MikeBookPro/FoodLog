@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="BodyQuantitySampleMO" representedClassName="BodyQuantitySampleMO" parentEntity="SampleQuantityMO" syncable="YES" codeGenerationType="class"/>
     <entity name="Brand" representedClassName="Brand" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -38,7 +37,7 @@
         <attribute name="servingSize" optional="YES" attributeType="Transformable" valueTransformerName="MeasurementTransformer" customClassName="NSMeasurement"/>
         <relationship name="nutrientQuantities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NutrientQuantityMO" inverseName="nutritionInfo" inverseEntity="NutrientQuantityMO"/>
     </entity>
-    <entity name="SampleQuantityMO" representedClassName="SampleQuantityMO" isAbstract="YES" parentEntity="IdentifiedMeasurementMO" syncable="YES" codeGenerationType="class">
+    <entity name="SampleQuantityMO" representedClassName="SampleQuantityMO" parentEntity="IdentifiedMeasurementMO" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" isAbstract="YES" syncable="YES" codeGenerationType="class">

@@ -97,20 +97,6 @@ struct UUIDPropertyAdapter<Input, Output>: PropertyAdapter {
 //protocol UUIDPropertyAdapter: PropertyAdapter where T == UUID {}
 
 
-
-
-//BodyQuantitySampleMO
-//struct WeightSamplePropertyAdapter<T>: PropertyAdapter {
-//    typealias Input = BodyQuantitySampleMO
-//    typealias Output = BodyWeightSample
-//
-//    var paths: (read: KeyPath<BodyQuantitySampleMO, T>, write: WritableKeyPath<BodyWeightSample, T>)
-//
-//    init(read: KeyPath<BodyQuantitySampleMO, T>, write: WritableKeyPath<BodyWeightSample, T>) {
-//        self.paths = (read, write)
-//    }
-//}
-
 struct WeightSampleAdapter {
     typealias Input = SampleQuantityMO
     typealias Output = BodyWeightSample
@@ -127,7 +113,7 @@ struct WeightSampleAdapter {
 
 struct BodyWeightSampleAdapter {
 
-    static func adapt(sampleQuantity mo: BodyQuantitySampleMO) -> BodyWeightSample {
+    static func adapt(sampleQuantity mo: SampleQuantityMO) -> BodyWeightSample {
         let quantityIdentifier: QuantityIdentifier = .bodyMass
         let unit: UnitMass = (mo.measurementUnit != nil) ? .init(symbol: mo.measurementUnit!) : DimensionPreference<UnitMass>(wrappedValue: quantityIdentifier).projectedValue
         return BodyWeightSample(
