@@ -6,10 +6,11 @@ import CoreData
 //    associatedtype Adapter: MappedAdapter where Adapter.Source == PersistentModel
 //}
 
-struct PersistedContentList<Content: View>: View {
+struct PersistedContentList<Content: View, Output: Identifiable>: View {
     private let nestedView: PersistedContentList.NestedView<Content>
+    let adapter: 
 
-    init(@ViewBuilder content: @escaping ([String]) -> Content) {
+    init(@ViewBuilder content: @escaping ([Output]) -> Content) {
         self.nestedView = PersistedContentList.NestedView { fetchedItems in
             content(fetchedItems)
         }

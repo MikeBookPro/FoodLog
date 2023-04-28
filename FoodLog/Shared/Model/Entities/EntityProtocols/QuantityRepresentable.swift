@@ -14,12 +14,13 @@ protocol ObservedQuantityRepresentable: QuantityRepresentable {
 
 // MARK: - Reference Quantities
 
-protocol NutrientQuantityRepresentable: ReferenceQuantityRepresentable {
-    var nutrutionInfo: NutritionInfoRepresentable? { get }
+protocol NutritionInfoRepresentable {
+    var servingSize: (any DietaryQuantityRepresentable)? { get }
+    var nutrientQuantities: [any DietaryQuantityRepresentable] { get }
 }
 
-protocol ServingSizeRepresentable: ReferenceQuantityRepresentable {
-    var nutrutionInfo: NutritionInfoRepresentable? { get }
+protocol DietaryQuantityRepresentable: ReferenceQuantityRepresentable {
+    var nutritionInfo: (any NutritionInfoRepresentable)? { get }
 }
 
 // MARK: - Timestamped Quantities

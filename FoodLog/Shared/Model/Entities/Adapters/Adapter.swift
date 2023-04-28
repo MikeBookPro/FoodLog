@@ -1,6 +1,6 @@
 import Foundation
 
-protocol MappedAdapter {
+protocol Adapter {
     associatedtype Source: Hashable
     associatedtype Destination
     

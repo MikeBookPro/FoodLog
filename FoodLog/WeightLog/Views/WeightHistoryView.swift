@@ -1,14 +1,5 @@
-//
-
 import SwiftUI
 import CoreData
-
-extension QuantityMO {
-    var measurement: Measurement<Dimension>? {
-        guard let dimension = DimensionIdentifier(baseUnitSymbol: self.measurementUnit) else { return nil }
-        return MeasurementFactory.measurement(forDimension: dimension, value: self.measurementValue)
-    }
-}
 
  
 struct WeightHistoryView: View {
@@ -24,7 +15,7 @@ struct WeightHistoryView: View {
     @State private var selectionID: ObjectIdentifier? = nil
     
     private let adapt = BodyWeightSampleAdapter.adapt(sampleQuantity:)
-
+//    (sample.date ?? Date.distantPast).formatted(date: .abbreviated, time: .shortened)
     var body: some View {
         NavigationView {
             List(selection: $selectionID) {
@@ -32,10 +23,12 @@ struct WeightHistoryView: View {
                     NavigationLink {
                         MeasurementSampleView(sample: adapt(sample), editorToggle: $isShowingEditor)
                     } label: {
-                        LabeledContent("\((sample.date ?? .distantPast).formatted(date: .abbreviated, time: .shortened))") {
-                            if let measurement = sample.measurement {
-                                Text(measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
-                            }
+                        if let date = sample.date {
+                            Text(date, format: Date.FormatStyle.init(date: .numeric, time: .shortened))
+                        }
+                        
+                        if let measurement = sample.measurement {
+                            Text(measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
                         }
                     }
                 }
@@ -63,7 +56,7 @@ struct WeightHistoryView: View {
         }
     }
     
-    private func editorDidUpdate(sample: Sample) {
+    private func editorDidUpdate(sample: SampleQuantity) {
         withAnimation {
             selectionID = nil
             isShowingEditor.toggle()
@@ -74,7 +67,7 @@ struct WeightHistoryView: View {
         }
     }
     
-    private func editorDidCreate(sample: Sample) {
+    private func editorDidCreate(sample: SampleQuantity) {
         withAnimation {
             isShowingEditor.toggle()
             let manager = DataManager(context: viewContext)
@@ -93,7 +86,7 @@ struct WeightHistoryView: View {
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             let objects: [SampleQuantityMO] = offsets.map { samples[$0] }
-            let weightSamples: [Sample] = objects.map { BodyWeightSampleAdapter.adapt(sampleQuantity: $0) }
+            let weightSamples: [SampleQuantity] = objects.map { BodyWeightSampleAdapter.adapt(sampleQuantity: $0) }
             let manager = DataManager(context: viewContext)
             Task.detached {
                 await withTaskGroup(of: Bool.self) { taskGroup in

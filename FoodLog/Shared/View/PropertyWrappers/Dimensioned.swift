@@ -9,19 +9,7 @@ struct Dimensioned: DynamicProperty {
     }
 }
 
-
-@propertyWrapper
-struct DimensionPreference<UnitType: Dimension>: DynamicProperty {
-    var wrappedValue: QuantityIdentifier
-    
-    var projectedValue: UnitType {
-        QuantityIdentifierToDimensionAdapter.value(mappedTo: wrappedValue)
-    }
-    
-    func update() { return }
-}
 #if DEBUG
-
 private struct DimensionView: View {
     
     @Dimensioned

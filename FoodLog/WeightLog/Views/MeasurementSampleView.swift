@@ -9,7 +9,7 @@ struct MeasurementSampleView: View {
     private let measurement: Measurement<Dimension>
     private let date: Date
     
-    init(sample: Sample, editorToggle isShowingEditor: Binding<Bool>) {
+    init(sample: SampleQuantity, editorToggle isShowingEditor: Binding<Bool>) {
         self._isShowingEditor = isShowingEditor
         self.id = sample.id
         self.identifier = sample.identifier
@@ -60,7 +60,7 @@ struct MeasurementSampleView: View {
 }
 
 struct MeasurementSampleView_Previews: PreviewProvider {
-    private static let bodyWeightSample = Sample(
+    private static let bodyWeightSample = SampleQuantity(
         quantity: .init(
             identifier: .bodyMass,
             measurement: .init(value: 124.0123456789, unit: IdentifierToDimensionAdapter.value(mappedTo: .bodyMass))

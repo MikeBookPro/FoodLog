@@ -8,12 +8,12 @@ struct SampleEditorView: View {
     @Dimensioned
     private var quantityIdentifier: QuantityIdentifier
     private let sampleID: UUID?
-    private let onSave: ((Sample) -> Void)?
+    private let onSave: ((SampleQuantity) -> Void)?
     private let onCancel: (() -> Void)?
     
     
-    private var sample: Sample {
-        let s = Sample(
+    private var sample: SampleQuantity {
+        let s = SampleQuantity(
             quantity: .init(
                 identifier: quantityIdentifier,
                 measurement: .init(value: value ?? .zero, unit: $quantityIdentifier),
@@ -25,7 +25,7 @@ struct SampleEditorView: View {
         return s
     }
     
-    init(update sample: Sample, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
+    init(update sample: SampleQuantity, onSave save: ((SampleQuantity) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
         self._value = .init(initialValue: sample.measurement.value.isZero ? nil : sample.measurement.value)
         self._date = .init(initialValue: sample.date)
         self.sampleID = sample.id
@@ -34,9 +34,9 @@ struct SampleEditorView: View {
         self.onCancel = cancel
     }
     
-    init(_ quantityIdentifier: QuantityIdentifier, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
+    init(_ quantityIdentifier: QuantityIdentifier, onSave save: ((SampleQuantity) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
         self.init(
-            update: Sample(
+            update: SampleQuantity(
                 quantity: .init(
                     identifier: quantityIdentifier,
                     measurement: .init(value: .zero, unit: IdentifierToDimensionAdapter.value(mappedTo: quantityIdentifier))

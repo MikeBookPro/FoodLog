@@ -7,37 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE435CBA29E4DD8500A8D16E /* IdentifiableMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CB929E4DD8400A8D16E /* IdentifiableMeasurement.swift */; };
 		BE435CBC29E4E2A000A8D16E /* WeightHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CBB29E4E2A000A8D16E /* WeightHistoryView.swift */; };
 		BE5825F229E5F845006F75E0 /* SampleEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* SampleEditorView.swift */; };
 		BE7413B529E6FCFB008DC255 /* BodyWeightSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413B429E6FCFA008DC255 /* BodyWeightSample.swift */; };
 		BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */; };
-		BE7413BF29E73852008DC255 /* DimensionPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BE29E73852008DC255 /* DimensionPreference.swift */; };
+		BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BE29E73852008DC255 /* Dimensioned.swift */; };
 		BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8529E48046006A158E /* FoodLogApp.swift */; };
 		BE92CB8829E48046006A158E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8729E48046006A158E /* Persistence.swift */; };
 		BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8929E48046006A158E /* FoodLog.xcdatamodeld */; };
 		BE92CB8F29E48047006A158E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE92CB8E29E48047006A158E /* Assets.xcassets */; };
 		BE92CB9329E48047006A158E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE92CB9229E48047006A158E /* Preview Assets.xcassets */; };
-		BE92CB9C29E4808F006A158E /* SampledMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9B29E4808F006A158E /* SampledMeasurement.swift */; };
 		BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */; };
-		BE9C851129E67E7800E543E6 /* DimensionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */; };
-		BED10BC729E7405700A75BA1 /* MappedAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC629E7405700A75BA1 /* MappedAdapter.swift */; };
-		BED10BCA29E740B000A75BA1 /* QuantityIdentifierAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC929E740B000A75BA1 /* QuantityIdentifierAdapters.swift */; };
+		BED10BC729E7405700A75BA1 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC629E7405700A75BA1 /* Adapter.swift */; };
+		BED10BCA29E740B000A75BA1 /* IdentifierAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC929E740B000A75BA1 /* IdentifierAdapter.swift */; };
 		BED7082D29FC186000ADFBBD /* PersistedContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7082C29FC186000ADFBBD /* PersistedContentList.swift */; };
-		BED7083429FC259700ADFBBD /* NutritionInfoRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7083329FC259700ADFBBD /* NutritionInfoRepresentable.swift */; };
 		BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */; };
 		BED7083929FC347B00ADFBBD /* ManagedObjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7083829FC347B00ADFBBD /* ManagedObjectWrapper.swift */; };
+		BED7083D29FC6FD500ADFBBD /* SampleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7083C29FC6FD500ADFBBD /* SampleAdapter.swift */; };
+		BED7084129FC70E100ADFBBD /* ImplementationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084029FC70E100ADFBBD /* ImplementationWrapper.swift */; };
+		BED7084329FC752400ADFBBD /* ManagedObjectAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084229FC752400ADFBBD /* ManagedObjectAdapter.swift */; };
+		BED7084529FC760900ADFBBD /* ManagedObjectWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084429FC760900ADFBBD /* ManagedObjectWrappers.swift */; };
 		BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BE435CB929E4DD8400A8D16E /* IdentifiableMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableMeasurement.swift; sourceTree = "<group>"; };
 		BE435CBB29E4E2A000A8D16E /* WeightHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHistoryView.swift; sourceTree = "<group>"; };
 		BE435CBF29E50BE700A8D16E /* weight-data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "weight-data.json"; sourceTree = "<group>"; };
 		BE5825F129E5F845006F75E0 /* SampleEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleEditorView.swift; sourceTree = "<group>"; };
 		BE7413B429E6FCFA008DC255 /* BodyWeightSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyWeightSample.swift; sourceTree = "<group>"; };
 		BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dimension+Extensions.swift"; sourceTree = "<group>"; };
-		BE7413BE29E73852008DC255 /* DimensionPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionPreference.swift; sourceTree = "<group>"; };
+		BE7413BE29E73852008DC255 /* Dimensioned.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensioned.swift; sourceTree = "<group>"; };
 		BE92CB8229E48046006A158E /* FoodLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE92CB8529E48046006A158E /* FoodLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogApp.swift; sourceTree = "<group>"; };
 		BE92CB8729E48046006A158E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -45,15 +44,16 @@
 		BE92CB8E29E48047006A158E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE92CB9029E48047006A158E /* FoodLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodLog.entitlements; sourceTree = "<group>"; };
 		BE92CB9229E48047006A158E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BE92CB9B29E4808F006A158E /* SampledMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampledMeasurement.swift; sourceTree = "<group>"; };
 		BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityIdentifier.swift; sourceTree = "<group>"; };
-		BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionIdentifier.swift; sourceTree = "<group>"; };
-		BED10BC629E7405700A75BA1 /* MappedAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappedAdapter.swift; sourceTree = "<group>"; };
-		BED10BC929E740B000A75BA1 /* QuantityIdentifierAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityIdentifierAdapters.swift; sourceTree = "<group>"; };
+		BED10BC629E7405700A75BA1 /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
+		BED10BC929E740B000A75BA1 /* IdentifierAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierAdapter.swift; sourceTree = "<group>"; };
 		BED7082C29FC186000ADFBBD /* PersistedContentList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistedContentList.swift; sourceTree = "<group>"; };
-		BED7083329FC259700ADFBBD /* NutritionInfoRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionInfoRepresentable.swift; sourceTree = "<group>"; };
 		BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityRepresentable.swift; sourceTree = "<group>"; };
 		BED7083829FC347B00ADFBBD /* ManagedObjectWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectWrapper.swift; sourceTree = "<group>"; };
+		BED7083C29FC6FD500ADFBBD /* SampleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAdapter.swift; sourceTree = "<group>"; };
+		BED7084029FC70E100ADFBBD /* ImplementationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplementationWrapper.swift; sourceTree = "<group>"; };
+		BED7084229FC752400ADFBBD /* ManagedObjectAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectAdapter.swift; sourceTree = "<group>"; };
+		BED7084429FC760900ADFBBD /* ManagedObjectWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectWrappers.swift; sourceTree = "<group>"; };
 		BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementSampleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,12 +114,10 @@
 		BE7413B829E6FE53008DC255 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				BED7083E29FC706D00ADFBBD /* ManagedObjectExtensions */,
 				BED7083529FC2EFD00ADFBBD /* EntityProtocols */,
 				BED10BC829E7409900A75BA1 /* Adapters */,
-				BE435CB929E4DD8400A8D16E /* IdentifiableMeasurement.swift */,
-				BE92CB9B29E4808F006A158E /* SampledMeasurement.swift */,
 				BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */,
-				BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -135,7 +133,7 @@
 		BE7413BC29E7381A008DC255 /* PropertyWrappers */ = {
 			isa = PBXGroup;
 			children = (
-				BE7413BE29E73852008DC255 /* DimensionPreference.swift */,
+				BE7413BE29E73852008DC255 /* Dimensioned.swift */,
 			);
 			path = PropertyWrappers;
 			sourceTree = "<group>";
@@ -180,8 +178,10 @@
 		BED10BC829E7409900A75BA1 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
-				BED10BC629E7405700A75BA1 /* MappedAdapter.swift */,
-				BED10BC929E740B000A75BA1 /* QuantityIdentifierAdapters.swift */,
+				BED10BC629E7405700A75BA1 /* Adapter.swift */,
+				BED10BC929E740B000A75BA1 /* IdentifierAdapter.swift */,
+				BED7083C29FC6FD500ADFBBD /* SampleAdapter.swift */,
+				BED7084229FC752400ADFBBD /* ManagedObjectAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -228,10 +228,18 @@
 			isa = PBXGroup;
 			children = (
 				BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */,
-				BED7083329FC259700ADFBBD /* NutritionInfoRepresentable.swift */,
 				BED7083829FC347B00ADFBBD /* ManagedObjectWrapper.swift */,
+				BED7084029FC70E100ADFBBD /* ImplementationWrapper.swift */,
 			);
 			path = EntityProtocols;
+			sourceTree = "<group>";
+		};
+		BED7083E29FC706D00ADFBBD /* ManagedObjectExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				BED7084429FC760900ADFBBD /* ManagedObjectWrappers.swift */,
+			);
+			path = ManagedObjectExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,23 +313,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */,
-				BED10BCA29E740B000A75BA1 /* QuantityIdentifierAdapters.swift in Sources */,
+				BED10BCA29E740B000A75BA1 /* IdentifierAdapter.swift in Sources */,
+				BED7084529FC760900ADFBBD /* ManagedObjectWrappers.swift in Sources */,
 				BED7083929FC347B00ADFBBD /* ManagedObjectWrapper.swift in Sources */,
-				BE435CBA29E4DD8500A8D16E /* IdentifiableMeasurement.swift in Sources */,
-				BE7413BF29E73852008DC255 /* DimensionPreference.swift in Sources */,
-				BED7083429FC259700ADFBBD /* NutritionInfoRepresentable.swift in Sources */,
+				BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */,
 				BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */,
 				BED7082D29FC186000ADFBBD /* PersistedContentList.swift in Sources */,
 				BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */,
-				BED10BC729E7405700A75BA1 /* MappedAdapter.swift in Sources */,
-				BE9C851129E67E7800E543E6 /* DimensionIdentifier.swift in Sources */,
+				BED10BC729E7405700A75BA1 /* Adapter.swift in Sources */,
+				BED7084329FC752400ADFBBD /* ManagedObjectAdapter.swift in Sources */,
 				BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */,
 				BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */,
 				BE435CBC29E4E2A000A8D16E /* WeightHistoryView.swift in Sources */,
-				BE92CB9C29E4808F006A158E /* SampledMeasurement.swift in Sources */,
 				BE7413B529E6FCFB008DC255 /* BodyWeightSample.swift in Sources */,
 				BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */,
+				BED7083D29FC6FD500ADFBBD /* SampleAdapter.swift in Sources */,
 				BE5825F229E5F845006F75E0 /* SampleEditorView.swift in Sources */,
+				BED7084129FC70E100ADFBBD /* ImplementationWrapper.swift in Sources */,
 				BE92CB8829E48046006A158E /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

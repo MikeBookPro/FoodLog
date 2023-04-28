@@ -1,23 +1,6 @@
 import Foundation
 import CoreData
 
-protocol ImplementationWrapper {
-    associatedtype Wrapped
-    var wrapped: Wrapped { get }
-}
-
-extension ImplementationWrapper where Self: QuantityRepresentable, Wrapped: QuantityRepresentable {
-    var identifier: QuantityIdentifier { wrapped[keyPath: \.identifier] }
-    
-    var id: UUID? { wrapped[keyPath: \.id] }
-    
-    var measurement: Measurement<Dimension> { wrapped[keyPath: \.measurement] }
-}
-
-extension ImplementationWrapper where Self: SampleQuantityRepresentable, Wrapped: SampleQuantityRepresentable {
-    var date: Date { wrapped[keyPath: \.date] }
-}
-
 struct Quantity: QuantityRepresentable {
     let identifier: QuantityIdentifier
     let id: UUID?
@@ -29,26 +12,35 @@ struct Quantity: QuantityRepresentable {
         self.identifier = identifier
         self.measurement = measurement
     }
-    
 }
 
-/// For both NutrientQuantity and ServingSize
-struct DietaryQuantity: NutrientQuantityRepresentable, ImplementationWrapper {
-    // MARK: Nutrient Quantity Representable
-    var nutrutionInfo: NutritionInfoRepresentable?
+struct NutritionInfo: NutritionInfoRepresentable {
+    var servingSize: (any DietaryQuantityRepresentable)?
+    var nutrientQuantities: [any DietaryQuantityRepresentable]
     
+    init(servingSize: some DietaryQuantityRepresentable, nutrientQuantities: [some DietaryQuantityRepresentable]) {
+        self.servingSize = servingSize
+        self.nutrientQuantities = nutrientQuantities
+    }
+}
+
+/// NutrientQuantityRepresentable
+struct DietaryQuantity: DietaryQuantityRepresentable, ImplementationWrapper {
+    // MARK: Nutrient Quantity Representable
+    var nutritionInfo: (any NutritionInfoRepresentable)?
+
     // MARK: Implementation Wrapper
     let wrapped: Quantity
-    
+
     // MARK: Initilizer
-    init(quantity: Quantity, nutrutionInfo: NutritionInfoRepresentable? = nil) {
-        self.nutrutionInfo = nutrutionInfo
+    init(quantity: Quantity, nutritionInfo: some NutritionInfoRepresentable) {
+        self.nutritionInfo = nutritionInfo
         self.wrapped = quantity
     }
 }
 
 // SampleQuantityRepresentable
-struct Sample: SampleQuantityRepresentable, ImplementationWrapper {
+struct SampleQuantity: SampleQuantityRepresentable, ImplementationWrapper {
     // MARK: Sample Quantity Representable
     let date: Date
     
@@ -60,9 +52,9 @@ struct Sample: SampleQuantityRepresentable, ImplementationWrapper {
         self.wrapped = quantity
         self.date = date
     }
-    
-    
 }
+
+
 
 
 /*
