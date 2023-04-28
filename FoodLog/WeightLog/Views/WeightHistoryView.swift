@@ -13,7 +13,6 @@ extension IdentifiedMeasurementMO {
  
 struct WeightHistoryView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.editMode) private var editMode
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \BodyQuantitySampleMO.date, ascending: false)],
@@ -21,7 +20,7 @@ struct WeightHistoryView: View {
     )
     private var samples: FetchedResults<BodyQuantitySampleMO>
     
-    @State private var isAddingNewSample: Bool = false
+    @State private var isShowingEditor: Bool = false
     @State private var selection: BodyQuantitySampleMO? = nil
     
     private let adapt = BodyWeightSampleAdapter.adapt(sampleQuantity:)
@@ -31,7 +30,7 @@ struct WeightHistoryView: View {
             List {
                 ForEach(samples) { sample in
                     NavigationLink {
-                        MeasurementSampleView(sample: adapt(sample))
+                        MeasurementSampleView(sample: adapt(sample), editorToggle: $isShowingEditor)
                     } label: {
                         LabeledContent("\((sample.date ?? .distantPast).formatted(date: .abbreviated, time: .shortened))") {
                             if let measurement = sample.measurement {
@@ -43,15 +42,20 @@ struct WeightHistoryView: View {
                 .onDelete(perform: deleteItems)
             }
             .navigationTitle("Progress")
-            .sheet(isPresented: $isAddingNewSample) {
-                SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidCreate(sample:)) {
-                    isAddingNewSample.toggle()
+            .fullScreenCover(isPresented: $isShowingEditor) {
+                NavigationView {
+                    if let selection {
+                        SampleEditorView(update: adapt(selection), onSave: editorDidUpdate(sample:), onCancel: editorDidCancel)
+                            .navigationTitle("Edit Sample")
+                    } else {
+                        SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidUpdate(sample:), onCancel: editorDidCancel)
+                            .navigationTitle("New Sample")
+                    }
                 }
-                .presentationDetents([.medium])
             }
             .toolbar {
                 ToolbarItem {
-                    Button { isAddingNewSample.toggle() } label: {
+                    Button { isShowingEditor.toggle() } label: {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
@@ -66,18 +70,22 @@ struct WeightHistoryView: View {
             Task.detached {
                 await manager.upsert(sample: sample)
             }
-
         }
     }
     
     private func editorDidCreate(sample: BodyWeightSample) {
         withAnimation {
-            isAddingNewSample.toggle()
+            isShowingEditor.toggle()
             let manager = DataManager(context: viewContext)
             Task.detached {
                 await manager.create(sample: sample)
             }
-            
+        }
+    }
+    
+    private func editorDidCancel() {
+        withAnimation {
+            isShowingEditor.toggle()
         }
     }
 

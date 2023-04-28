@@ -3,13 +3,14 @@
 import SwiftUI
 
 struct MeasurementSampleView<Sample: SampledMeasurement>: View {
-    @State private var editMode: EditMode = .inactive
+    @Binding var isShowingEditor: Bool
     private let id: UUID?
     private let identifier: QuantityIdentifier
     private let measurement: Measurement<Sample.UnitType>
     private let date: Date
     
-    init(sample: Sample) {
+    init(sample: Sample, editorToggle isShowingEditor: Binding<Bool>) {
+        self._isShowingEditor = isShowingEditor
         self.id = sample.id
         self.identifier = sample.identifier
         self.measurement = sample.measurement
@@ -47,26 +48,14 @@ struct MeasurementSampleView<Sample: SampledMeasurement>: View {
         }
         .padding()
         .toolbar {
-            if editMode == .active {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(role: .cancel) {
-                        editMode = .inactive
-                    } label: {
-                        Text("Cancel")
-                    }
-                }
-            }
-            
-
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    self.editMode = editMode.isEditing ? .inactive : .active
+                    self.isShowingEditor.toggle()
                 } label: {
-                    Text(editMode.isEditing ?  "Save" : "Edit")
+                    Text("Edit")
                 }
             }
         }
-        .navigationBarBackButtonHidden(editMode.isEditing)
     }
 }
 
@@ -81,6 +70,6 @@ struct MeasurementSampleView_Previews: PreviewProvider {
     )
     
     static var previews: some View {
-        MeasurementSampleView(sample: bodyWeightSample)
+        MeasurementSampleView(sample: bodyWeightSample, editorToggle: .constant(false))
     }
 }
