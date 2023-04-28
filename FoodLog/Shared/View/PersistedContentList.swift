@@ -7,10 +7,10 @@ import CoreData
 //}
 
 struct PersistedContentList<Content: View>: View {
-    private let nestedView: PersistentContentView.NestedView<Content>
+    private let nestedView: PersistedContentList.NestedView<Content>
 
     init(@ViewBuilder content: @escaping ([String]) -> Content) {
-        self.nestedView = PersistentContentView.NestedView { fetchedItems in
+        self.nestedView = PersistedContentList.NestedView { fetchedItems in
             content(fetchedItems)
         }
     }
