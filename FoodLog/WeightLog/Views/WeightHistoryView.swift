@@ -13,6 +13,7 @@ extension IdentifiedMeasurementMO {
  
 struct WeightHistoryView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.editMode) private var editMode
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \BodyQuantitySampleMO.date, ascending: false)],
@@ -54,13 +55,6 @@ struct WeightHistoryView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
-            }
-            .navigationTitle("Weight History")
-            .sheet(isPresented: $isAddingNewSample) {
-                SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidCreate(sample:)) {
-                    isAddingNewSample.toggle()
-                    }
-                .presentationDetents([.medium])
             }
         }
     }

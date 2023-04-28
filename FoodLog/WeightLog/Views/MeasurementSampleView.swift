@@ -3,6 +3,7 @@
 import SwiftUI
 
 struct MeasurementSampleView<Sample: SampledMeasurement>: View {
+    @State private var editMode: EditMode = .inactive
     private let id: UUID?
     private let identifier: QuantityIdentifier
     private let measurement: Measurement<Sample.UnitType>
@@ -46,12 +47,26 @@ struct MeasurementSampleView<Sample: SampledMeasurement>: View {
         }
         .padding()
         .toolbar {
-            #if os(iOS)
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
+            if editMode == .active {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(role: .cancel) {
+                        editMode = .inactive
+                    } label: {
+                        Text("Cancel")
+                    }
+                }
             }
-            #endif
+            
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    self.editMode = editMode.isEditing ? .inactive : .active
+                } label: {
+                    Text(editMode.isEditing ?  "Save" : "Edit")
+                }
+            }
         }
+        .navigationBarBackButtonHidden(editMode.isEditing)
     }
 }
 
