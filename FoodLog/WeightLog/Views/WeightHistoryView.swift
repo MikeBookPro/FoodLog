@@ -21,13 +21,13 @@ struct WeightHistoryView: View {
     private var samples: FetchedResults<BodyQuantitySampleMO>
     
     @State private var isShowingEditor: Bool = false
-    @State private var selection: BodyQuantitySampleMO? = nil
+    @State private var selectionID: ObjectIdentifier? = nil
     
     private let adapt = BodyWeightSampleAdapter.adapt(sampleQuantity:)
 
     var body: some View {
         NavigationView {
-            List {
+            List(selection: $selectionID) {
                 ForEach(samples) { sample in
                     NavigationLink {
                         MeasurementSampleView(sample: adapt(sample), editorToggle: $isShowingEditor)
@@ -44,11 +44,11 @@ struct WeightHistoryView: View {
             .navigationTitle("Progress")
             .fullScreenCover(isPresented: $isShowingEditor) {
                 NavigationView {
-                    if let selection {
+                    if let selectionID, let selection = samples.first(where: { $0.id == selectionID }) {
                         SampleEditorView(update: adapt(selection), onSave: editorDidUpdate(sample:), onCancel: editorDidCancel)
                             .navigationTitle("Edit Sample")
                     } else {
-                        SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidUpdate(sample:), onCancel: editorDidCancel)
+                        SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidCreate(sample:), onCancel: editorDidCancel)
                             .navigationTitle("New Sample")
                     }
                 }
@@ -65,7 +65,8 @@ struct WeightHistoryView: View {
     
     private func editorDidUpdate(sample: BodyWeightSample) {
         withAnimation {
-            selection = nil
+            selectionID = nil
+            isShowingEditor.toggle()
             let manager = DataManager(context: viewContext)
             Task.detached {
                 await manager.upsert(sample: sample)
@@ -98,10 +99,9 @@ struct WeightHistoryView: View {
                 await withTaskGroup(of: Bool.self) { taskGroup in
                     for sample in weightSamples {
                         taskGroup.addTask {
-                            await manager.delete(sample: sample)
+                            await manager.delete(sample: sample, shouldSave: true)
                         }
                     }
-                    
                 }
             }
         }

@@ -23,7 +23,7 @@ struct DataManager {
     @discardableResult
     func create<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: BodyQuantitySampleMO {
         let sampleMO = Sample(context: context)
-        sampleMO.measurementID = UUID()
+        sampleMO.measurementID = model.id ?? UUID()
         let result = await update(sample: sampleMO, with: model, shouldSave: true)
         print(result)
         return sampleMO
@@ -46,8 +46,9 @@ struct DataManager {
     
     @discardableResult
     public func upsert<Sample>(sample model: some SampledMeasurement) async -> Sample where Sample: BodyQuantitySampleMO {
+        print("\(#file.split(separator: "/").last ?? "-"):\(#function): sample.id -> \(model.id?.uuidString ?? "-")")
         if let existing = await fetch(sample: model) as? Sample {
-            return await update(sample: existing, with: model)
+            return await update(sample: existing, with: model, shouldSave: true)
         }
         return await create(sample: model)
     }
