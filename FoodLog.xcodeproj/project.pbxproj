@@ -24,6 +24,9 @@
 		BED10BC729E7405700A75BA1 /* MappedAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC629E7405700A75BA1 /* MappedAdapter.swift */; };
 		BED10BCA29E740B000A75BA1 /* QuantityIdentifierAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC929E740B000A75BA1 /* QuantityIdentifierAdapters.swift */; };
 		BED7082D29FC186000ADFBBD /* PersistedContentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7082C29FC186000ADFBBD /* PersistedContentList.swift */; };
+		BED7083429FC259700ADFBBD /* NutritionInfoRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7083329FC259700ADFBBD /* NutritionInfoRepresentable.swift */; };
+		BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */; };
+		BED7083929FC347B00ADFBBD /* ManagedObjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7083829FC347B00ADFBBD /* ManagedObjectWrapper.swift */; };
 		BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +51,9 @@
 		BED10BC629E7405700A75BA1 /* MappedAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappedAdapter.swift; sourceTree = "<group>"; };
 		BED10BC929E740B000A75BA1 /* QuantityIdentifierAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityIdentifierAdapters.swift; sourceTree = "<group>"; };
 		BED7082C29FC186000ADFBBD /* PersistedContentList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistedContentList.swift; sourceTree = "<group>"; };
+		BED7083329FC259700ADFBBD /* NutritionInfoRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionInfoRepresentable.swift; sourceTree = "<group>"; };
+		BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityRepresentable.swift; sourceTree = "<group>"; };
+		BED7083829FC347B00ADFBBD /* ManagedObjectWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectWrapper.swift; sourceTree = "<group>"; };
 		BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementSampleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +114,7 @@
 		BE7413B829E6FE53008DC255 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				BED7083529FC2EFD00ADFBBD /* EntityProtocols */,
 				BED10BC829E7409900A75BA1 /* Adapters */,
 				BE435CB929E4DD8400A8D16E /* IdentifiableMeasurement.swift */,
 				BE92CB9B29E4808F006A158E /* SampledMeasurement.swift */,
@@ -217,6 +224,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		BED7083529FC2EFD00ADFBBD /* EntityProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */,
+				BED7083329FC259700ADFBBD /* NutritionInfoRepresentable.swift */,
+				BED7083829FC347B00ADFBBD /* ManagedObjectWrapper.swift */,
+			);
+			path = EntityProtocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -289,10 +306,13 @@
 			files = (
 				BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */,
 				BED10BCA29E740B000A75BA1 /* QuantityIdentifierAdapters.swift in Sources */,
+				BED7083929FC347B00ADFBBD /* ManagedObjectWrapper.swift in Sources */,
 				BE435CBA29E4DD8500A8D16E /* IdentifiableMeasurement.swift in Sources */,
 				BE7413BF29E73852008DC255 /* DimensionPreference.swift in Sources */,
+				BED7083429FC259700ADFBBD /* NutritionInfoRepresentable.swift in Sources */,
 				BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */,
 				BED7082D29FC186000ADFBBD /* PersistedContentList.swift in Sources */,
+				BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */,
 				BED10BC729E7405700A75BA1 /* MappedAdapter.swift in Sources */,
 				BE9C851129E67E7800E543E6 /* DimensionIdentifier.swift in Sources */,
 				BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */,

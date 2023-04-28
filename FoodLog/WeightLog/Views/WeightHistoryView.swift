@@ -3,7 +3,7 @@
 import SwiftUI
 import CoreData
 
-extension IdentifiedMeasurementMO {
+extension QuantityMO {
     var measurement: Measurement<Dimension>? {
         guard let dimension = DimensionIdentifier(baseUnitSymbol: self.measurementUnit) else { return nil }
         return MeasurementFactory.measurement(forDimension: dimension, value: self.measurementValue)
@@ -48,7 +48,7 @@ struct WeightHistoryView: View {
                         SampleEditorView(update: adapt(selection), onSave: editorDidUpdate(sample:), onCancel: editorDidCancel)
                             .navigationTitle("Edit Sample")
                     } else {
-                        SampleEditorView<BodyWeightSample>(.bodyMass, onSave: editorDidCreate(sample:), onCancel: editorDidCancel)
+                        SampleEditorView(.bodyMass, onSave: editorDidCreate(sample:), onCancel: editorDidCancel)
                             .navigationTitle("New Sample")
                     }
                 }
@@ -63,7 +63,7 @@ struct WeightHistoryView: View {
         }
     }
     
-    private func editorDidUpdate(sample: BodyWeightSample) {
+    private func editorDidUpdate(sample: Sample) {
         withAnimation {
             selectionID = nil
             isShowingEditor.toggle()
@@ -74,7 +74,7 @@ struct WeightHistoryView: View {
         }
     }
     
-    private func editorDidCreate(sample: BodyWeightSample) {
+    private func editorDidCreate(sample: Sample) {
         withAnimation {
             isShowingEditor.toggle()
             let manager = DataManager(context: viewContext)
@@ -93,7 +93,7 @@ struct WeightHistoryView: View {
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             let objects: [SampleQuantityMO] = offsets.map { samples[$0] }
-            let weightSamples: [BodyWeightSample] = objects.map { BodyWeightSampleAdapter.adapt(sampleQuantity: $0) }
+            let weightSamples: [Sample] = objects.map { BodyWeightSampleAdapter.adapt(sampleQuantity: $0) }
             let manager = DataManager(context: viewContext)
             Task.detached {
                 await withTaskGroup(of: Bool.self) { taskGroup in

@@ -21,24 +21,28 @@
     <entity name="FoodItemDetailTag" representedClassName="FoodItemDetailTag" parentEntity="Tag" syncable="YES" codeGenerationType="class">
         <relationship name="foodDetail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodItemDetail" inverseName="tags" inverseEntity="FoodItemDetail"/>
     </entity>
-    <entity name="FoodItemNutrition" representedClassName="FoodItemNutrition" parentEntity="NutritionInfo" syncable="YES" codeGenerationType="class">
+    <entity name="FoodItemNutrition" representedClassName="FoodItemNutrition" parentEntity="NutritionInfoMO" syncable="YES" codeGenerationType="class">
         <relationship name="foodItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItem" inverseName="nutritionInfo" inverseEntity="FoodItem"/>
     </entity>
-    <entity name="IdentifiedMeasurementMO" representedClassName="IdentifiedMeasurementMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
+    <entity name="NutrientQuantityMO" representedClassName="NutrientQuantityMO" parentEntity="QuantityMO" syncable="YES" codeGenerationType="class">
+        <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NutritionInfoMO" inverseName="nutrientQuantities" inverseEntity="NutritionInfoMO"/>
+    </entity>
+    <entity name="NutritionInfoMO" representedClassName="NutritionInfoMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <relationship name="nutrientQuantities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NutrientQuantityMO" inverseName="nutritionInfo" inverseEntity="NutrientQuantityMO"/>
+        <relationship name="servingSize" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ServingSizeMO" inverseName="nutritionInfo" inverseEntity="ServingSizeMO"/>
+    </entity>
+    <entity name="ObservedQuantityMO" representedClassName="ObservedQuantityMO" isAbstract="YES" parentEntity="QuantityMO" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="QuantityMO" representedClassName="QuantityMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="measurementID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="measurementUnit" optional="YES" attributeType="String"/>
         <attribute name="measurementValue" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="quantityIdentifier" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="NutrientQuantityMO" representedClassName="NutrientQuantityMO" parentEntity="IdentifiedMeasurementMO" syncable="YES" codeGenerationType="class">
-        <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NutritionInfo" inverseName="nutrientQuantities" inverseEntity="NutritionInfo"/>
-    </entity>
-    <entity name="NutritionInfo" representedClassName="NutritionInfo" isAbstract="YES" syncable="YES" codeGenerationType="class">
-        <attribute name="servingSize" optional="YES" attributeType="Transformable" valueTransformerName="MeasurementTransformer" customClassName="NSMeasurement"/>
-        <relationship name="nutrientQuantities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NutrientQuantityMO" inverseName="nutritionInfo" inverseEntity="NutrientQuantityMO"/>
-    </entity>
-    <entity name="SampleQuantityMO" representedClassName="SampleQuantityMO" parentEntity="IdentifiedMeasurementMO" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    <entity name="SampleQuantityMO" representedClassName="SampleQuantityMO" parentEntity="ObservedQuantityMO" syncable="YES" codeGenerationType="class"/>
+    <entity name="ServingSizeMO" representedClassName="ServingSizeMO" parentEntity="QuantityMO" syncable="YES" codeGenerationType="class">
+        <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NutritionInfoMO" inverseName="servingSize" inverseEntity="NutritionInfoMO"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="text" optional="YES" attributeType="String"/>

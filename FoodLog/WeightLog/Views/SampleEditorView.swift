@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct SampleEditorView<Sample: SampledMeasurement>: View {
+struct SampleEditorView: View {
     @State private var date: Date
     @State private var value: Double?
     @FocusState private var valueFieldHasFocus: Bool
     
-    @DimensionPreference<Sample.UnitType>
+    @Dimensioned
     private var quantityIdentifier: QuantityIdentifier
     private let sampleID: UUID?
     private let onSave: ((Sample) -> Void)?
@@ -17,7 +17,7 @@ struct SampleEditorView<Sample: SampledMeasurement>: View {
             quantity: .init(
                 identifier: quantityIdentifier,
                 measurement: .init(value: value ?? .zero, unit: $quantityIdentifier),
-                existingID: sampleID
+                id: sampleID
             ),
             date: date
         )
@@ -37,11 +37,11 @@ struct SampleEditorView<Sample: SampledMeasurement>: View {
     init(_ quantityIdentifier: QuantityIdentifier, onSave save: ((Sample) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
         self.init(
             update: Sample(
-                identifier: quantityIdentifier,
-                measurement: .init(
-                    value: .zero,
-                    unit: DimensionPreference(wrappedValue: quantityIdentifier).projectedValue
-                )
+                quantity: .init(
+                    identifier: quantityIdentifier,
+                    measurement: .init(value: .zero, unit: IdentifierToDimensionAdapter.value(mappedTo: quantityIdentifier))
+                ),
+                date: .now
             ),
             onSave: save,
             onCancel: cancel
@@ -97,12 +97,13 @@ struct SampleEditorView<Sample: SampledMeasurement>: View {
     }
 }
 
+#if DEBUG
 struct SampleEditorView_Previews: PreviewProvider {
-    
     static var previews: some View {
-        SampleEditorView<BodyWeightSample>(.bodyMass)
+        SampleEditorView(.bodyMass)
     }
 }
+#endif
 
 
 

@@ -6,3 +6,5 @@ protocol MappedAdapter {
     
     static func value(mappedTo source: Source) -> Destination
 }
+
+

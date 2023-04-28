@@ -1,6 +1,16 @@
 import SwiftUI
 
 @propertyWrapper
+struct Dimensioned: DynamicProperty {
+    var wrappedValue: QuantityIdentifier
+    
+    var projectedValue: Dimension {
+        IdentifierToDimensionAdapter.value(mappedTo: wrappedValue)
+    }
+}
+
+
+@propertyWrapper
 struct DimensionPreference<UnitType: Dimension>: DynamicProperty {
     var wrappedValue: QuantityIdentifier
     
@@ -12,9 +22,9 @@ struct DimensionPreference<UnitType: Dimension>: DynamicProperty {
 }
 #if DEBUG
 
-private struct DimensionPreferenceView: View {
+private struct DimensionView: View {
     
-    @DimensionPreference<Dimension>
+    @Dimensioned
     var identifier: QuantityIdentifier
     
     var body: some View {
@@ -35,7 +45,7 @@ private struct DimensionPreferenceView: View {
 struct DimensionPreferenceView_Previews: PreviewProvider {
     static var previews: some View {
         List(QuantityIdentifier.allCases) {
-            DimensionPreferenceView(identifier: $0)
+            DimensionView(identifier: $0)
         }
     }
 }

@@ -2,11 +2,11 @@
 
 import SwiftUI
 
-struct MeasurementSampleView<Sample: SampledMeasurement>: View {
+struct MeasurementSampleView: View {
     @Binding var isShowingEditor: Bool
     private let id: UUID?
     private let identifier: QuantityIdentifier
-    private let measurement: Measurement<Sample.UnitType>
+    private let measurement: Measurement<Dimension>
     private let date: Date
     
     init(sample: Sample, editorToggle isShowingEditor: Binding<Bool>) {
@@ -60,11 +60,10 @@ struct MeasurementSampleView<Sample: SampledMeasurement>: View {
 }
 
 struct MeasurementSampleView_Previews: PreviewProvider {
-    private static let bodyWeightSample = BodyWeightSample(
+    private static let bodyWeightSample = Sample(
         quantity: .init(
             identifier: .bodyMass,
-            measurement: .init(value: 124.0123456789, unit: .kilograms),
-            existingID: nil
+            measurement: .init(value: 124.0123456789, unit: IdentifierToDimensionAdapter.value(mappedTo: .bodyMass))
         ),
         date: .now
     )

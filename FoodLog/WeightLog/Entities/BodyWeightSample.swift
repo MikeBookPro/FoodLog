@@ -1,35 +1,6 @@
 import Foundation
 import CoreData
 
-struct BodyWeightSample: SampledMeasurement, Identifiable {
-    typealias UnitType = UnitMass
-    typealias IdentifiedMeasure = IdentifiedMeasurement<UnitType>
-    
-    let id: UUID?
-    var identifier: QuantityIdentifier
-    var measurement: Measurement<UnitMass>
-    var date: Date
-    
-    init(quantity: IdentifiedMeasurement<UnitType>, date: Date) {
-        self.id = quantity.id
-        self.identifier = quantity.identifier
-        self.measurement = quantity.measurement
-        self.date = date
-    }
-    
-    init(identifier: QuantityIdentifier, measurement: Measurement<UnitMass>, existingID: UUID? = nil) {
-        self.init(
-            quantity: .init(
-                identifier: identifier,
-                measurement: measurement,
-                existingID: existingID ?? UUID()
-            ),
-            date: .now
-        )
-    }
-    
-}
-
 #if DEBUG
 
 struct SampleWeightMeasurements {
@@ -45,13 +16,6 @@ struct SampleWeightMeasurements {
 }
 
 #endif
-//
-//extension IdentifiedMeasurementMO {
-//    var measurement: Measurement<Dimension>? {
-//        guard let dimension = DimensionIdentifier(baseUnitSymbol: self.measurementUnit) else { return nil }
-//        return MeasurementFactory.measurement(forDimension: dimension, value: self.measurementValue)
-//    }
-//}
 
 protocol PropertyAdapter {
     associatedtype Input
@@ -99,7 +63,7 @@ struct UUIDPropertyAdapter<Input, Output>: PropertyAdapter {
 
 struct WeightSampleAdapter {
     typealias Input = SampleQuantityMO
-    typealias Output = BodyWeightSample
+    typealias Output = Sample
     
     typealias UUIDAdapter = UUIDPropertyAdapter<Input, Output>
     
@@ -113,14 +77,16 @@ struct WeightSampleAdapter {
 
 struct BodyWeightSampleAdapter {
 
-    static func adapt(sampleQuantity mo: SampleQuantityMO) -> BodyWeightSample {
-        let quantityIdentifier: QuantityIdentifier = .bodyMass
-        let unit: UnitMass = (mo.measurementUnit != nil) ? .init(symbol: mo.measurementUnit!) : DimensionPreference<UnitMass>(wrappedValue: quantityIdentifier).projectedValue
-        return BodyWeightSample(
+    static func adapt(sampleQuantity mo: SampleQuantityMO) -> Sample {
+        let quantityIdentifier: QuantityIdentifier = .init(string: mo.quantityIdentifier)
+        return Sample(
             quantity: .init(
-                identifier: quantityIdentifier,
-                measurement: .init(value: mo.measurementValue, unit: unit),
-                existingID: mo.measurementID
+                identifier: .init(string: mo.quantityIdentifier),
+                measurement: .init(
+                    value: mo.measurementValue,
+                    unit: IdentifierToDimensionAdapter.value(mappedTo: quantityIdentifier)
+                ),
+                id: mo.measurementID
             ),
             date: mo.date ?? .now
         )

@@ -18,11 +18,11 @@ enum DimensionIdentifier {
     }
 }
 
-enum DimensionUnitInterpreter {
-    static func baseUnit(for sample: some SampledMeasurement) -> String {
-        type(of: (sample.measurement.unit as Dimension)).baseUnit().symbol
-    }
-}
+//enum DimensionUnitInterpreter {
+//    static func baseUnit(for sample: some SampledMeasurement) -> String {
+//        type(of: (sample.measurement.unit as Dimension)).baseUnit().symbol
+//    }
+//}
 
 enum MeasurementFactory {
     
