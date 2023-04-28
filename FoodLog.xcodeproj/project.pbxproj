@@ -152,11 +152,11 @@
 		BE92CB8429E48046006A158E /* FoodLog */ = {
 			isa = PBXGroup;
 			children = (
+				BE92CB8529E48046006A158E /* FoodLogApp.swift */,
+				BE92CB9029E48047006A158E /* FoodLog.entitlements */,
 				BED7082A29FC184000ADFBBD /* Shared */,
 				BE435CBD29E50BA400A8D16E /* WeightLog */,
 				BE5825F329E60326006F75E0 /* Utility */,
-				BE92CB8529E48046006A158E /* FoodLogApp.swift */,
-				BE92CB9029E48047006A158E /* FoodLog.entitlements */,
 				BE92CB9129E48047006A158E /* Preview Content */,
 			);
 			path = FoodLog;
@@ -182,9 +182,9 @@
 		BED7082A29FC184000ADFBBD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				BED7083029FC22B300ADFBBD /* Resources */,
 				BED7082E29FC1EC000ADFBBD /* Model */,
 				BED7082B29FC184800ADFBBD /* View */,
+				BED7083029FC22B300ADFBBD /* Resources */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
