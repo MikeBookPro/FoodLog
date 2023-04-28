@@ -31,6 +31,3 @@ struct IdentifiedMeasurement<UnitType: Dimension>: IdentifiableMeasurement {
         self.measurement = measurement
     }
 }
-
-
-
