@@ -93,9 +93,6 @@
 		BE5825F329E60326006F75E0 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				BED10BC529E7404400A75BA1 /* Protocols */,
-				BE7413B929E70DD6008DC255 /* Extensions */,
-				BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -108,15 +105,6 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		BE7413B729E6FE3F008DC255 /* Measurement */ = {
-			isa = PBXGroup;
-			children = (
-				BE7413BD29E73831008DC255 /* View */,
-				BE7413B829E6FE53008DC255 /* Entities */,
-			);
-			path = Measurement;
-			sourceTree = "<group>";
-		};
 		BE7413B829E6FE53008DC255 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +112,7 @@
 				BE435CB929E4DD8400A8D16E /* IdentifiableMeasurement.swift */,
 				BE92CB9B29E4808F006A158E /* SampledMeasurement.swift */,
 				BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */,
+				BE9C851029E67E7800E543E6 /* DimensionIdentifier.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -142,14 +131,6 @@
 				BE7413BE29E73852008DC255 /* DimensionPreference.swift */,
 			);
 			path = PropertyWrappers;
-			sourceTree = "<group>";
-		};
-		BE7413BD29E73831008DC255 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				BE7413BC29E7381A008DC255 /* PropertyWrappers */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		BE92CB7929E48046006A158E = {
@@ -172,13 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				BED7082A29FC184000ADFBBD /* Shared */,
-				BE7413B729E6FE3F008DC255 /* Measurement */,
 				BE435CBD29E50BA400A8D16E /* WeightLog */,
-				BE92CB9929E4805A006A158E /* FoodLibrary */,
 				BE5825F329E60326006F75E0 /* Utility */,
 				BE92CB8529E48046006A158E /* FoodLogApp.swift */,
-				BE92CB8729E48046006A158E /* Persistence.swift */,
-				BE92CB8E29E48047006A158E /* Assets.xcassets */,
 				BE92CB9029E48047006A158E /* FoodLog.entitlements */,
 				BE92CB9129E48047006A158E /* Preview Content */,
 			);
@@ -193,24 +170,10 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		BE92CB9929E4805A006A158E /* FoodLibrary */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FoodLibrary;
-			sourceTree = "<group>";
-		};
-		BED10BC529E7404400A75BA1 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				BED10BC629E7405700A75BA1 /* MappedAdapter.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		BED10BC829E7409900A75BA1 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
+				BED10BC629E7405700A75BA1 /* MappedAdapter.swift */,
 				BED10BC929E740B000A75BA1 /* QuantityIdentifierAdapters.swift */,
 			);
 			path = Adapters;
@@ -219,6 +182,7 @@
 		BED7082A29FC184000ADFBBD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BED7083029FC22B300ADFBBD /* Resources */,
 				BED7082E29FC1EC000ADFBBD /* Model */,
 				BED7082B29FC184800ADFBBD /* View */,
 			);
@@ -228,6 +192,7 @@
 		BED7082B29FC184800ADFBBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE7413BC29E7381A008DC255 /* PropertyWrappers */,
 				BED7082C29FC186000ADFBBD /* PersistedContentList.swift */,
 			);
 			path = View;
@@ -237,8 +202,19 @@
 			isa = PBXGroup;
 			children = (
 				BE92CB8929E48046006A158E /* FoodLog.xcdatamodeld */,
+				BE92CB8729E48046006A158E /* Persistence.swift */,
+				BE7413B829E6FE53008DC255 /* Entities */,
+				BE7413B929E70DD6008DC255 /* Extensions */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BED7083029FC22B300ADFBBD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BE92CB8E29E48047006A158E /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
