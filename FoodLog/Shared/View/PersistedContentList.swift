@@ -1,70 +1,48 @@
 import SwiftUI
 import CoreData
 
-//protocol AdaptableContent {
-//    associatedtype PersistentModel: NSManagedObject
-//    associatedtype Adapter: MappedAdapter where Adapter.Source == PersistentModel
-//}
+struct SampleQuantitiesView<Content: View>: View {
+    private let content: ([any SampleQuantityRepresentable]) -> Content
 
-struct PersistedContentList<Content: View, Output: Identifiable>: View {
-    private let nestedView: PersistedContentList.NestedView<Content>
-    let adapter: 
-
-    init(@ViewBuilder content: @escaping ([Output]) -> Content) {
-        self.nestedView = PersistedContentList.NestedView { fetchedItems in
-            content(fetchedItems)
+    init(@ViewBuilder content: @escaping ([any SampleQuantityRepresentable]) -> Content) {
+        self.content = content
+    }
+    
+    var body: some View {
+        PersistedContent<Content, SampleQuantityMO> { fetchedResults in
+            content(fetchedResults.compactMap(ManagedObjectAdapter.SampleQuantity.value(mappedTo:)))
         }
+    }
+}
+
+struct PersistedContent<Content: View, ManagedObject: NSManagedObject>: View {
+    @Environment(\.managedObjectContext) private var moc
+
+    // TODO: Replace this with generic Managed object to use for all
+    @FetchRequest(sortDescriptors: [], animation: .default)
+    private var results: FetchedResults<ManagedObject>
+    
+    private let content: ([ManagedObject]) -> Content
+
+    init(@ViewBuilder content: @escaping ([ManagedObject]) -> Content) {
+        self.content = content
     }
 
     var body: some View {
-        nestedView
-#if DEBUG
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-#else
-            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-#endif
-    }
-
-}
-
-extension PersistedContentList {
-
-    struct NestedView<Content: View>: View {
-        @Environment(\.managedObjectContext) private var moc
-
-        // TODO: Replace this with generic Managed object to use for all
-        @FetchRequest(
-            sortDescriptors: [NSSortDescriptor(keyPath: \SampleQuantityMO.date, ascending: true)],
-            animation: .default
-        ) private var profiles: FetchedResults<SampleQuantityMO>
-
-        private let content: ([String]) -> Content
-
-        init(@ViewBuilder content: @escaping ([String]) -> Content) {
-            self.content = content
-        }
-
-        var body: some View {
-            content(profiles.compactMap { $0.date?.formatted(date: .abbreviated, time: .shortened) })
-        }
-
-
-        // MARK: - Private Helpers
+        content(Array(results))
     }
 }
 
 
 #if DEBUG
-//struct PersistedContentList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PersistedContentList { items in
-//            List {
-//                ForEach(items, id: \.hash) {
-//                    Text($0)
-//                }
-//            }
-//        }
-//        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-//    }
-//}
+struct SampleQuantitiesView_Previews: PreviewProvider {
+    static var previews: some View {
+        SampleQuantitiesView { samples in
+            List(samples, id: \.id) { sample in
+                Text(sample.date, format: Date.FormatStyle.init(date: .numeric, time: .shortened))
+            }
+        }
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
 #endif

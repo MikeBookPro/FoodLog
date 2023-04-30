@@ -16,3 +16,7 @@ extension ImplementationWrapper where Self: QuantityRepresentable, Wrapped: Quan
 extension ImplementationWrapper where Self: SampleQuantityRepresentable, Wrapped: SampleQuantityRepresentable {
     var date: Date { wrapped[keyPath: \.date] }
 }
+
+extension ImplementationWrapper where Self: DietaryQuantityRepresentable, Wrapped: DietaryQuantityRepresentable {
+    var nutritionInfo: (any NutritionInfoRepresentable)? { wrapped[keyPath: \.nutritionInfo] }
+}

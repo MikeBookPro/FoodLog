@@ -8,7 +8,7 @@
     <entity name="FoodItem" representedClassName="FoodItem" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="itemDetail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemDetail" inverseName="foodItem" inverseEntity="FoodItemDetail"/>
-        <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemNutrition" inverseName="foodItem" inverseEntity="FoodItemNutrition"/>
+        <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodNutritionMO" inverseName="foodItem" inverseEntity="FoodNutritionMO"/>
     </entity>
     <entity name="FoodItemDetail" representedClassName="FoodItemDetail" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -21,7 +21,7 @@
     <entity name="FoodItemDetailTag" representedClassName="FoodItemDetailTag" parentEntity="Tag" syncable="YES" codeGenerationType="class">
         <relationship name="foodDetail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodItemDetail" inverseName="tags" inverseEntity="FoodItemDetail"/>
     </entity>
-    <entity name="FoodItemNutrition" representedClassName="FoodItemNutrition" parentEntity="NutritionInfoMO" syncable="YES" codeGenerationType="class">
+    <entity name="FoodNutritionMO" representedClassName="FoodNutritionMO" parentEntity="NutritionInfoMO" syncable="YES" codeGenerationType="class">
         <relationship name="foodItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItem" inverseName="nutritionInfo" inverseEntity="FoodItem"/>
     </entity>
     <entity name="NutrientQuantityMO" representedClassName="NutrientQuantityMO" parentEntity="QuantityMO" syncable="YES" codeGenerationType="class">

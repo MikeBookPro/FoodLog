@@ -9,7 +9,7 @@ struct MeasurementSampleView: View {
     private let measurement: Measurement<Dimension>
     private let date: Date
     
-    init(sample: SampleQuantity, editorToggle isShowingEditor: Binding<Bool>) {
+    init(sample: some SampleQuantityRepresentable, editorToggle isShowingEditor: Binding<Bool>) {
         self._isShowingEditor = isShowingEditor
         self.id = sample.id
         self.identifier = sample.identifier
@@ -19,6 +19,15 @@ struct MeasurementSampleView: View {
     
     var body: some View {
         VStack {
+            if let id {
+                LabeledContent("ID") {
+                    Text(id.uuidString)
+                        .font(.body)
+                }
+                .font(.headline)
+            }
+            
+            
             LabeledContent("Weight") {
                 Text(measurement, format: .measurement(width: .abbreviated, usage: .asProvided, numberFormatStyle: .number.precision(.fractionLength(0...2))))
                     .font(.body)

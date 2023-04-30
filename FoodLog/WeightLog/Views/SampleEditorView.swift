@@ -25,7 +25,7 @@ struct SampleEditorView: View {
         return s
     }
     
-    init(update sample: SampleQuantity, onSave save: ((SampleQuantity) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
+    init(update sample: some SampleQuantityRepresentable, onSave save: ((SampleQuantity) -> Void)? = nil, onCancel cancel: (() -> Void)? = nil) {
         self._value = .init(initialValue: sample.measurement.value.isZero ? nil : sample.measurement.value)
         self._date = .init(initialValue: sample.date)
         self.sampleID = sample.id
@@ -50,6 +50,8 @@ struct SampleEditorView: View {
     
     var body: some View {
         Form {
+            Text(sampleID?.uuidString ?? "No sampleID, is creating new")
+            
             DatePicker(
                 "Date",
                 selection: $date,

@@ -4,46 +4,45 @@ import CoreData
  
 struct WeightHistoryView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \SampleQuantityMO.date, ascending: false)],
-        animation: .default
-    )
-    private var samples: FetchedResults<SampleQuantityMO>
     
     @State private var isShowingEditor: Bool = false
-    @State private var selectionID: ObjectIdentifier? = nil
+    @State private var selection: (any SampleQuantityRepresentable)?
     
     private let adapt = BodyWeightSampleAdapter.adapt(sampleQuantity:)
-//    (sample.date ?? Date.distantPast).formatted(date: .abbreviated, time: .shortened)
+
     var body: some View {
         NavigationView {
-            List(selection: $selectionID) {
-                ForEach(samples) { sample in
-                    NavigationLink {
-                        MeasurementSampleView(sample: adapt(sample), editorToggle: $isShowingEditor)
-                    } label: {
-                        if let date = sample.date {
-                            Text(date, format: Date.FormatStyle.init(date: .numeric, time: .shortened))
-                        }
-                        
-                        if let measurement = sample.measurement {
-                            Text(measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
+            SampleQuantitiesView { samples in
+                List(selection: $selection) {
+                    ForEach(samples, id: \.id) { sample in
+                        NavigationLink {
+                            MeasurementSampleView(sample: sample, editorToggle: $isShowingEditor)
+                        } label: {
+                            Text(sample.date, format: Date.FormatStyle.init(date: .numeric, time: .shortened))
+                            Text(sample.measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
                         }
                     }
+                    .onDelete(perform: deleteItems)
                 }
-                .onDelete(perform: deleteItems)
             }
             .navigationTitle("Progress")
+            .fullScreenCover(item: $selection) { selection in
+                NavigationView {
+                    SampleEditorView(update: selection, onSave: editorDidUpdate(sample:), onCancel: editorDidCancel)
+                        .navigationTitle("Edit Sample")
+                }
+            }
             .fullScreenCover(isPresented: $isShowingEditor) {
                 NavigationView {
-                    if let selectionID, let selection = samples.first(where: { $0.id == selectionID }) {
-                        SampleEditorView(update: adapt(selection), onSave: editorDidUpdate(sample:), onCancel: editorDidCancel)
-                            .navigationTitle("Edit Sample")
-                    } else {
-                        SampleEditorView(.bodyMass, onSave: editorDidCreate(sample:), onCancel: editorDidCancel)
-                            .navigationTitle("New Sample")
-                    }
+                    SampleEditorView(.bodyMass, onSave: editorDidCreate(sample:), onCancel: editorDidCancel)
+                        .navigationTitle("New Sample")
+//                    if let selectionID, let selection = samples.first(where: { $0.id == selectionID }) {
+//                        SampleEditorView(update: adapt(selection), onSave: editorDidUpdate(sample:), onCancel: editorDidCancel)
+//                            .navigationTitle("Edit Sample")
+//                    } else {
+//                        SampleEditorView(.bodyMass, onSave: editorDidCreate(sample:), onCancel: editorDidCancel)
+//                            .navigationTitle("New Sample")
+//                    }
                 }
             }
             .toolbar {
@@ -58,7 +57,7 @@ struct WeightHistoryView: View {
     
     private func editorDidUpdate(sample: SampleQuantity) {
         withAnimation {
-            selectionID = nil
+            selection = nil
             isShowingEditor.toggle()
             let manager = DataManager(context: viewContext)
             Task.detached {

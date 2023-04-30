@@ -18,7 +18,7 @@ struct NutritionInfo: NutritionInfoRepresentable {
     var servingSize: (any DietaryQuantityRepresentable)?
     var nutrientQuantities: [any DietaryQuantityRepresentable]
     
-    init(servingSize: some DietaryQuantityRepresentable, nutrientQuantities: [some DietaryQuantityRepresentable]) {
+    init(servingSize: any DietaryQuantityRepresentable, nutrientQuantities: [any DietaryQuantityRepresentable]) {
         self.servingSize = servingSize
         self.nutrientQuantities = nutrientQuantities
     }
@@ -33,7 +33,7 @@ struct DietaryQuantity: DietaryQuantityRepresentable, ImplementationWrapper {
     let wrapped: Quantity
 
     // MARK: Initilizer
-    init(quantity: Quantity, nutritionInfo: some NutritionInfoRepresentable) {
+    init(quantity: Quantity, nutritionInfo: (any NutritionInfoRepresentable)? = nil) {
         self.nutritionInfo = nutritionInfo
         self.wrapped = quantity
     }
