@@ -19,7 +19,7 @@ struct FoodLogApp: App {
                     }
                     .tag(0)
                 
-                WeightHistoryView()
+                SampleHistoryView()
                     .tabItem {
                         Image(systemName: "chart.line.uptrend.xyaxis")
                         Text("Progress")

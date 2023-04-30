@@ -7,279 +7,205 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FoodLog/WeightLog/Views/WeightHistoryView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7 - 73aea9d8217f87d2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "564">
-               </Location>
-               <Location
-                  uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7 - d25b02f5c25be653"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #5 (FoodLog.SampleViewModel) -&gt; (FoodLog.SampleQuantity) -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7 - 45ef648cef2a4949"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #6 (FoodLog.SampleQuantity) -&gt; () in implicit closure #5 (FoodLog.SampleViewModel) -&gt; (FoodLog.SampleQuantity) -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7 - a4f3cd123e9ab961"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #7 (FoodLog.SampleViewModel) -&gt; () -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7 - 7cb0c07413a62ef3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #8 () -&gt; () in implicit closure #7 (FoodLog.SampleViewModel) -&gt; () -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7 - 73aea9d8217f8708"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "1120">
-               </Location>
-               <Location
-                  uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7 - d25b02f5c25be689"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #5 (FoodLog.SampleViewModel) -&gt; (FoodLog.SampleQuantity) -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7 - 45ef648cef2a4993"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #6 (FoodLog.SampleQuantity) -&gt; () in implicit closure #5 (FoodLog.SampleViewModel) -&gt; (FoodLog.SampleQuantity) -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7 - a4f3cd123e9ab9bb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #7 (FoodLog.SampleViewModel) -&gt; () -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "8B2DAD96-2189-4D51-95FC-F1799F6B76E7 - 7cb0c07413a62e29"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #8 () -&gt; () in implicit closure #7 (FoodLog.SampleViewModel) -&gt; () -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4444D57F-F6C9-4E15-83A0-A2718134CFA5"
+            uuid = "F5ACB920-12D8-4BA6-A63B-BC2F7A70AFC1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FoodLog/WeightLog/Views/WeightHistoryView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "4444D57F-F6C9-4E15-83A0-A2718134CFA5 - 73aea9d8217f87ad"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
-                  offsetFromSymbolStart = "980">
-               </Location>
-               <Location
-                  uuid = "4444D57F-F6C9-4E15-83A0-A2718134CFA5 - 73aea9d8217f87ad"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
-                  offsetFromSymbolStart = "1804">
-               </Location>
-               <Location
-                  uuid = "4444D57F-F6C9-4E15-83A0-A2718134CFA5 - 73aea9d8217f86ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "980">
-               </Location>
-               <Location
-                  uuid = "4444D57F-F6C9-4E15-83A0-A2718134CFA5 - 73aea9d8217f86ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; SwiftUI.NavigationView&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.navigationTitle(SwiftUI.LocalizedStringKey) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.toolbar&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ToolbarContent&gt;(content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in FoodLog.WeightHistoryView.body.getter : some"
-                  moduleName = "FoodLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/WeightLog/Views/WeightHistoryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "1804">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5F5435EF-DDA1-49E8-A95B-BB3687B8DDAB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FoodLog/WeightLog/Views/MeasurementSampleView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "init(sample:editorToggle:)"
+            filePath = "FoodLog/Shared/Model/Persistence.swift"
+            startingColumnNumber = "58"
+            endingColumnNumber = "58"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "delete(sample:shouldSave:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F5ACB920-12D8-4BA6-A63B-BC2F7A70AFC1 - 90693d697f91a77f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for FoodLog.DataManager.delete&lt;&#x3c4;_0_0 where &#x3c4;_0_0: FoodLog.SampleQuantityRepresentable&gt;(sample: &#x3c4;_0_0, shouldSave: Swift.Bool) async -&gt; Swift.Bool"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "F5ACB920-12D8-4BA6-A63B-BC2F7A70AFC1 - 90693d697f91a621"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for FoodLog.DataManager.delete&lt;&#x3c4;_0_0 where &#x3c4;_0_0: FoodLog.SampleQuantityRepresentable&gt;(sample: &#x3c4;_0_0, shouldSave: Swift.Bool) async -&gt; Swift.Bool"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "240">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FF54A0AD-12EC-4C70-8B76-C680DF62DDC2"
+            uuid = "1BF51197-F90C-4CDA-B384-E65F1C56B67A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodLog/Shared/Model/PersistentStore.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "create(sampleQuantity:)"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "delete(sampleQuantityWithID:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1BF51197-F90C-4CDA-B384-E65F1C56B67A - 33de6e4078cb50cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for FoodLog.PersistentDataStore.create(sampleQuantity: FoodLog.SampleQuantity) async -&gt; ()"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/PersistentStore.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "536">
+               </Location>
+               <Location
+                  uuid = "1BF51197-F90C-4CDA-B384-E65F1C56B67A - cfbba1a7702f677d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for FoodLog.PersistentDataStore.delete(sampleQuantityWithID: Swift.Optional&lt;Foundation.UUID&gt;) async -&gt; ()"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/PersistentStore.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "1BF51197-F90C-4CDA-B384-E65F1C56B67A - cfbba1a7702f677d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for FoodLog.PersistentDataStore.delete(sampleQuantityWithID: Swift.Optional&lt;Foundation.UUID&gt;) async -&gt; ()"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/PersistentStore.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  uuid = "1BF51197-F90C-4CDA-B384-E65F1C56B67A - cfbba1a7702f677d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for FoodLog.PersistentDataStore.delete(sampleQuantityWithID: Swift.Optional&lt;Foundation.UUID&gt;) async -&gt; ()"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/PersistentStore.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "516">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85B800B0-6BFB-4259-A65D-129160FC53CE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodLog/Shared/Model/Persistence.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "delete(sampleWithID:shouldSave:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "85B800B0-6BFB-4259-A65D-129160FC53CE - 144b535fec307d2a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for FoodLog.DataManager.delete(sampleWithID: Foundation.UUID, shouldSave: Swift.Bool) async -&gt; Swift.Bool"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "85B800B0-6BFB-4259-A65D-129160FC53CE - 7923ef3b391c2448"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) await resume partial function for FoodLog.DataManager.delete(sampleWithID: Foundation.UUID, shouldSave: Swift.Bool) async -&gt; Swift.Bool"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "85B800B0-6BFB-4259-A65D-129160FC53CE - 4c3c2a37de8b8143"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for FoodLog.DataManager.delete(sampleWithID: Foundation.UUID, shouldSave: Swift.Bool) async -&gt; Swift.Bool"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "85B800B0-6BFB-4259-A65D-129160FC53CE - 4c3c2a37de8b8124"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for FoodLog.DataManager.delete(sampleWithID: Foundation.UUID, shouldSave: Swift.Bool) async -&gt; Swift.Bool"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/Persistence.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

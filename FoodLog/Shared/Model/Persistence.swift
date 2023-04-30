@@ -7,6 +7,15 @@ struct DataManager {
     
     // MARK: - Fetch
     
+    public func fetchSampleQuantities() async -> [SampleQuantity] {
+        let samples: [SampleQuantityMO]? = await context.perform {
+            let fetchRequest: NSFetchRequest<SampleQuantityMO> = SampleQuantityMO.fetchRequest()
+            return try? context.fetch(fetchRequest)
+        }
+        guard let samples else { return [] }
+        return samples.map { SampleQuantity.copy(from: $0.wrapped) }
+    }
+    
     private func fetch(sample model: some SampleQuantityRepresentable) async -> SampleQuantityMO? {
         guard let measurementID = model.id else { return nil }
         let sample: SampleQuantityMO? = await context.perform {
@@ -18,15 +27,23 @@ struct DataManager {
         return sample
     }
     
+    private func fetch(sampleWithID id: UUID) async -> SampleQuantityMO? {
+        let sample: SampleQuantityMO? = await context.perform {
+            let fetchRequest: NSFetchRequest<SampleQuantityMO> = SampleQuantityMO.fetchRequest()
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = .init(format: "measurementID == %@", id as CVarArg)
+            return try? context.fetch(fetchRequest).first
+        }
+        return sample
+    }
+    
     // MARK: - Create
     
     @discardableResult
     func create<Sample>(sample model: some SampleQuantityRepresentable) async -> Sample where Sample: SampleQuantityMO {
         let sampleMO = Sample(context: context)
         sampleMO.measurementID = model.id ?? UUID()
-        let result = await update(sample: sampleMO, with: model, shouldSave: true)
-        print(result)
-        return sampleMO
+        return await update(sample: sampleMO, with: model, shouldSave: true)
     }
     
     // MARK: - Update
@@ -57,6 +74,13 @@ struct DataManager {
     @discardableResult
     public func delete(sample model: some SampleQuantityRepresentable, shouldSave: Bool = false) async -> Bool {
         guard let mo = await fetch(sample: model) else { return false }
+        return await delete(managedObject: mo, shouldSave: shouldSave)
+    }
+    
+    // MARK: - Delete
+    @discardableResult
+    public func delete(sampleWithID id: UUID, shouldSave: Bool = false) async -> Bool {
+        guard let mo = await fetch(sampleWithID: id) else { return false }
         return await delete(managedObject: mo, shouldSave: shouldSave)
     }
     
@@ -94,19 +118,6 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        
-//        let builder = QuantityTypeBuilder(context: viewContext)
-//        for sample in SampleWeightMeasurements.samples {
-//            builder.weightMeasurement(from: sample)
-//        }
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            // Replace this implementation with code to handle the error appropriately.
-//            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//            let nsError = error as NSError
-//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//        }
         return result
     }()
 
@@ -132,7 +143,13 @@ struct PersistenceController {
                  */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
+            
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+        let context = container.viewContext
+        Task {
+            await PersistentDataStore.shared.start(observing: context)
+        }
+        
     }
 }

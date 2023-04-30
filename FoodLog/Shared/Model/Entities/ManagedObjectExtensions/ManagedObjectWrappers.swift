@@ -1,6 +1,7 @@
 import Foundation
 import CoreData
 
+// MARK: - Nutrition Info
 extension NutritionInfoMO: ImplementationWrapper  {
     private var wrappedServingSize: any DietaryQuantityRepresentable {
         if let serving = self.servingSize {
@@ -20,6 +21,7 @@ extension NutritionInfoMO: ImplementationWrapper  {
     }
 }
 
+// MARK: - Nutrient Quantity
 extension NutrientQuantityMO: ImplementationWrapper {
     var wrappedNutritionInfo: (any NutritionInfoRepresentable)? {
         guard let nutritionInfo = self.nutritionInfo else { return nil }
@@ -41,6 +43,7 @@ extension NutrientQuantityMO: ImplementationWrapper {
     }
 }
 
+// MARK: - Serving Size
 extension ServingSizeMO: ImplementationWrapper {
     var wrappedNutritionInfo: (any NutritionInfoRepresentable)? {
         guard let nutritionInfo = self.nutritionInfo else { return nil }
@@ -61,6 +64,7 @@ extension ServingSizeMO: ImplementationWrapper {
     }
 }
 
+// MARK: - Sample Quantity
 extension SampleQuantityMO: ImplementationWrapper {
     var wrapped: some SampleQuantityRepresentable {
         let identifier = QuantityIdentifier(string: self.quantityIdentifier)
