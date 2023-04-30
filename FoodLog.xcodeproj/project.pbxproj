@@ -27,6 +27,7 @@
 		BED7084129FC70E100ADFBBD /* ImplementationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084029FC70E100ADFBBD /* ImplementationWrapper.swift */; };
 		BED7084329FC752400ADFBBD /* ManagedObjectAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084229FC752400ADFBBD /* ManagedObjectAdapter.swift */; };
 		BED7084529FC760900ADFBBD /* ManagedObjectWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084429FC760900ADFBBD /* ManagedObjectWrappers.swift */; };
+		BED7084729FED01E00ADFBBD /* PersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084629FED01E00ADFBBD /* PersistentStore.swift */; };
 		BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		BED7084029FC70E100ADFBBD /* ImplementationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplementationWrapper.swift; sourceTree = "<group>"; };
 		BED7084229FC752400ADFBBD /* ManagedObjectAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectAdapter.swift; sourceTree = "<group>"; };
 		BED7084429FC760900ADFBBD /* ManagedObjectWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectWrappers.swift; sourceTree = "<group>"; };
+		BED7084629FED01E00ADFBBD /* PersistentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStore.swift; sourceTree = "<group>"; };
 		BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementSampleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,13 +96,6 @@
 				BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		BE5825F329E60326006F75E0 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utility;
 			sourceTree = "<group>";
 		};
 		BE7413B329E6FB95008DC255 /* Entities */ = {
@@ -161,7 +156,6 @@
 				BE92CB9029E48047006A158E /* FoodLog.entitlements */,
 				BED7082A29FC184000ADFBBD /* Shared */,
 				BE435CBD29E50BA400A8D16E /* WeightLog */,
-				BE5825F329E60326006F75E0 /* Utility */,
 				BE92CB9129E48047006A158E /* Preview Content */,
 			);
 			path = FoodLog;
@@ -210,6 +204,7 @@
 			children = (
 				BE92CB8929E48046006A158E /* FoodLog.xcdatamodeld */,
 				BE92CB8729E48046006A158E /* Persistence.swift */,
+				BED7084629FED01E00ADFBBD /* PersistentStore.swift */,
 				BE7413B829E6FE53008DC255 /* Entities */,
 				BE7413B929E70DD6008DC255 /* Extensions */,
 			);
@@ -318,6 +313,7 @@
 				BED7083929FC347B00ADFBBD /* ManagedObjectWrapper.swift in Sources */,
 				BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */,
 				BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */,
+				BED7084729FED01E00ADFBBD /* PersistentStore.swift in Sources */,
 				BED7082D29FC186000ADFBBD /* PersistedContentList.swift in Sources */,
 				BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */,
 				BED10BC729E7405700A75BA1 /* Adapter.swift in Sources */,

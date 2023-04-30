@@ -17,7 +17,7 @@ struct SampleEditorView: View {
             quantity: .init(
                 identifier: quantityIdentifier,
                 measurement: .init(value: value ?? .zero, unit: $quantityIdentifier),
-                id: sampleID
+                id: sampleID ?? .init()
             ),
             date: date
         )

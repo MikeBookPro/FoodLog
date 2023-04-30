@@ -12,6 +12,18 @@ protocol ObservedQuantityRepresentable: QuantityRepresentable {
     var date: Date? { get }
 }
 
+extension ReferenceQuantityRepresentable {
+    static func == (_ lhs: any ReferenceQuantityRepresentable, _ rhs: any ReferenceQuantityRepresentable) -> Bool {
+        lhs.id == rhs.id && lhs.identifier == rhs.identifier && lhs.measurement == rhs.measurement
+    }
+}
+
+extension ObservedQuantityRepresentable {
+    static func == (_ lhs: any ObservedQuantityRepresentable, _ rhs: any ObservedQuantityRepresentable) -> Bool {
+        lhs.id == rhs.id && lhs.identifier == rhs.identifier && lhs.measurement == rhs.measurement && lhs.date == rhs.date
+    }
+}
+
 // MARK: - Reference Quantities
 
 protocol NutritionInfoRepresentable {
@@ -26,6 +38,6 @@ protocol DietaryQuantityRepresentable: ReferenceQuantityRepresentable {
 // MARK: - Timestamped Quantities
 
 //TODO: Will need to make a bunch of different SampleQuantity (probably)
-protocol SampleQuantityRepresentable: ReferenceQuantityRepresentable {
+protocol SampleQuantityRepresentable: ReferenceQuantityRepresentable, Equatable, Hashable {
     var date: Date { get }
 }

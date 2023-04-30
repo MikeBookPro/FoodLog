@@ -1,99 +1,97 @@
 import SwiftUI
 import CoreData
+import Combine
+
+class SampleViewModel: ObservableObject {
+    @Published var samples = [SampleQuantity]()
+    @Published var isShowingEditor: Bool = false
+    @Published var selected: SampleQuantity?
+    
+    private var cancellable: AnyCancellable?
+    private let dataStore: DataStore
+    
+    init(dataStore: DataStore) {
+        self.dataStore = dataStore
+        self.cancellable = dataStore.$sampleQuantities
+            .sink { [weak self] newSampleQuantities in
+                self?.samples = newSampleQuantities.values.sorted { $0.date < $1.date }
+            }
+    }
+    
+    deinit {
+        cancellable?.cancel()
+    }
+    
+    func presentEditor() {
+        self.isShowingEditor = true
+    }
+    func dismissEditor() {
+        self.isShowingEditor = false
+//        self.selectionID = nil
+    }
+    
+    func create(sample quantity: SampleQuantity) {
+        // TODO: Update in CoreData
+        let dataStore = self.dataStore
+        Task { await dataStore.create(sampleQuantity: quantity) }
+        dismissEditor()
+    }
+    
+    func update(sample quantity: SampleQuantity) {
+        // TODO: Update in CoreData
+        let dataStore = self.dataStore
+        Task { await dataStore.update(sampleQuantity: quantity) }
+        dismissEditor()
+    }
+    
+    func delete(samplesAt offsets: IndexSet) {
+        let targetedIDs: [UUID] = offsets.compactMap { samples[$0].id }
+        let dataStore = self.dataStore
+        Task {
+            await withTaskGroup(of: Void.self) { taskGroup in
+                for id in targetedIDs {
+                    taskGroup.addTask {
+                        await dataStore.delete(sampleQuantityWithID: id)
+                    }
+                }
+            }
+        }
+    }
+}
 
  
 struct WeightHistoryView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @State private var isShowingEditor: Bool = false
-    @State private var selection: (any SampleQuantityRepresentable)?
-    
-    private let adapt = BodyWeightSampleAdapter.adapt(sampleQuantity:)
+    @ObservedObject private var viewModel = SampleViewModel(dataStore: DataStore())
 
     var body: some View {
         NavigationView {
-            SampleQuantitiesView { samples in
-                List(selection: $selection) {
-                    ForEach(samples, id: \.id) { sample in
-                        NavigationLink {
-                            MeasurementSampleView(sample: sample, editorToggle: $isShowingEditor)
-                        } label: {
-                            Text(sample.date, format: Date.FormatStyle.init(date: .numeric, time: .shortened))
-                            Text(sample.measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
-                        }
+            List(selection: $viewModel.selected) {
+                ForEach(viewModel.samples, id:\.self) { sample in
+                    NavigationLink {
+                        MeasurementSampleView(sample: sample, editorToggle: $viewModel.isShowingEditor)
+                    } label: {
+                        Text(sample.date, format: Date.FormatStyle.init(date: .numeric, time: .shortened))
+                        Text(sample.measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
                     }
-                    .onDelete(perform: deleteItems)
                 }
+                .onDelete(perform: viewModel.delete(samplesAt:))
             }
             .navigationTitle("Progress")
-            .fullScreenCover(item: $selection) { selection in
+            .fullScreenCover(isPresented: $viewModel.isShowingEditor) {
                 NavigationView {
-                    SampleEditorView(update: selection, onSave: editorDidUpdate(sample:), onCancel: editorDidCancel)
-                        .navigationTitle("Edit Sample")
-                }
-            }
-            .fullScreenCover(isPresented: $isShowingEditor) {
-                NavigationView {
-                    SampleEditorView(.bodyMass, onSave: editorDidCreate(sample:), onCancel: editorDidCancel)
-                        .navigationTitle("New Sample")
-//                    if let selectionID, let selection = samples.first(where: { $0.id == selectionID }) {
-//                        SampleEditorView(update: adapt(selection), onSave: editorDidUpdate(sample:), onCancel: editorDidCancel)
-//                            .navigationTitle("Edit Sample")
-//                    } else {
-//                        SampleEditorView(.bodyMass, onSave: editorDidCreate(sample:), onCancel: editorDidCancel)
-//                            .navigationTitle("New Sample")
-//                    }
+                    if let selected = viewModel.selected {
+                        SampleEditorView(update: selected, onSave: viewModel.update(sample:), onCancel: viewModel.dismissEditor)
+                            .navigationTitle("Edit Sample")
+                    } else {
+                        SampleEditorView(.bodyMass, onSave: viewModel.create(sample:), onCancel: viewModel.dismissEditor)
+                            .navigationTitle("New Sample")
+                    }
+                    
                 }
             }
             .toolbar {
                 ToolbarItem {
-                    Button { isShowingEditor.toggle() } label: {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        }
-    }
-    
-    private func editorDidUpdate(sample: SampleQuantity) {
-        withAnimation {
-            selection = nil
-            isShowingEditor.toggle()
-            let manager = DataManager(context: viewContext)
-            Task.detached {
-                await manager.upsert(sample: sample)
-            }
-        }
-    }
-    
-    private func editorDidCreate(sample: SampleQuantity) {
-        withAnimation {
-            isShowingEditor.toggle()
-            let manager = DataManager(context: viewContext)
-            Task.detached {
-                await manager.create(sample: sample)
-            }
-        }
-    }
-    
-    private func editorDidCancel() {
-        withAnimation {
-            isShowingEditor.toggle()
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            let objects: [SampleQuantityMO] = offsets.map { samples[$0] }
-            let weightSamples: [SampleQuantity] = objects.map { BodyWeightSampleAdapter.adapt(sampleQuantity: $0) }
-            let manager = DataManager(context: viewContext)
-            Task.detached {
-                await withTaskGroup(of: Bool.self) { taskGroup in
-                    for sample in weightSamples {
-                        taskGroup.addTask {
-                            await manager.delete(sample: sample, shouldSave: true)
-                        }
-                    }
+                    Button(action: viewModel.presentEditor, label: { Label("Add Item", systemImage: "plus") })
                 }
             }
         }
