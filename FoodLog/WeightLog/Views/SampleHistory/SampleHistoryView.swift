@@ -44,7 +44,6 @@ struct SampleHistoryView: View {
 struct WeightHistoryView_Previews: PreviewProvider {
     static var previews: some View {
         SampleHistoryView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 #endif

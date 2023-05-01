@@ -127,6 +127,36 @@
                   endingLineNumber = "98"
                   offsetFromSymbolStart = "516">
                </Location>
+               <Location
+                  uuid = "1BF51197-F90C-4CDA-B384-E65F1C56B67A - cfbba1a7702f6503"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for FoodLog.PersistentDataStore.delete(sampleQuantityWithID: Swift.Optional&lt;Foundation.UUID&gt;) async -&gt; ()"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/PersistentStore.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "1BF51197-F90C-4CDA-B384-E65F1C56B67A - cfbba1a7702f6503"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for FoodLog.PersistentDataStore.delete(sampleQuantityWithID: Swift.Optional&lt;Foundation.UUID&gt;) async -&gt; ()"
+                  moduleName = "FoodLog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelthornton/repos/FoodLog/FoodLog/Shared/Model/PersistentStore.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "516">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>

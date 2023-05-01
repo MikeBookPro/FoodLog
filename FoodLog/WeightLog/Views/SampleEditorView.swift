@@ -91,6 +91,7 @@ struct SampleEditorView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     self.onSave?(sample)
+                    self.onCancel?()
                 } label: {
                     Text("Save")
                 }

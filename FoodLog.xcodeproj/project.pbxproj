@@ -154,6 +154,15 @@
 			path = SampleHistory;
 			sourceTree = "<group>";
 		};
+		BE7756CC29FF2B9000E7C985 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				BE92CB8729E48046006A158E /* Persistence.swift */,
+				BED7084629FED01E00ADFBBD /* PersistentStore.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		BE92CB7929E48046006A158E = {
 			isa = PBXGroup;
 			children = (
@@ -224,9 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				BE92CB8929E48046006A158E /* FoodLog.xcdatamodeld */,
-				BE92CB8729E48046006A158E /* Persistence.swift */,
-				BED7084629FED01E00ADFBBD /* PersistentStore.swift */,
 				BE7413B829E6FE53008DC255 /* Entities */,
+				BE7756CC29FF2B9000E7C985 /* Persistence */,
 				BE7413B929E70DD6008DC255 /* Extensions */,
 			);
 			path = Model;
