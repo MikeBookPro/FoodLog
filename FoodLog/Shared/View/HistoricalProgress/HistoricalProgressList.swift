@@ -1,7 +1,7 @@
 import SwiftUI
  
-struct ProgessList: View {
-    @State private var viewModel = ProgessListViewModel()
+struct HistoricalProgressList: View {
+    @State private var viewModel = HistoricalProgressListViewModel()
     @State private var selected: SampleQuantity? = nil
     let samples: [SampleQuantity]
     
@@ -65,9 +65,9 @@ struct ProgessList: View {
 }
 
 #if DEBUG
-struct ProgessList_Previews: PreviewProvider {
+struct HistoricalProgressList_Previews: PreviewProvider {
     static var previews: some View {
-        ProgessList(samples: PreviewData.quantitySamples(for: .bodyMass, count: 10, in: 95.0...125.0))
+        HistoricalProgressList(samples: PreviewData.quantitySamples(for: .bodyMass, count: 10, in: 95.0...125.0))
     }
 }
 #endif

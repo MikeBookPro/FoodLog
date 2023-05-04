@@ -2,7 +2,7 @@ import Foundation
 //import Combine
 
 //class ProgessListViewModel: ObservableObject {
-struct ProgessListViewModel {
+struct HistoricalProgressListViewModel {
     var isShowingEditor: Bool = false
     
     func create(sample quantity: SampleQuantity) {

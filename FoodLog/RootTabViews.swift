@@ -20,7 +20,7 @@ struct RootTabViews: View {
                 }
                 .tag(0)
             
-            ProgessList(samples: Self.adapt(quantity: samples))
+            HistoricalProgressList(samples: Self.adapt(quantity: samples))
                 .tabItem {
                     Image(systemName: "chart.line.uptrend.xyaxis")
                     Text("Progress")

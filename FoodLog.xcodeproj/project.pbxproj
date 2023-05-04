@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE435CBC29E4E2A000A8D16E /* ProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CBB29E4E2A000A8D16E /* ProgressList.swift */; };
+		BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */; };
 		BE5825F229E5F845006F75E0 /* SampleEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* SampleEditorView.swift */; };
 		BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */; };
 		BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BE29E73852008DC255 /* Dimensioned.swift */; };
@@ -15,7 +15,7 @@
 		BE7756C429FF273900E7C985 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756C329FF273900E7C985 /* Quantity.swift */; };
 		BE7756C629FF277F00E7C985 /* DietaryQuantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756C529FF277F00E7C985 /* DietaryQuantity.swift */; };
 		BE7756C829FF27B700E7C985 /* NutritionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756C729FF27B700E7C985 /* NutritionInfo.swift */; };
-		BE7756CB29FF28C200E7C985 /* ProgessListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756CA29FF28C200E7C985 /* ProgessListViewModel.swift */; };
+		BE7756CB29FF28C200E7C985 /* HistoricalProgressListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756CA29FF28C200E7C985 /* HistoricalProgressListViewModel.swift */; };
 		BE7BD2762A0464F1007E49B9 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7BD2752A0464F1007E49B9 /* PreviewData.swift */; };
 		BE7BD2782A0474E3007E49B9 /* RootTabViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7BD2772A0474E3007E49B9 /* RootTabViews.swift */; };
 		BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8529E48046006A158E /* FoodLogApp.swift */; };
@@ -36,7 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BE435CBB29E4E2A000A8D16E /* ProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressList.swift; sourceTree = "<group>"; };
+		BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalProgressList.swift; sourceTree = "<group>"; };
 		BE5825F129E5F845006F75E0 /* SampleEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleEditorView.swift; sourceTree = "<group>"; };
 		BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dimension+Extensions.swift"; sourceTree = "<group>"; };
 		BE7413BE29E73852008DC255 /* Dimensioned.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensioned.swift; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		BE7756C329FF273900E7C985 /* Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		BE7756C529FF277F00E7C985 /* DietaryQuantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryQuantity.swift; sourceTree = "<group>"; };
 		BE7756C729FF27B700E7C985 /* NutritionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionInfo.swift; sourceTree = "<group>"; };
-		BE7756CA29FF28C200E7C985 /* ProgessListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgessListViewModel.swift; sourceTree = "<group>"; };
+		BE7756CA29FF28C200E7C985 /* HistoricalProgressListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalProgressListViewModel.swift; sourceTree = "<group>"; };
 		BE7BD2752A0464F1007E49B9 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		BE7BD2772A0474E3007E49B9 /* RootTabViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabViews.swift; sourceTree = "<group>"; };
 		BE92CB8229E48046006A158E /* FoodLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,13 +108,13 @@
 			path = PropertyWrappers;
 			sourceTree = "<group>";
 		};
-		BE7756C929FF28AF00E7C985 /* ProgressList */ = {
+		BE7756C929FF28AF00E7C985 /* HistoricalProgress */ = {
 			isa = PBXGroup;
 			children = (
-				BE435CBB29E4E2A000A8D16E /* ProgressList.swift */,
-				BE7756CA29FF28C200E7C985 /* ProgessListViewModel.swift */,
+				BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */,
+				BE7756CA29FF28C200E7C985 /* HistoricalProgressListViewModel.swift */,
 			);
-			path = ProgressList;
+			path = HistoricalProgress;
 			sourceTree = "<group>";
 		};
 		BE7756CC29FF2B9000E7C985 /* Persistence */ = {
@@ -187,9 +187,9 @@
 		BED7082B29FC184800ADFBBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE7756C929FF28AF00E7C985 /* HistoricalProgress */,
 				BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */,
 				BE5825F129E5F845006F75E0 /* SampleEditorView.swift */,
-				BE7756C929FF28AF00E7C985 /* ProgressList */,
 				BE7413BC29E7381A008DC255 /* PropertyWrappers */,
 			);
 			path = View;
@@ -316,8 +316,8 @@
 				BED7084329FC752400ADFBBD /* ManagedObjectAdapter.swift in Sources */,
 				BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */,
 				BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */,
-				BE435CBC29E4E2A000A8D16E /* ProgressList.swift in Sources */,
-				BE7756CB29FF28C200E7C985 /* ProgessListViewModel.swift in Sources */,
+				BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */,
+				BE7756CB29FF28C200E7C985 /* HistoricalProgressListViewModel.swift in Sources */,
 				BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */,
 				BE7756C229FF26FB00E7C985 /* SampleQuantity.swift in Sources */,
 				BED7083D29FC6FD500ADFBBD /* SampleAdapter.swift in Sources */,
