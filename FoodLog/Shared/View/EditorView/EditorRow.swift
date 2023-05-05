@@ -35,37 +35,45 @@ struct EditorRow<Label: View, Content: View>: View {
 #if DEBUG
 struct EditorRow_Previews: PreviewProvider {
     private struct Shim: View {
-        enum Field { case date, details, amount }
+        enum Field: Hashable { case date, firstName, details, amount }
         
         @FocusState private var activeField: Field?
         @State private var date: Date = .now
+        @State private var givenName: String = ""
         @State private var details: String = ""
         @State private var amount: Double = 15.5
         
         var body: some View {
-            Form {
-                EditorRow("Date") {
-                    DatePicker("", selection: $date, in: (.distantPast)...(.now), displayedComponents: [.hourAndMinute, .date])
-                        .focused($activeField, equals: .date)
+            NavigationView {
+                Form {
+                    EditorRow("Date") {
+                        DatePicker("", selection: $date, in: (.distantPast)...(.now), displayedComponents: [.hourAndMinute, .date])
+                            .focused($activeField, equals: .date)
+                    }
+                    
+                    EditorRow("Details") {
+                        TextField(text: $details, prompt: Text("Enter your some info"), label: { EmptyView() })
+                            .focused($activeField, equals: .details)
+                            .autocorrectionDisabled(true)
+                            .editorRow(textStyle: [.preferContinue])
+                    }
+                    
+                    EditorRow("First name") {
+                        TextField(text: $givenName, prompt: Text("Enter your first name"), label: { EmptyView() })
+                            .focused($activeField, equals: .firstName)
+                            .textContentType(.givenName)
+                            .editorRow(textStyle: [.standard])
+                    }
+                    
+                    EditorRow("Amount") {
+                        TextField("Enter value", value: $amount, format: .number.precision(.fractionLength(0...2)))
+                            .focused($activeField, equals: .amount)
+                            .editorRow(decimalStyle: [.decimalInput])
+                    }
+                    
                 }
-                
-                EditorRow("Details") {
-                    TextField(text: $details, prompt: Text("Enter your some info"), label: { EmptyView() })
-                        .focused($activeField, equals: .details)
-                        .editorRow(textStyle: [.preferContinue], onSubmit: {
-                            activeField = .amount
-                        })
-                }
-                
-                EditorRow("Amount") {
-                    TextField("Enter value", value: $amount, format: .number.precision(.fractionLength(0...2)))
-                        .focused($activeField, equals: .date)
-                        .editorRow(textStyle: .standard, onSubmit: {
-                            activeField = nil
-                        })
-                }
-                
             }
+            
         }
     }
     

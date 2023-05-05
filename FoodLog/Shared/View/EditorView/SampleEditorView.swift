@@ -103,7 +103,10 @@ struct SampleEditorView: View {
 #if DEBUG
 struct SampleEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        SampleEditorView(.bodyMass)
+        NavigationView {
+            SampleEditorView(.bodyMass)
+        }
+        
     }
 }
 #endif
