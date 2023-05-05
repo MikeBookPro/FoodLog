@@ -37,6 +37,8 @@
 		BED7084329FC752400ADFBBD /* ManagedObjectAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084229FC752400ADFBBD /* ManagedObjectAdapter.swift */; };
 		BED7084529FC760900ADFBBD /* ManagedObjectWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084429FC760900ADFBBD /* ManagedObjectWrappers.swift */; };
 		BED7084729FED01E00ADFBBD /* PersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084629FED01E00ADFBBD /* PersistentStore.swift */; };
+		BEEC9D362A056CD3000C1CC1 /* EditorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC9D352A056CD3000C1CC1 /* EditorRow.swift */; };
+		BEEC9D382A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC9D372A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift */; };
 		BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +75,8 @@
 		BED7084229FC752400ADFBBD /* ManagedObjectAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectAdapter.swift; sourceTree = "<group>"; };
 		BED7084429FC760900ADFBBD /* ManagedObjectWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectWrappers.swift; sourceTree = "<group>"; };
 		BED7084629FED01E00ADFBBD /* PersistentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStore.swift; sourceTree = "<group>"; };
+		BEEC9D352A056CD3000C1CC1 /* EditorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorRow.swift; sourceTree = "<group>"; };
+		BEEC9D372A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditorRowStyle+ViewModifiers.swift"; sourceTree = "<group>"; };
 		BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementSampleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,11 +220,11 @@
 		BED7082B29FC184800ADFBBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BEEC9D342A056C60000C1CC1 /* EditorView */,
 				BEB6939A2A04821A00F9620B /* FoodReference */,
 				BEB693972A047E2F00F9620B /* DietaryHistory */,
 				BE7756C929FF28AF00E7C985 /* HistoricalProgress */,
 				BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */,
-				BE5825F129E5F845006F75E0 /* SampleEditorView.swift */,
 				BE7413BC29E7381A008DC255 /* PropertyWrappers */,
 			);
 			path = View;
@@ -260,6 +264,16 @@
 				BED7084429FC760900ADFBBD /* ManagedObjectWrappers.swift */,
 			);
 			path = ManagedObjectExtensions;
+			sourceTree = "<group>";
+		};
+		BEEC9D342A056C60000C1CC1 /* EditorView */ = {
+			isa = PBXGroup;
+			children = (
+				BE5825F129E5F845006F75E0 /* SampleEditorView.swift */,
+				BEEC9D352A056CD3000C1CC1 /* EditorRow.swift */,
+				BEEC9D372A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift */,
+			);
+			path = EditorView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +355,7 @@
 				BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */,
 				BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */,
 				BE7756C829FF27B700E7C985 /* NutritionInfo.swift in Sources */,
+				BEEC9D362A056CD3000C1CC1 /* EditorRow.swift in Sources */,
 				BE7756C429FF273900E7C985 /* Quantity.swift in Sources */,
 				BED7084729FED01E00ADFBBD /* PersistentStore.swift in Sources */,
 				BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */,
@@ -358,6 +373,7 @@
 				BEB6939C2A04828000F9620B /* FoodReferenceList.swift in Sources */,
 				BE5825F229E5F845006F75E0 /* SampleEditorView.swift in Sources */,
 				BEB6939E2A0483A300F9620B /* FoodItem.swift in Sources */,
+				BEEC9D382A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift in Sources */,
 				BE7756C629FF277F00E7C985 /* DietaryQuantity.swift in Sources */,
 				BED7084129FC70E100ADFBBD /* ImplementationWrapper.swift in Sources */,
 				BE92CB8829E48046006A158E /* Persistence.swift in Sources */,
