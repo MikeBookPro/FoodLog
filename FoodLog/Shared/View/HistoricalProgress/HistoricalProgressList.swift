@@ -33,7 +33,7 @@ struct HistoricalProgressList: View {
                 }
             }
             .toolbar {
-                ToolbarItem {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: presentEditor, label: { Label("Add Item", systemImage: "plus") })
                 }
             }

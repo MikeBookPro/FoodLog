@@ -24,6 +24,7 @@
 		BE92CB8F29E48047006A158E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE92CB8E29E48047006A158E /* Assets.xcassets */; };
 		BE92CB9329E48047006A158E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE92CB9229E48047006A158E /* Preview Assets.xcassets */; };
 		BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */; };
+		BEB693992A047E7200F9620B /* DietaryHistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB693982A047E7200F9620B /* DietaryHistoryList.swift */; };
 		BED10BC729E7405700A75BA1 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC629E7405700A75BA1 /* Adapter.swift */; };
 		BED10BCA29E740B000A75BA1 /* IdentifierAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC929E740B000A75BA1 /* IdentifierAdapter.swift */; };
 		BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */; };
@@ -55,6 +56,7 @@
 		BE92CB9029E48047006A158E /* FoodLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodLog.entitlements; sourceTree = "<group>"; };
 		BE92CB9229E48047006A158E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityIdentifier.swift; sourceTree = "<group>"; };
+		BEB693982A047E7200F9620B /* DietaryHistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryHistoryList.swift; sourceTree = "<group>"; };
 		BED10BC629E7405700A75BA1 /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
 		BED10BC929E740B000A75BA1 /* IdentifierAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierAdapter.swift; sourceTree = "<group>"; };
 		BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityRepresentable.swift; sourceTree = "<group>"; };
@@ -163,6 +165,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		BEB693972A047E2F00F9620B /* DietaryHistory */ = {
+			isa = PBXGroup;
+			children = (
+				BEB693982A047E7200F9620B /* DietaryHistoryList.swift */,
+			);
+			path = DietaryHistory;
+			sourceTree = "<group>";
+		};
 		BED10BC829E7409900A75BA1 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +197,7 @@
 		BED7082B29FC184800ADFBBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BEB693972A047E2F00F9620B /* DietaryHistory */,
 				BE7756C929FF28AF00E7C985 /* HistoricalProgress */,
 				BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */,
 				BE5825F129E5F845006F75E0 /* SampleEditorView.swift */,
@@ -302,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE7BD2762A0464F1007E49B9 /* PreviewData.swift in Sources */,
+				BEB693992A047E7200F9620B /* DietaryHistoryList.swift in Sources */,
 				BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */,
 				BED10BCA29E740B000A75BA1 /* IdentifierAdapter.swift in Sources */,
 				BED7084529FC760900ADFBBD /* ManagedObjectWrappers.swift in Sources */,
