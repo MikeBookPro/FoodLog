@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Brand" representedClassName="Brand" syncable="YES" codeGenerationType="class">
+    <entity name="BrandMO" representedClassName="BrandMO" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="productDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemDetail" inverseName="brand" inverseEntity="FoodItemDetail"/>
+        <relationship name="productDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemDetailMO" inverseName="brand" inverseEntity="FoodItemDetailMO"/>
     </entity>
-    <entity name="FoodItem" representedClassName="FoodItem" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="itemDetail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemDetail" inverseName="foodItem" inverseEntity="FoodItemDetail"/>
-        <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodNutritionMO" inverseName="foodItem" inverseEntity="FoodNutritionMO"/>
-    </entity>
-    <entity name="FoodItemDetail" representedClassName="FoodItemDetail" syncable="YES" codeGenerationType="class">
+    <entity name="FoodItemDetailMO" representedClassName="FoodItemDetailMO" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="nameSecondary" optional="YES" attributeType="String"/>
-        <attribute name="preparationDetail" optional="YES" attributeType="String"/>
-        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Brand" inverseName="productDetails" inverseEntity="Brand"/>
-        <relationship name="foodItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItem" inverseName="itemDetail" inverseEntity="FoodItem"/>
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BrandMO" inverseName="productDetails" inverseEntity="BrandMO"/>
+        <relationship name="foodItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemMO" inverseName="itemDetail" inverseEntity="FoodItemMO"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodItemDetailTag" inverseName="foodDetail" inverseEntity="FoodItemDetailTag"/>
     </entity>
     <entity name="FoodItemDetailTag" representedClassName="FoodItemDetailTag" parentEntity="Tag" syncable="YES" codeGenerationType="class">
-        <relationship name="foodDetail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodItemDetail" inverseName="tags" inverseEntity="FoodItemDetail"/>
+        <relationship name="foodDetail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodItemDetailMO" inverseName="tags" inverseEntity="FoodItemDetailMO"/>
+    </entity>
+    <entity name="FoodItemMO" representedClassName="FoodItemMO" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="itemDetail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemDetailMO" inverseName="foodItem" inverseEntity="FoodItemDetailMO"/>
+        <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodNutritionMO" inverseName="foodItem" inverseEntity="FoodNutritionMO"/>
     </entity>
     <entity name="FoodNutritionMO" representedClassName="FoodNutritionMO" parentEntity="NutritionInfoMO" syncable="YES" codeGenerationType="class">
-        <relationship name="foodItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItem" inverseName="nutritionInfo" inverseEntity="FoodItem"/>
+        <relationship name="foodItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemMO" inverseName="nutritionInfo" inverseEntity="FoodItemMO"/>
     </entity>
     <entity name="NutrientQuantityMO" representedClassName="NutrientQuantityMO" parentEntity="QuantityMO" syncable="YES" codeGenerationType="class">
         <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NutritionInfoMO" inverseName="nutrientQuantities" inverseEntity="NutritionInfoMO"/>

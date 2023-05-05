@@ -26,6 +26,9 @@
 		BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */; };
 		BEB693992A047E7200F9620B /* DietaryHistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB693982A047E7200F9620B /* DietaryHistoryList.swift */; };
 		BEB6939C2A04828000F9620B /* FoodReferenceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6939B2A04828000F9620B /* FoodReferenceList.swift */; };
+		BEB6939E2A0483A300F9620B /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6939D2A0483A300F9620B /* FoodItem.swift */; };
+		BEB693A02A04875F00F9620B /* UUID+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6939F2A04875F00F9620B /* UUID+Extensions.swift */; };
+		BEB693A22A0488EF00F9620B /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB693A12A0488EF00F9620B /* Brand.swift */; };
 		BED10BC729E7405700A75BA1 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC629E7405700A75BA1 /* Adapter.swift */; };
 		BED10BCA29E740B000A75BA1 /* IdentifierAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC929E740B000A75BA1 /* IdentifierAdapter.swift */; };
 		BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */; };
@@ -59,6 +62,9 @@
 		BE92CB9F29E4D07D006A158E /* QuantityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityIdentifier.swift; sourceTree = "<group>"; };
 		BEB693982A047E7200F9620B /* DietaryHistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryHistoryList.swift; sourceTree = "<group>"; };
 		BEB6939B2A04828000F9620B /* FoodReferenceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodReferenceList.swift; sourceTree = "<group>"; };
+		BEB6939D2A0483A300F9620B /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
+		BEB6939F2A04875F00F9620B /* UUID+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+Extensions.swift"; sourceTree = "<group>"; };
+		BEB693A12A0488EF00F9620B /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		BED10BC629E7405700A75BA1 /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
 		BED10BC929E740B000A75BA1 /* IdentifierAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierAdapter.swift; sourceTree = "<group>"; };
 		BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityRepresentable.swift; sourceTree = "<group>"; };
@@ -90,6 +96,8 @@
 				BE7756C129FF26FB00E7C985 /* SampleQuantity.swift */,
 				BE7756C529FF277F00E7C985 /* DietaryQuantity.swift */,
 				BE7756C729FF27B700E7C985 /* NutritionInfo.swift */,
+				BEB6939D2A0483A300F9620B /* FoodItem.swift */,
+				BEB693A12A0488EF00F9620B /* Brand.swift */,
 				BED7083E29FC706D00ADFBBD /* ManagedObjectExtensions */,
 				BED10BC829E7409900A75BA1 /* Adapters */,
 			);
@@ -100,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */,
+				BEB6939F2A04875F00F9620B /* UUID+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -324,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE7BD2762A0464F1007E49B9 /* PreviewData.swift in Sources */,
+				BEB693A22A0488EF00F9620B /* Brand.swift in Sources */,
 				BEB693992A047E7200F9620B /* DietaryHistoryList.swift in Sources */,
 				BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */,
 				BED10BCA29E740B000A75BA1 /* IdentifierAdapter.swift in Sources */,
@@ -341,11 +351,13 @@
 				BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */,
 				BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */,
 				BE7756CB29FF28C200E7C985 /* HistoricalProgressListViewModel.swift in Sources */,
+				BEB693A02A04875F00F9620B /* UUID+Extensions.swift in Sources */,
 				BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */,
 				BE7756C229FF26FB00E7C985 /* SampleQuantity.swift in Sources */,
 				BED7083D29FC6FD500ADFBBD /* SampleAdapter.swift in Sources */,
 				BEB6939C2A04828000F9620B /* FoodReferenceList.swift in Sources */,
 				BE5825F229E5F845006F75E0 /* SampleEditorView.swift in Sources */,
+				BEB6939E2A0483A300F9620B /* FoodItem.swift in Sources */,
 				BE7756C629FF277F00E7C985 /* DietaryQuantity.swift in Sources */,
 				BED7084129FC70E100ADFBBD /* ImplementationWrapper.swift in Sources */,
 				BE92CB8829E48046006A158E /* Persistence.swift in Sources */,
