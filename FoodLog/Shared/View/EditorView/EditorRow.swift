@@ -34,39 +34,43 @@ struct EditorRow<Label: View, Content: View>: View {
 
 #if DEBUG
 struct EditorRow_Previews: PreviewProvider {
+    
     private struct Shim: View {
-        enum Field: Hashable { case date, firstName, details, amount }
-        
-        @FocusState private var activeField: Field?
-        @State private var date: Date = .now
-        @State private var givenName: String = ""
-        @State private var details: String = ""
-        @State private var amount: Double = 15.5
+        private struct ViewModel {
+            enum Field: Hashable { case date, firstName, details, amount }
+            
+            var date: Date = .now
+            var givenName: String = ""
+            var details: String = ""
+            var amount: Double = 15.5
+        }
+        @State private var vm = ViewModel()
+        @FocusState private var activeField: ViewModel.Field?
         
         var body: some View {
             NavigationView {
                 Form {
                     EditorRow("Date") {
-                        DatePicker("", selection: $date, in: (.distantPast)...(.now), displayedComponents: [.hourAndMinute, .date])
+                        DatePicker("", selection: $vm.date, in: (.distantPast)...(.now), displayedComponents: [.hourAndMinute, .date])
                             .focused($activeField, equals: .date)
                     }
                     
                     EditorRow("Details") {
-                        TextField(text: $details, prompt: Text("Enter your some info"), label: { EmptyView() })
+                        TextField(text: $vm.details, prompt: Text("Enter your some info"), label: { EmptyView() })
                             .focused($activeField, equals: .details)
                             .autocorrectionDisabled(true)
                             .editorRow(textStyle: [.preferContinue])
                     }
                     
                     EditorRow("First name") {
-                        TextField(text: $givenName, prompt: Text("Enter your first name"), label: { EmptyView() })
+                        TextField(text: $vm.givenName, prompt: Text("Enter your first name"), label: { EmptyView() })
                             .focused($activeField, equals: .firstName)
                             .textContentType(.givenName)
                             .editorRow(textStyle: [.standard])
                     }
                     
                     EditorRow("Amount") {
-                        TextField("Enter value", value: $amount, format: .number.precision(.fractionLength(0...2)))
+                        TextField("Enter value", value: $vm.amount, format: .number.precision(.fractionLength(0...2)))
                             .focused($activeField, equals: .amount)
                             .editorRow(decimalStyle: [.decimalInput])
                     }

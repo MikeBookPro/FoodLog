@@ -11,6 +11,9 @@ protocol ReferenceQuantityRepresentable: QuantityRepresentable {}
 protocol ObservedQuantityRepresentable: QuantityRepresentable {
     var date: Date? { get }
 }
+//protocol EventSampleRepresentable: QuantityRepresentable {
+//    var event: any EventRepresentable { get }
+//}
 
 extension ReferenceQuantityRepresentable {
     static func == (_ lhs: any ReferenceQuantityRepresentable, _ rhs: any ReferenceQuantityRepresentable) -> Bool {
@@ -34,6 +37,8 @@ protocol NutritionInfoRepresentable {
 protocol DietaryQuantityRepresentable: ReferenceQuantityRepresentable {
     var nutritionInfo: (any NutritionInfoRepresentable)? { get }
 }
+
+// MARK: - Event Sample Representable
 
 // MARK: - Timestamped Quantities
 

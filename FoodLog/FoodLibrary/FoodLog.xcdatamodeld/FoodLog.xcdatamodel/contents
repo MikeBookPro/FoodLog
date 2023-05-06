@@ -5,6 +5,21 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="productDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemDetailMO" inverseName="brand" inverseEntity="FoodItemDetailMO"/>
     </entity>
+    <entity name="EventHistoryMO" representedClassName="EventHistoryMO" isAbstract="YES" syncable="YES" codeGenerationType="class"/>
+    <entity name="EventMO" representedClassName="EventMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="FoodConsumptionEventMO" representedClassName="FoodConsumptionEventMO" parentEntity="EventMO" syncable="YES" codeGenerationType="class">
+        <relationship name="eventHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodEventHistoryMO" inverseName="consumptionEvents" inverseEntity="FoodEventHistoryMO"/>
+        <relationship name="sample" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodConsumptionSampleMO" inverseName="event" inverseEntity="FoodConsumptionSampleMO"/>
+    </entity>
+    <entity name="FoodConsumptionSampleMO" representedClassName="FoodConsumptionSampleMO" parentEntity="QuantityMO" syncable="YES" codeGenerationType="class">
+        <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodConsumptionEventMO" inverseName="sample" inverseEntity="FoodConsumptionEventMO"/>
+    </entity>
+    <entity name="FoodEventHistoryMO" representedClassName="FoodEventHistoryMO" parentEntity="EventHistoryMO" syncable="YES" codeGenerationType="class">
+        <relationship name="consumptionEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FoodConsumptionEventMO" inverseName="eventHistory" inverseEntity="FoodConsumptionEventMO"/>
+        <relationship name="foodItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemMO" inverseName="eventHistory" inverseEntity="FoodItemMO"/>
+    </entity>
     <entity name="FoodItemDetailMO" representedClassName="FoodItemDetailMO" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="brand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BrandMO" inverseName="productDetails" inverseEntity="BrandMO"/>
@@ -16,6 +31,7 @@
     </entity>
     <entity name="FoodItemMO" representedClassName="FoodItemMO" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="eventHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodEventHistoryMO" inverseName="foodItem" inverseEntity="FoodEventHistoryMO"/>
         <relationship name="itemDetail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodItemDetailMO" inverseName="foodItem" inverseEntity="FoodItemDetailMO"/>
         <relationship name="nutritionInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FoodNutritionMO" inverseName="foodItem" inverseEntity="FoodNutritionMO"/>
     </entity>

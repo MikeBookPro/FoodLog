@@ -1,10 +1,10 @@
 import Foundation
 
-struct NutritionInfo: NutritionInfoRepresentable {
-    var servingSize: (any DietaryQuantityRepresentable)?
-    var nutrientQuantities: [any DietaryQuantityRepresentable]
+struct NutritionInfo {
+    var servingSize: Quantity
+    var nutrientQuantities: [Quantity]
     
-    init(servingSize: any DietaryQuantityRepresentable, nutrientQuantities: [any DietaryQuantityRepresentable]) {
+    init(servingSize: Quantity, nutrientQuantities: [Quantity]) {
         self.servingSize = servingSize
         self.nutrientQuantities = nutrientQuantities
     }

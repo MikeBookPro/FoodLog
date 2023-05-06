@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */; };
+		BE4FF1A92A0707DE00D0E21A /* EventRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4FF1A82A0707DE00D0E21A /* EventRepresentable.swift */; };
 		BE5825F229E5F845006F75E0 /* SampleQuantityForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */; };
 		BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */; };
 		BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BE29E73852008DC255 /* Dimensioned.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalProgressList.swift; sourceTree = "<group>"; };
+		BE4FF1A82A0707DE00D0E21A /* EventRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepresentable.swift; sourceTree = "<group>"; };
 		BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleQuantityForm.swift; sourceTree = "<group>"; };
 		BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dimension+Extensions.swift"; sourceTree = "<group>"; };
 		BE7413BE29E73852008DC255 /* Dimensioned.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensioned.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			children = (
 				BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */,
 				BED7084029FC70E100ADFBBD /* ImplementationWrapper.swift */,
+				BE4FF1A82A0707DE00D0E21A /* EventRepresentable.swift */,
 			);
 			path = EntityProtocols;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				BED7084329FC752400ADFBBD /* ManagedObjectAdapter.swift in Sources */,
 				BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */,
 				BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */,
+				BE4FF1A92A0707DE00D0E21A /* EventRepresentable.swift in Sources */,
 				BEDD5CE12A05DE8800C2820B /* DataManager.swift in Sources */,
 				BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */,
 				BE7756CB29FF28C200E7C985 /* HistoricalProgressListViewModel.swift in Sources */,
