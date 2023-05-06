@@ -43,9 +43,9 @@ struct SampleQuantityForm: EditorViewRepresentable {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    let isCreating = existingID == nil
-                    let model = SampleQuantity(quantity: .init(identifier: identifier, measurement: .init(value: value, unit: IdentifierToDimensionAdapter.value(mappedTo: identifier))), date: date)
-                    if isCreating {
+                    let measurement = Measurement(value: value, unit: IdentifierToDimensionAdapter.value(mappedTo: identifier))
+                    let model = SampleQuantity(quantity: .init(identifier: identifier, measurement: measurement, id: existingID), date: date)
+                    if existingID == nil {
                         self.create(model)
                     } else {
                         self.update(model)
