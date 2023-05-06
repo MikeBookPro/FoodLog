@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */; };
-		BE5825F229E5F845006F75E0 /* SampleEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* SampleEditorView.swift */; };
+		BE5825F229E5F845006F75E0 /* SampleQuantityForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */; };
 		BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */; };
 		BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BE29E73852008DC255 /* Dimensioned.swift */; };
 		BE7756C229FF26FB00E7C985 /* SampleQuantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756C129FF26FB00E7C985 /* SampleQuantity.swift */; };
@@ -37,6 +37,8 @@
 		BED7084329FC752400ADFBBD /* ManagedObjectAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084229FC752400ADFBBD /* ManagedObjectAdapter.swift */; };
 		BED7084529FC760900ADFBBD /* ManagedObjectWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084429FC760900ADFBBD /* ManagedObjectWrappers.swift */; };
 		BED7084729FED01E00ADFBBD /* PersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7084629FED01E00ADFBBD /* PersistentStore.swift */; };
+		BEDD5CDE2A05DD7B00C2820B /* EditorViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDD5CDD2A05DD7B00C2820B /* EditorViewRepresentable.swift */; };
+		BEDD5CE12A05DE8800C2820B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDD5CE02A05DE8800C2820B /* DataManager.swift */; };
 		BEEC9D362A056CD3000C1CC1 /* EditorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC9D352A056CD3000C1CC1 /* EditorRow.swift */; };
 		BEEC9D382A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC9D372A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift */; };
 		BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */; };
@@ -44,7 +46,7 @@
 
 /* Begin PBXFileReference section */
 		BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalProgressList.swift; sourceTree = "<group>"; };
-		BE5825F129E5F845006F75E0 /* SampleEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleEditorView.swift; sourceTree = "<group>"; };
+		BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleQuantityForm.swift; sourceTree = "<group>"; };
 		BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dimension+Extensions.swift"; sourceTree = "<group>"; };
 		BE7413BE29E73852008DC255 /* Dimensioned.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensioned.swift; sourceTree = "<group>"; };
 		BE7756C129FF26FB00E7C985 /* SampleQuantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleQuantity.swift; sourceTree = "<group>"; };
@@ -75,6 +77,8 @@
 		BED7084229FC752400ADFBBD /* ManagedObjectAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectAdapter.swift; sourceTree = "<group>"; };
 		BED7084429FC760900ADFBBD /* ManagedObjectWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectWrappers.swift; sourceTree = "<group>"; };
 		BED7084629FED01E00ADFBBD /* PersistentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStore.swift; sourceTree = "<group>"; };
+		BEDD5CDD2A05DD7B00C2820B /* EditorViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewRepresentable.swift; sourceTree = "<group>"; };
+		BEDD5CE02A05DE8800C2820B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		BEEC9D352A056CD3000C1CC1 /* EditorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorRow.swift; sourceTree = "<group>"; };
 		BEEC9D372A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditorRowStyle+ViewModifiers.swift"; sourceTree = "<group>"; };
 		BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementSampleView.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 			children = (
 				BE92CB8729E48046006A158E /* Persistence.swift */,
 				BED7084629FED01E00ADFBBD /* PersistentStore.swift */,
+				BEDD5CE02A05DE8800C2820B /* DataManager.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -266,12 +271,21 @@
 			path = ManagedObjectExtensions;
 			sourceTree = "<group>";
 		};
+		BEDD5CDF2A05DE2C00C2820B /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
 		BEEC9D342A056C60000C1CC1 /* EditorView */ = {
 			isa = PBXGroup;
 			children = (
-				BE5825F129E5F845006F75E0 /* SampleEditorView.swift */,
+				BEDD5CDF2A05DE2C00C2820B /* Forms */,
 				BEEC9D352A056CD3000C1CC1 /* EditorRow.swift */,
 				BEEC9D372A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift */,
+				BEDD5CDD2A05DD7B00C2820B /* EditorViewRepresentable.swift */,
 			);
 			path = EditorView;
 			sourceTree = "<group>";
@@ -352,6 +366,7 @@
 				BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */,
 				BED10BCA29E740B000A75BA1 /* IdentifierAdapter.swift in Sources */,
 				BED7084529FC760900ADFBBD /* ManagedObjectWrappers.swift in Sources */,
+				BEDD5CDE2A05DD7B00C2820B /* EditorViewRepresentable.swift in Sources */,
 				BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */,
 				BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */,
 				BE7756C829FF27B700E7C985 /* NutritionInfo.swift in Sources */,
@@ -364,6 +379,7 @@
 				BED7084329FC752400ADFBBD /* ManagedObjectAdapter.swift in Sources */,
 				BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */,
 				BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */,
+				BEDD5CE12A05DE8800C2820B /* DataManager.swift in Sources */,
 				BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */,
 				BE7756CB29FF28C200E7C985 /* HistoricalProgressListViewModel.swift in Sources */,
 				BEB693A02A04875F00F9620B /* UUID+Extensions.swift in Sources */,
@@ -371,7 +387,7 @@
 				BE7756C229FF26FB00E7C985 /* SampleQuantity.swift in Sources */,
 				BED7083D29FC6FD500ADFBBD /* SampleAdapter.swift in Sources */,
 				BEB6939C2A04828000F9620B /* FoodReferenceList.swift in Sources */,
-				BE5825F229E5F845006F75E0 /* SampleEditorView.swift in Sources */,
+				BE5825F229E5F845006F75E0 /* SampleQuantityForm.swift in Sources */,
 				BEB6939E2A0483A300F9620B /* FoodItem.swift in Sources */,
 				BEEC9D382A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift in Sources */,
 				BE7756C629FF277F00E7C985 /* DietaryQuantity.swift in Sources */,

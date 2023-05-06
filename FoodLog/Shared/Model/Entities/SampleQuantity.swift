@@ -13,6 +13,17 @@ struct SampleQuantity: SampleQuantityRepresentable, ImplementationWrapper, Equat
         self.date = date
     }
     
+    static func template(for identifier: QuantityIdentifier) -> Self {
+        return .init(
+            quantity: .init(
+                identifier: identifier,
+                measurement: .init(value: .zero, unit: IdentifierToDimensionAdapter.value(mappedTo: identifier)),
+                id: UUID()
+            ),
+            date: .now
+        )
+    }
+    
     static func copy(from opaque: some SampleQuantityRepresentable) -> Self {
         return .init(
             quantity: .init(

@@ -2,8 +2,10 @@ import SwiftUI
 import CoreData
 
 struct RootTabViews: View {
-        @Environment(\.managedObjectContext) private var moc
-        @State private var selectedTab = 1
+    @Environment(\.managedObjectContext) private var moc
+    
+    @State private var selectedTab = 1
+    
     @FetchRequest(sortDescriptors: [], animation: .default)
     private var samples: FetchedResults<SampleQuantityMO>
     
@@ -20,7 +22,10 @@ struct RootTabViews: View {
                 }
                 .tag(0)
             
-            HistoricalProgressList(samples: Self.adapt(quantity: samples))
+            HistoricalProgressList(
+                samples:  Self.adapt(quantity: samples),
+                editorView: SampleQuantityForm.init(_:)
+            )
                 .tabItem {
                     Image(systemName: "chart.line.uptrend.xyaxis")
                     Text("Progress")
@@ -37,8 +42,11 @@ struct RootTabViews: View {
     }
 }
 
+#if DEBUG
 struct RootTabViews_Previews: PreviewProvider {
     static var previews: some View {
         RootTabViews()
+//            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+#endif

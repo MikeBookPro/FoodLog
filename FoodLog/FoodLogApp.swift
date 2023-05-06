@@ -8,10 +8,9 @@ struct FoodLogApp: App {
         WindowGroup {
             RootTabViews()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .task {
-                    await PersistentDataStore.shared.start(observing: persistenceController.container.viewContext)
-                }
+//                .task {
+//                    await PersistentDataStore.shared.start(observing: persistenceController.container.viewContext)
+//                }
         }
-//        .environment(\.managedObjectContext, persistenceController.container.viewContext)
     }
 }

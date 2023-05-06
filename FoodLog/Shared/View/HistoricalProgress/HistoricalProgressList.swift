@@ -1,16 +1,24 @@
 import SwiftUI
- 
-struct HistoricalProgressList: View {
+
+struct HistoricalProgressList<Editor: EditorViewRepresentable>: View where Editor.Model == SampleQuantity {
     @State private var viewModel = HistoricalProgressListViewModel()
     @State private var selected: SampleQuantity? = nil
+    @State private var isShowingEditor: Bool = false
+    
     let samples: [SampleQuantity]
+    let editorBuilder: (Editor.Model) -> Editor
+    
+    init(samples: [SampleQuantity], @ViewBuilder editorView: @escaping (Editor.Model) -> Editor) {
+        self.samples = samples
+        self.editorBuilder = editorView
+    }
     
     var body: some View {
         NavigationView {
             List(selection: $selected) {
                 ForEach(samples, id: \.self) { sample in
                     NavigationLink {
-                        MeasurementSampleView(sample: sample, editorToggle: $viewModel.isShowingEditor)
+                        MeasurementSampleView(sample: sample, editorToggle: $isShowingEditor)
                     } label: {
                         Text(sample.date, format: Date.FormatStyle.init(date: .numeric, time: .shortened))
                         Text(sample.measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
@@ -20,16 +28,11 @@ struct HistoricalProgressList: View {
                 .onDelete(perform: didSwipeDelete(rowsAt:))
             }
             .navigationTitle("Progress")
-            .fullScreenCover(isPresented: $viewModel.isShowingEditor) {
+            
+            .fullScreenCover(isPresented: $isShowingEditor) {
                 NavigationView {
-                    if let selected {
-                        SampleEditorView(update: selected, onSave: didClickSave(edited:), onCancel: dismissEditor)
-                            .navigationTitle("Edit Sample")
-                    } else {
-                        SampleEditorView(.bodyMass, onSave: didClickSave(new:), onCancel: dismissEditor)
-                            .navigationTitle("New Sample")
-                    }
-                    
+                    editorBuilder(selected ?? .template(for: .bodyMass))
+                        .navigationTitle("\(selected == nil ? "New" : "Edit") Sample")
                 }
             }
             .toolbar {
@@ -41,33 +44,22 @@ struct HistoricalProgressList: View {
     }
     
     // MARK: - User Actions
-    private func didClickSave(new quantity: SampleQuantity) {
-        viewModel.create(sample: quantity)
-        dismissEditor()
-    }
-    
-    private func didClickSave(edited quantity: SampleQuantity) {
-        viewModel.update(sample: quantity)
-        dismissEditor()
-    }
-    
     private func didSwipeDelete(rowsAt offsets: IndexSet) {
         viewModel.delete(samples, at: offsets)
     }
-    
+
     private func presentEditor() {
-        self.viewModel.isShowingEditor = true
-    }
-    
-    private func dismissEditor() {
-        self.viewModel.isShowingEditor = false
+        isShowingEditor = true
     }
 }
 
 #if DEBUG
 struct HistoricalProgressList_Previews: PreviewProvider {
     static var previews: some View {
-        HistoricalProgressList(samples: PreviewData.quantitySamples(for: .bodyMass, count: 10, in: 95.0...125.0))
+        HistoricalProgressList(
+            samples: PreviewData.quantitySamples(for: .bodyMass, count: 10, in: 95.0...125.0),
+            editorView: SampleQuantityForm.init(_:)
+        )
     }
 }
 #endif
