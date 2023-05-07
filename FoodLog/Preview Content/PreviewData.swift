@@ -35,7 +35,6 @@ enum PreviewData {
     }
     
     enum Food {
-//        init(id: UUID = .init(), name: String, brand: Brand? = nil, nutritionInfo: NutritionInfo? = nil, tags: [String] = []) {
         static let cheese = FoodItem(
             name: "Cheese",
             brand: Brand(name: "Kerry Gold"),

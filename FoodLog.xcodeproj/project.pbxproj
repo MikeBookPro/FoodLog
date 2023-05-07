@@ -12,6 +12,8 @@
 		BE5825F229E5F845006F75E0 /* SampleQuantityForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */; };
 		BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */; };
 		BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BE29E73852008DC255 /* Dimensioned.swift */; };
+		BE76C8E52A073433002E1F8C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE76C8E42A073433002E1F8C /* String+Extensions.swift */; };
+		BE76C8E72A07344D002E1F8C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE76C8E62A07344D002E1F8C /* Date+Extensions.swift */; };
 		BE7756C229FF26FB00E7C985 /* SampleQuantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756C129FF26FB00E7C985 /* SampleQuantity.swift */; };
 		BE7756C429FF273900E7C985 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756C329FF273900E7C985 /* Quantity.swift */; };
 		BE7756C629FF277F00E7C985 /* DietaryQuantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756C529FF277F00E7C985 /* DietaryQuantity.swift */; };
@@ -51,6 +53,8 @@
 		BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleQuantityForm.swift; sourceTree = "<group>"; };
 		BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dimension+Extensions.swift"; sourceTree = "<group>"; };
 		BE7413BE29E73852008DC255 /* Dimensioned.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensioned.swift; sourceTree = "<group>"; };
+		BE76C8E42A073433002E1F8C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		BE76C8E62A07344D002E1F8C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		BE7756C129FF26FB00E7C985 /* SampleQuantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleQuantity.swift; sourceTree = "<group>"; };
 		BE7756C329FF273900E7C985 /* Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		BE7756C529FF277F00E7C985 /* DietaryQuantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryQuantity.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 			children = (
 				BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */,
 				BEB6939F2A04875F00F9620B /* UUID+Extensions.swift */,
+				BE76C8E42A073433002E1F8C /* String+Extensions.swift */,
+				BE76C8E62A07344D002E1F8C /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				BED7084729FED01E00ADFBBD /* PersistentStore.swift in Sources */,
 				BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */,
 				BED10BC729E7405700A75BA1 /* Adapter.swift in Sources */,
+				BE76C8E52A073433002E1F8C /* String+Extensions.swift in Sources */,
 				BE7BD2782A0474E3007E49B9 /* RootTabViews.swift in Sources */,
 				BED7084329FC752400ADFBBD /* ManagedObjectAdapter.swift in Sources */,
 				BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */,
@@ -391,6 +398,7 @@
 				BE7756C229FF26FB00E7C985 /* SampleQuantity.swift in Sources */,
 				BED7083D29FC6FD500ADFBBD /* SampleAdapter.swift in Sources */,
 				BEB6939C2A04828000F9620B /* FoodReferenceList.swift in Sources */,
+				BE76C8E72A07344D002E1F8C /* Date+Extensions.swift in Sources */,
 				BE5825F229E5F845006F75E0 /* SampleQuantityForm.swift in Sources */,
 				BEB6939E2A0483A300F9620B /* FoodItem.swift in Sources */,
 				BEEC9D382A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift in Sources */,

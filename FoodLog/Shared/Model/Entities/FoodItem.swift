@@ -1,6 +1,6 @@
 import Foundation
 
-struct FoodItem {
+struct FoodItem: Hashable, Equatable {
     let id: UUID?
     let name: String
     let brand: Brand?
@@ -14,6 +14,16 @@ struct FoodItem {
         self.nutritionInfo = nutritionInfo
         self.tags = tags
     }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(name)
+        hasher.combine(tags)
+    }
+    
+    static func == (lhs: FoodItem, rhs: FoodItem) -> Bool {
+        lhs.id == rhs.id
+    }
 }
 
 
@@ -22,17 +32,26 @@ struct FoodEventHistory {
     let consumptionEvents: [FoodConsumptionEvent]
 }
 
-struct FoodConsumptionEvent: Identifiable {
+struct FoodConsumptionEvent: Identifiable, Hashable, Equatable {
     let foodItem: FoodItem
-    let sample: Quantity
+    let quantity: Quantity
     let date: Date
     
-    var id: UUID { self.sample.id ?? .init() }
+    var id: UUID { self.quantity.id ?? .init() }
     
     init(food item: FoodItem, sample: Quantity? = nil, date: Date = .now) {
         self.foodItem = item
-        self.sample = sample ?? .init(identifier: .food, measurement: .init(value: .zero, unit: UnitMass.grams))
+        self.quantity = sample ?? .init(identifier: .food, measurement: .init(value: .zero, unit: UnitMass.grams))
         self.date = date
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(foodItem)
+        hasher.combine(date)
+    }
+    
+    static func == (lhs: FoodConsumptionEvent, rhs: FoodConsumptionEvent) -> Bool {
+        lhs.id == rhs.id
     }
 }
 
