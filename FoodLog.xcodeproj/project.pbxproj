@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE2B4AC72A094C0100434D59 /* FoodEventHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */; };
+		BE2B4AC92A094C1700434D59 /* FoodConsumptionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */; };
 		BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */; };
 		BE4FF1A92A0707DE00D0E21A /* EventRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4FF1A82A0707DE00D0E21A /* EventRepresentable.swift */; };
 		BE5825F229E5F845006F75E0 /* SampleQuantityForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventHistory.swift; sourceTree = "<group>"; };
+		BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumptionEvent.swift; sourceTree = "<group>"; };
 		BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalProgressList.swift; sourceTree = "<group>"; };
 		BE4FF1A82A0707DE00D0E21A /* EventRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepresentable.swift; sourceTree = "<group>"; };
 		BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleQuantityForm.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				BE7756C529FF277F00E7C985 /* DietaryQuantity.swift */,
 				BE7756C729FF27B700E7C985 /* NutritionInfo.swift */,
 				BEB6939D2A0483A300F9620B /* FoodItem.swift */,
+				BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */,
+				BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */,
 				BEB693A12A0488EF00F9620B /* Brand.swift */,
 				BED7083E29FC706D00ADFBBD /* ManagedObjectExtensions */,
 				BED10BC829E7409900A75BA1 /* Adapters */,
@@ -379,6 +385,7 @@
 				BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */,
 				BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */,
 				BE7756C829FF27B700E7C985 /* NutritionInfo.swift in Sources */,
+				BE2B4AC72A094C0100434D59 /* FoodEventHistory.swift in Sources */,
 				BEEC9D362A056CD3000C1CC1 /* EditorRow.swift in Sources */,
 				BE7756C429FF273900E7C985 /* Quantity.swift in Sources */,
 				BED7084729FED01E00ADFBBD /* PersistentStore.swift in Sources */,
@@ -390,6 +397,7 @@
 				BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */,
 				BE92CBA029E4D07D006A158E /* QuantityIdentifier.swift in Sources */,
 				BE4FF1A92A0707DE00D0E21A /* EventRepresentable.swift in Sources */,
+				BE2B4AC92A094C1700434D59 /* FoodConsumptionEvent.swift in Sources */,
 				BEDD5CE12A05DE8800C2820B /* DataManager.swift in Sources */,
 				BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */,
 				BE7756CB29FF28C200E7C985 /* HistoricalProgressListViewModel.swift in Sources */,
