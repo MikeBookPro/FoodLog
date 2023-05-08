@@ -8,6 +8,9 @@ protocol EditorViewRepresentable: View {
     func update(_ model: Model)
     
     init(_ model: Model)
+    
+    func didClickSave()
+    func didClickCancel()
 }
 
 extension EditorViewRepresentable where Model: SampleQuantityRepresentable {
@@ -19,10 +22,28 @@ extension EditorViewRepresentable where Model: SampleQuantityRepresentable {
         }
     }
     
-    func update(_ model: SampleQuantity) {
+    func update(_ model: Model) {
         Task {
 //            await PersistentDataStore.shared.update(sampleQuantity: model)
             await DataManager.shared.upsert(sample: model)
         }
     }
+}
+
+extension EditorViewRepresentable where Model == FoodItem {
+    
+    func create(_ model: Model) {
+        print("TODO: implement")
+//        Task {
+//            await DataManager.shared.create(sample: model)
+//        }
+    }
+    
+    func update(_ model: Model) {
+        print("TODO: implement")
+//        Task {
+//            await DataManager.shared.upsert(sample: model)
+//        }
+    }
+    
 }

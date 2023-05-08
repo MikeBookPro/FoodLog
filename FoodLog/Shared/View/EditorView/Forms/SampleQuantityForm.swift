@@ -34,34 +34,39 @@ struct SampleQuantityForm: EditorViewRepresentable {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(role: .cancel) {
-                    dismiss()
-                } label: {
-                    Text("Cancel")
+                Button(role: .cancel, action: didClickCancel) {
+                    Label("Cancel", systemImage: "xmark")
+                        .foregroundStyle(Color.red)
                 }
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    let measurement = Measurement(value: value, unit: IdentifierToDimensionAdapter.value(mappedTo: identifier))
-                    let model = SampleQuantity(quantity: .init(identifier: identifier, measurement: measurement, id: existingID), date: date)
-                    if existingID == nil {
-                        self.create(model)
-                    } else {
-                        self.update(model)
-                    }
-                    dismiss()
-                } label: {
-                    Text("Save")
+                Button(role: .destructive, action: didClickSave) {
+                    Label("Save", systemImage: "checkmark")
                 }
             }
         }
     }
     
+    func didClickSave() {
+        let measurement = Measurement(value: value, unit: IdentifierToDimensionAdapter.value(mappedTo: identifier))
+        let model = SampleQuantity(quantity: .init(identifier: identifier, measurement: measurement, id: existingID), date: date)
+        if existingID == nil {
+            self.create(model)
+        } else {
+            self.update(model)
+        }
+        dismiss()
+    }
+    
+    func didClickCancel() {
+        dismiss()
+    }
+    
 }
 
 #if DEBUG
-struct SampleEditorView_Previews: PreviewProvider {
+struct SampleQuantityForm_Previews: PreviewProvider {
     static let sample = PreviewData.quantitySamples(for: .bodyMass, count: 1, in: 117.0...125.0).first!
     
     static var previews: some View {

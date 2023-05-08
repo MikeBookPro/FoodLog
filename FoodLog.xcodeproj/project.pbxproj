@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BE2B4AC72A094C0100434D59 /* FoodEventHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */; };
 		BE2B4AC92A094C1700434D59 /* FoodConsumptionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */; };
+		BE2B4ACB2A094F4A00434D59 /* FoodItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */; };
 		BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */; };
 		BE4FF1A92A0707DE00D0E21A /* EventRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4FF1A82A0707DE00D0E21A /* EventRepresentable.swift */; };
 		BE5825F229E5F845006F75E0 /* SampleQuantityForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventHistory.swift; sourceTree = "<group>"; };
 		BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumptionEvent.swift; sourceTree = "<group>"; };
+		BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemForm.swift; sourceTree = "<group>"; };
 		BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalProgressList.swift; sourceTree = "<group>"; };
 		BE4FF1A82A0707DE00D0E21A /* EventRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepresentable.swift; sourceTree = "<group>"; };
 		BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleQuantityForm.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */,
+				BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 			files = (
 				BE7BD2762A0464F1007E49B9 /* PreviewData.swift in Sources */,
 				BEB693A22A0488EF00F9620B /* Brand.swift in Sources */,
+				BE2B4ACB2A094F4A00434D59 /* FoodItemForm.swift in Sources */,
 				BEB693992A047E7200F9620B /* DietaryHistoryList.swift in Sources */,
 				BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */,
 				BED10BCA29E740B000A75BA1 /* IdentifierAdapter.swift in Sources */,
