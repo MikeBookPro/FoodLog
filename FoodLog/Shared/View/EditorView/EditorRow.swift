@@ -37,12 +37,13 @@ struct EditorRow_Previews: PreviewProvider {
     
     private struct Shim: View {
         private struct ViewModel {
-            enum Field: Hashable { case date, firstName, details, amount }
+            enum Field: Hashable { case date, firstName, details, amount, measure }
             
             var date: Date = .now
             var givenName: String = ""
             var details: String = ""
             var amount: Double = 15.5
+            var measure: Measurement<UnitMass> = .init(value: 16.5, unit: .grams)
         }
         @State private var vm = ViewModel()
         @FocusState private var activeField: ViewModel.Field?
@@ -73,6 +74,14 @@ struct EditorRow_Previews: PreviewProvider {
                         TextField("Enter value", value: $vm.amount, format: .number.precision(.fractionLength(0...2)))
                             .focused($activeField, equals: .amount)
                             .editorRow(decimalStyle: [.decimalInput])
+                    }
+                    
+                    EditorRow("Measurement") {
+                        TextField("Enter value", value: $vm.measure.value, format: .number.precision(.fractionLength(0...2)))
+                            .focused($activeField, equals: .measure)
+                            .editorRow(decimalStyle: [.decimalInput])
+                        
+                        Text(vm.measure.unit.symbol)
                     }
                     
                 }
