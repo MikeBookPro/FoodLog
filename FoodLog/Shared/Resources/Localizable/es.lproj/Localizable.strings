@@ -1,0 +1,60 @@
+/* 
+  Localizable.strings
+  FoodLog
+
+  Created by Michael Thornton on 5/9/23.
+  
+*/
+"NutritionFactsHeader_title" = "Datos de Nutrición";
+"NutritionFactsHeader_servingSize" = "Tamaño por ración";
+"NutritionFactsHeader_servingsPerContainer" = "Raciones por envase";
+"NutritionFactsHeader_amountPerServing" = "Cantidad por ración";
+"NutritionFactsHeader_percentDailyValue" = "% Valor Diario";
+"NutritionFactsHeader_measure" = "Medida";
+
+// MARK: - Quantity Identifier Label
+//"QuantityIdentifierLabel_height" = "";
+//"QuantityIdentifierLabel_bodyMass" = "";
+//"QuantityIdentifierLabel_leanBodyMass" = "";
+//"QuantityIdentifierLabel_bodyFatPercentage" = "";
+//"QuantityIdentifierLabel_waistCircumference" = "";
+//"QuantityIdentifierLabel_bloodGlucose" = "";
+"QuantityIdentifierLabel_servingSize" = "Tamaño por ración";
+"QuantityIdentifierLabel_energyConsumed" = "Calorías";
+"QuantityIdentifierLabel_fatTotal" = "Grasa Total";
+"QuantityIdentifierLabel_fatSaturated" = "Grasa Saturada";
+"QuantityIdentifierLabel_fatPolyunsaturated" = "Grasa Poliinsaturada";
+"QuantityIdentifierLabel_fatMonounsaturated" = "Grasa Monoinsaturada";
+"QuantityIdentifierLabel_cholesterol" = "Colesterol";
+"QuantityIdentifierLabel_sodium" = "Sodio";
+"QuantityIdentifierLabel_carbohydrates" = "Carbohidrato Total";
+"QuantityIdentifierLabel_fiber" = "Fibra Diétetica";
+"QuantityIdentifierLabel_sugar" = "Total Azúcares";
+"QuantityIdentifierLabel_protein" = "Proteínas";
+"QuantityIdentifierLabel_biotin" = "Biotina";
+"QuantityIdentifierLabel_calcium" = "Calcio";
+"QuantityIdentifierLabel_chloride" = "Cloro";
+"QuantityIdentifierLabel_chromium" = "Cromo";
+"QuantityIdentifierLabel_copper" = "Cobre";
+"QuantityIdentifierLabel_folate" = "Folato";
+"QuantityIdentifierLabel_iodine" = "Yodo";
+"QuantityIdentifierLabel_iron" = "Hierro";
+"QuantityIdentifierLabel_magnesium" = "Magnesio";
+"QuantityIdentifierLabel_manganese" = "Manganesio";
+"QuantityIdentifierLabel_molybdenum" = "Molibdeno";
+"QuantityIdentifierLabel_niacin" = "Niacina";
+"QuantityIdentifierLabel_pantothenicAcid" = "Ácido pantoténico";
+"QuantityIdentifierLabel_phosphorus" = "Fósforo";
+"QuantityIdentifierLabel_potassium" = "Potasio";
+"QuantityIdentifierLabel_riboflavin" = "Riboflavina";
+"QuantityIdentifierLabel_selenium" = "Selenio";
+"QuantityIdentifierLabel_thiamin" = "Tiamina";
+"QuantityIdentifierLabel_vitaminA" = "Vitamina A";
+"QuantityIdentifierLabel_vitaminB12" = "Vitamina B12";
+"QuantityIdentifierLabel_vitaminB6" = "Vitamina B6";
+"QuantityIdentifierLabel_vitaminC" = "Vitamina C";
+"QuantityIdentifierLabel_vitaminD" = "Vitamina D";
+"QuantityIdentifierLabel_vitaminE" = "Vitamina E";
+"QuantityIdentifierLabel_vitaminK" = "Vitamina K";
+"QuantityIdentifierLabel_zinc" = "Zinc";
+"QuantityIdentifierLabel_food" = "";

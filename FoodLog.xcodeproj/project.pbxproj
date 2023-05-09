@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BE0849022A0AB8E900A1251B /* ToolbarItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0849012A0AB8E900A1251B /* ToolbarItem+Extensions.swift */; };
 		BE0849052A0AC13500A1251B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0849042A0AC13500A1251B /* View+Extensions.swift */; };
+		BE08490A2A0AD78400A1251B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE0849092A0AD78400A1251B /* Localizable.strings */; };
+		BE0849102A0AD83800A1251B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE08490E2A0AD83800A1251B /* Localizable.strings */; };
 		BE2B4AC72A094C0100434D59 /* FoodEventHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */; };
 		BE2B4AC92A094C1700434D59 /* FoodConsumptionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */; };
 		BE2B4ACB2A094F4A00434D59 /* FoodItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */; };
@@ -54,6 +56,8 @@
 /* Begin PBXFileReference section */
 		BE0849012A0AB8E900A1251B /* ToolbarItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolbarItem+Extensions.swift"; sourceTree = "<group>"; };
 		BE0849042A0AC13500A1251B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		BE0849092A0AD78400A1251B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		BE08490F2A0AD83800A1251B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
 		BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventHistory.swift; sourceTree = "<group>"; };
 		BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumptionEvent.swift; sourceTree = "<group>"; };
 		BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemForm.swift; sourceTree = "<group>"; };
@@ -116,6 +120,31 @@
 				BE0849042A0AC13500A1251B /* View+Extensions.swift */,
 			);
 			path = "View+Extensions";
+			sourceTree = "<group>";
+		};
+		BE0849062A0AD74E00A1251B /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				BE08490D2A0AD81B00A1251B /* es.lproj */,
+				BE08490B2A0AD79C00A1251B /* en.lproj */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		BE08490B2A0AD79C00A1251B /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				BE0849092A0AD78400A1251B /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		BE08490D2A0AD81B00A1251B /* es.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				BE08490E2A0AD83800A1251B /* Localizable.strings */,
+			);
+			path = es.lproj;
 			sourceTree = "<group>";
 		};
 		BE7413B829E6FE53008DC255 /* Entities */ = {
@@ -276,6 +305,7 @@
 		BED7083029FC22B300ADFBBD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BE0849062A0AD74E00A1251B /* Localizable */,
 				BE92CB8E29E48047006A158E /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -361,6 +391,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = BE92CB7929E48046006A158E;
 			productRefGroup = BE92CB8329E48046006A158E /* Products */;
@@ -378,6 +409,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE92CB9329E48047006A158E /* Preview Assets.xcassets in Resources */,
+				BE0849102A0AD83800A1251B /* Localizable.strings in Resources */,
+				BE08490A2A0AD78400A1251B /* Localizable.strings in Resources */,
 				BE92CB8F29E48047006A158E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +466,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BE08490E2A0AD83800A1251B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE08490F2A0AD83800A1251B /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BE92CB9429E48047006A158E /* Debug */ = {

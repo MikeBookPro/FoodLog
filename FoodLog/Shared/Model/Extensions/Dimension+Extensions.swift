@@ -15,6 +15,18 @@ class UnitCount: Dimension {
     }
 }
 
+// MARK: - Pharmacology
+
+/// Returns a HealthKit unit that measures the amount of a biologically active substance in international units (IU).
+class UnitPharmacology: Dimension {
+    static let internationalUnit = UnitPharmacology(symbol: "IU", converter: UnitConverterLinear(coefficient: 1.0))
+    
+//    static let baseUnit = UnitCount.integer
+    
+    override class func baseUnit() -> Self {
+        UnitPharmacology.internationalUnit as! Self
+    }
+}
 
 // MARK: - Unknown
 

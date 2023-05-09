@@ -1,6 +1,6 @@
 import Foundation
 
-public enum QuantityIdentifier: String, Identifiable, CaseIterable {
+public enum QuantityIdentifier: String, Identifiable, CaseIterable, Hashable {
     case unknown
     case height = "HKQuantityTypeIdentifierHeight"
     case bodyMass = "HKQuantityTypeIdentifierBodyMass"
@@ -80,6 +80,10 @@ public enum QuantityIdentifier: String, Identifiable, CaseIterable {
             identifier = valid
         }
         self = identifier
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.rawValue)
     }
 }
 

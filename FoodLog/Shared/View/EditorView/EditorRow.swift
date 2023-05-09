@@ -1,25 +1,31 @@
 import SwiftUI
 
-struct EditorRow<Label: View, Content: View>: View {
+struct EditorRow<Value, Label: View, Content: View>: View {
+    @Binding var value: Value
     let labelView: Label
-    let contentView: Content
+    let viewBuilder: (Binding<Value>) -> Content
     
-    init(_ text: some StringProtocol, @ViewBuilder content viewBuilder: () -> Content) where Label == Text {
-        self.init(label: Text(text), content: viewBuilder)
+    init(_ textKey: SwiftUI.LocalizedStringKey, editing value: Binding<Value>, @ViewBuilder content viewBuilder: @escaping (Binding<Value>) -> Content) where Label == Text {
+        self.init(label: Text(textKey), editing: value, content: viewBuilder)
     }
     
-    init(@ViewBuilder label buildLabel: () -> Label, @ViewBuilder content viewBuilder: () -> Content) {
-        self.init(label: buildLabel(), content: viewBuilder)
+    init(_ text: some StringProtocol, editing value: Binding<Value>, @ViewBuilder content viewBuilder: @escaping (Binding<Value>) -> Content) where Label == Text {
+        self.init(label: Text(text), editing: value, content: viewBuilder)
     }
     
-    init(label: Label, @ViewBuilder content viewBuilder: () -> Content) {
+    init(editing value: Binding<Value>, @ViewBuilder label buildLabel: () -> Label, @ViewBuilder content viewBuilder: @escaping (Binding<Value>) -> Content) {
+        self.init(label: buildLabel(), editing: value, content: viewBuilder)
+    }
+    
+    init(label: Label, editing value: Binding<Value>, @ViewBuilder content viewBuilder: @escaping (Binding<Value>) -> Content) {
+        self._value = value
         self.labelView = label
-        self.contentView = viewBuilder()
+        self.viewBuilder = viewBuilder
     }
     
     var body: some View {
         LabeledContent {
-            contentView
+            viewBuilder($value)
                 .multilineTextAlignment(.trailing)
                 .font(.body)
                 .padding(.vertical, 8)
@@ -51,33 +57,33 @@ struct EditorRow_Previews: PreviewProvider {
         var body: some View {
             NavigationView {
                 Form {
-                    EditorRow("Date") {
-                        DatePicker("", selection: $vm.date, in: (.distantPast)...(.now), displayedComponents: [.hourAndMinute, .date])
+                    EditorRow("Date", editing: $vm.date) {
+                        DatePicker("", selection: $0, in: (.distantPast)...(.now), displayedComponents: [.hourAndMinute, .date])
                             .focused($activeField, equals: .date)
                     }
                     
-                    EditorRow("Details") {
-                        TextField(text: $vm.details, prompt: Text("Enter your some info"), label: { EmptyView() })
+                    EditorRow("Details", editing: $vm.details) {
+                        TextField(text: $0, prompt: Text("Enter your some info"), label: { EmptyView() })
                             .focused($activeField, equals: .details)
                             .autocorrectionDisabled(true)
                             .editorRow(textStyle: [.preferContinue])
                     }
                     
-                    EditorRow("First name") {
-                        TextField(text: $vm.givenName, prompt: Text("Enter your first name"), label: { EmptyView() })
+                    EditorRow("First name", editing: $vm.givenName) {
+                        TextField(text: $0, prompt: Text("Enter your first name"), label: { EmptyView() })
                             .focused($activeField, equals: .firstName)
                             .textContentType(.givenName)
                             .editorRow(textStyle: [.standard])
                     }
                     
-                    EditorRow("Amount") {
-                        TextField("Enter value", value: $vm.amount, format: .number.precision(.fractionLength(0...2)))
+                    EditorRow("Amount", editing: $vm.amount) {
+                        TextField("Enter value", value: $0, format: .number.precision(.fractionLength(0...2)))
                             .focused($activeField, equals: .amount)
                             .editorRow(decimalStyle: [.decimalInput])
                     }
                     
-                    EditorRow("Measurement") {
-                        TextField("Enter value", value: $vm.measure.value, format: .number.precision(.fractionLength(0...2)))
+                    EditorRow("Measurement", editing: $vm.measure.value) {
+                        TextField("Enter value", value: $0, format: .number.precision(.fractionLength(0...2)))
                             .focused($activeField, equals: .measure)
                             .editorRow(decimalStyle: [.decimalInput])
                         

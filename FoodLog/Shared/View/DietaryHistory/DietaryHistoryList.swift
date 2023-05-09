@@ -7,7 +7,7 @@ struct DietaryHistoryList: View {
 //    private let editorBuilder: (Editor.Model) -> Editor
 //    init(consumptionEvents: [FoodConsumptionEvent],  @ViewBuilder editorView: @escaping ((Editor.Model) -> Editor)? = nil) {
     init(consumptionEvents: [FoodConsumptionEvent]) {
-        self._viewModel = .init(initialValue: .init(consumptionEvents: consumptionEvents))
+        self._viewModel = .init(initialValue: ViewModel(consumptionEvents: consumptionEvents))
 //        self.editorBuilder = editorView
     }
     
