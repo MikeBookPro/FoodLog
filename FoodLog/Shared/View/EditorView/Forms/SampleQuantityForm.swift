@@ -33,8 +33,8 @@ struct SampleQuantityForm: EditorViewRepresentable {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem.cancel(id: "FoodItemForm.toolbar.cancel", action: didClickCancel)
-            ToolbarItem.save(id: "FoodItemForm.toolbar.save", action: didClickSave)
+            ToolbarItem.cancel(id: "\(String(describing: Self.self)).toolbar.cancel", action: didClickCancel)
+            ToolbarItem.save(id: "\(String(describing: Self.self)).toolbar.save", action: didClickSave)
         }
     }
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE0849022A0AB8E900A1251B /* ToolbarItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0849012A0AB8E900A1251B /* ToolbarItem+Extensions.swift */; };
+		BE0849052A0AC13500A1251B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0849042A0AC13500A1251B /* View+Extensions.swift */; };
 		BE2B4AC72A094C0100434D59 /* FoodEventHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */; };
 		BE2B4AC92A094C1700434D59 /* FoodConsumptionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */; };
 		BE2B4ACB2A094F4A00434D59 /* FoodItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		BE0849012A0AB8E900A1251B /* ToolbarItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolbarItem+Extensions.swift"; sourceTree = "<group>"; };
+		BE0849042A0AC13500A1251B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventHistory.swift; sourceTree = "<group>"; };
 		BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumptionEvent.swift; sourceTree = "<group>"; };
 		BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemForm.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				BE0849012A0AB8E900A1251B /* ToolbarItem+Extensions.swift */,
+				BE0849042A0AC13500A1251B /* View+Extensions.swift */,
 			);
 			path = "View+Extensions";
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				BEEC9D382A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift in Sources */,
 				BE7756C629FF277F00E7C985 /* DietaryQuantity.swift in Sources */,
 				BED7084129FC70E100ADFBBD /* ImplementationWrapper.swift in Sources */,
+				BE0849052A0AC13500A1251B /* View+Extensions.swift in Sources */,
 				BE92CB8829E48046006A158E /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

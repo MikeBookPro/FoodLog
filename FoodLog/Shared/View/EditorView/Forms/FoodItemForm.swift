@@ -1,6 +1,6 @@
 import SwiftUI
-//struct FoodItemForm: EditorViewRepresentable {
-struct FoodItemForm {
+
+struct FoodItemForm: EditorViewRepresentable {
     typealias Model = FoodItem
     
     @Environment(\.dismiss) private var dismiss
@@ -16,8 +16,8 @@ struct FoodItemForm {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem.cancel(id: "FoodItemForm.toolbar.cancel", action: didClickCancel)
-            ToolbarItem.save(id: "FoodItemForm.toolbar.save", action: didClickSave)
+            ToolbarItem.cancel(id: "\(viewName).toolbar.cancel", action: didClickCancel)
+            ToolbarItem.save(id: "\(viewName).toolbar.save", action: didClickSave)
         }
     }
     
@@ -34,13 +34,10 @@ struct FoodItemForm {
 
 // MARK: - View Model
 extension FoodItemForm {
-//    private struct ViewModel<Toolbar> where Toolbar: ToolbarContent {
     private struct ViewModel {
         enum TapTarget { case cancel, save }
         
         let foodItem: FoodItem
-        
-        // func toolbar<Content>(@ToolbarContentBuilder content: () -> Content) -> some View where Content : ToolbarContent
         
         func user(didTap target: TapTarget) {
             switch target {
@@ -60,7 +57,7 @@ struct FoodItemForm_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-//            FoodItemForm(sample)
+            FoodItemForm(PreviewData.Food.mayonnaise)
         }
         
     }

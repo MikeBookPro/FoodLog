@@ -5,7 +5,7 @@ extension ToolbarItem where Content == Button<Label<Text, Image>>, ID == String 
         ToolbarItem(id: id, placement: placement) {
             Button(role: .cancel, action: action) {
                 Label("Cancel", systemImage: "xmark")
-                    .foregroundStyle(Color.red) as! Label<Text, Image>
+//                    .foregroundStyle(Color.red) as! Label<Text, Image>
             }
         }
     }
