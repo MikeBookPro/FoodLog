@@ -10,7 +10,7 @@
 		BE2B4AC72A094C0100434D59 /* FoodEventHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */; };
 		BE2B4AC92A094C1700434D59 /* FoodConsumptionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */; };
 		BE2B4ACB2A094F4A00434D59 /* FoodItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */; };
-		BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */; };
+		BE435CBC29E4E2A000A8D16E /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE435CBB29E4E2A000A8D16E /* SummaryView.swift */; };
 		BE4FF1A92A0707DE00D0E21A /* EventRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4FF1A82A0707DE00D0E21A /* EventRepresentable.swift */; };
 		BE5825F229E5F845006F75E0 /* SampleQuantityForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */; };
 		BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */; };
@@ -21,7 +21,6 @@
 		BE7756C429FF273900E7C985 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756C329FF273900E7C985 /* Quantity.swift */; };
 		BE7756C629FF277F00E7C985 /* DietaryQuantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756C529FF277F00E7C985 /* DietaryQuantity.swift */; };
 		BE7756C829FF27B700E7C985 /* NutritionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756C729FF27B700E7C985 /* NutritionInfo.swift */; };
-		BE7756CB29FF28C200E7C985 /* HistoricalProgressListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7756CA29FF28C200E7C985 /* HistoricalProgressListViewModel.swift */; };
 		BE7BD2762A0464F1007E49B9 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7BD2752A0464F1007E49B9 /* PreviewData.swift */; };
 		BE7BD2782A0474E3007E49B9 /* RootTabViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7BD2772A0474E3007E49B9 /* RootTabViews.swift */; };
 		BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8529E48046006A158E /* FoodLogApp.swift */; };
@@ -54,7 +53,7 @@
 		BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventHistory.swift; sourceTree = "<group>"; };
 		BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumptionEvent.swift; sourceTree = "<group>"; };
 		BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemForm.swift; sourceTree = "<group>"; };
-		BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalProgressList.swift; sourceTree = "<group>"; };
+		BE435CBB29E4E2A000A8D16E /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		BE4FF1A82A0707DE00D0E21A /* EventRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepresentable.swift; sourceTree = "<group>"; };
 		BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleQuantityForm.swift; sourceTree = "<group>"; };
 		BE7413BA29E70DED008DC255 /* Dimension+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dimension+Extensions.swift"; sourceTree = "<group>"; };
@@ -65,7 +64,6 @@
 		BE7756C329FF273900E7C985 /* Quantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		BE7756C529FF277F00E7C985 /* DietaryQuantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryQuantity.swift; sourceTree = "<group>"; };
 		BE7756C729FF27B700E7C985 /* NutritionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionInfo.swift; sourceTree = "<group>"; };
-		BE7756CA29FF28C200E7C985 /* HistoricalProgressListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalProgressListViewModel.swift; sourceTree = "<group>"; };
 		BE7BD2752A0464F1007E49B9 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		BE7BD2772A0474E3007E49B9 /* RootTabViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabViews.swift; sourceTree = "<group>"; };
 		BE92CB8229E48046006A158E /* FoodLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,13 +143,12 @@
 			path = PropertyWrappers;
 			sourceTree = "<group>";
 		};
-		BE7756C929FF28AF00E7C985 /* HistoricalProgress */ = {
+		BE7756C929FF28AF00E7C985 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
-				BE435CBB29E4E2A000A8D16E /* HistoricalProgressList.swift */,
-				BE7756CA29FF28C200E7C985 /* HistoricalProgressListViewModel.swift */,
+				BE435CBB29E4E2A000A8D16E /* SummaryView.swift */,
 			);
-			path = HistoricalProgress;
+			path = Summary;
 			sourceTree = "<group>";
 		};
 		BE7756CC29FF2B9000E7C985 /* Persistence */ = {
@@ -244,7 +241,7 @@
 				BEEC9D342A056C60000C1CC1 /* EditorView */,
 				BEB6939A2A04821A00F9620B /* FoodReference */,
 				BEB693972A047E2F00F9620B /* DietaryHistory */,
-				BE7756C929FF28AF00E7C985 /* HistoricalProgress */,
+				BE7756C929FF28AF00E7C985 /* Summary */,
 				BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */,
 				BE7413BC29E7381A008DC255 /* PropertyWrappers */,
 			);
@@ -403,8 +400,7 @@
 				BE4FF1A92A0707DE00D0E21A /* EventRepresentable.swift in Sources */,
 				BE2B4AC92A094C1700434D59 /* FoodConsumptionEvent.swift in Sources */,
 				BEDD5CE12A05DE8800C2820B /* DataManager.swift in Sources */,
-				BE435CBC29E4E2A000A8D16E /* HistoricalProgressList.swift in Sources */,
-				BE7756CB29FF28C200E7C985 /* HistoricalProgressListViewModel.swift in Sources */,
+				BE435CBC29E4E2A000A8D16E /* SummaryView.swift in Sources */,
 				BEB693A02A04875F00F9620B /* UUID+Extensions.swift in Sources */,
 				BEFCAD6629E8C7C2000E903F /* MeasurementSampleView.swift in Sources */,
 				BE7756C229FF26FB00E7C985 /* SampleQuantity.swift in Sources */,

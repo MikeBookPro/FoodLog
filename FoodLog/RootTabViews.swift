@@ -22,7 +22,7 @@ struct RootTabViews: View {
                 }
                 .tag(0)
             
-            HistoricalProgressList(
+            SummaryView(
                 samples:  Self.adapt(quantity: samples),
                 editorView: SampleQuantityForm.init(_:)
             )
