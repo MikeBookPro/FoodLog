@@ -1,24 +1,56 @@
 import SwiftUI
-
-struct FoodItemForm: EditorViewRepresentable {
-    @Environment(\.dismiss) private var dismiss
+//struct FoodItemForm: EditorViewRepresentable {
+struct FoodItemForm {
+    typealias Model = FoodItem
     
-    private let foodItem: FoodItem
+    @Environment(\.dismiss) private var dismiss
+    @State private var viewModel: Self.ViewModel
     
     init(_ model: FoodItem) {
-        self.foodItem = model
+        _viewModel = .init(initialValue: ViewModel(foodItem: model))
     }
     
     var body: some View {
-        Text("TODO")
+        Form {
+            Text("TODO: Implement Editor")
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem.cancel(id: "FoodItemForm.toolbar.cancel", action: didClickCancel)
+            ToolbarItem.save(id: "FoodItemForm.toolbar.save", action: didClickSave)
+        }
     }
     
     func didClickSave() {
-        print("TODO")
+        viewModel.user(didTap: .save)
+        dismiss()
     }
     
     func didClickCancel() {
-        print("TODO")
+        viewModel.user(didTap: .cancel)
+        dismiss()
+    }
+}
+
+// MARK: - View Model
+extension FoodItemForm {
+//    private struct ViewModel<Toolbar> where Toolbar: ToolbarContent {
+    private struct ViewModel {
+        enum TapTarget { case cancel, save }
+        
+        let foodItem: FoodItem
+        
+        // func toolbar<Content>(@ToolbarContentBuilder content: () -> Content) -> some View where Content : ToolbarContent
+        
+        func user(didTap target: TapTarget) {
+            switch target {
+                case .cancel:
+                    print("TODO: Cancel")
+                case .save:
+                    print("TODO: Save")
+            }
+            
+        }
     }
 }
 

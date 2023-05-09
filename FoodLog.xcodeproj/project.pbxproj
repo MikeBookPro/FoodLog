@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE0849022A0AB8E900A1251B /* ToolbarItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0849012A0AB8E900A1251B /* ToolbarItem+Extensions.swift */; };
 		BE2B4AC72A094C0100434D59 /* FoodEventHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */; };
 		BE2B4AC92A094C1700434D59 /* FoodConsumptionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */; };
 		BE2B4ACB2A094F4A00434D59 /* FoodItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE0849012A0AB8E900A1251B /* ToolbarItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolbarItem+Extensions.swift"; sourceTree = "<group>"; };
 		BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventHistory.swift; sourceTree = "<group>"; };
 		BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumptionEvent.swift; sourceTree = "<group>"; };
 		BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemForm.swift; sourceTree = "<group>"; };
@@ -105,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE0849032A0ABE7B00A1251B /* View+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BE0849012A0AB8E900A1251B /* ToolbarItem+Extensions.swift */,
+			);
+			path = "View+Extensions";
+			sourceTree = "<group>";
+		};
 		BE7413B829E6FE53008DC255 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +254,7 @@
 				BE7756C929FF28AF00E7C985 /* Summary */,
 				BEFCAD6529E8C7C2000E903F /* MeasurementSampleView.swift */,
 				BE7413BC29E7381A008DC255 /* PropertyWrappers */,
+				BE0849032A0ABE7B00A1251B /* View+Extensions */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,6 +392,7 @@
 				BEB693992A047E7200F9620B /* DietaryHistoryList.swift in Sources */,
 				BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */,
 				BED10BCA29E740B000A75BA1 /* IdentifierAdapter.swift in Sources */,
+				BE0849022A0AB8E900A1251B /* ToolbarItem+Extensions.swift in Sources */,
 				BED7084529FC760900ADFBBD /* ManagedObjectWrappers.swift in Sources */,
 				BEDD5CDE2A05DD7B00C2820B /* EditorViewRepresentable.swift in Sources */,
 				BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */,

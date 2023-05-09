@@ -33,18 +33,8 @@ struct SampleQuantityForm: EditorViewRepresentable {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(role: .cancel, action: didClickCancel) {
-                    Label("Cancel", systemImage: "xmark")
-                        .foregroundStyle(Color.red)
-                }
-            }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(role: .destructive, action: didClickSave) {
-                    Label("Save", systemImage: "checkmark")
-                }
-            }
+            ToolbarItem.cancel(id: "FoodItemForm.toolbar.cancel", action: didClickCancel)
+            ToolbarItem.save(id: "FoodItemForm.toolbar.save", action: didClickSave)
         }
     }
     
