@@ -4,7 +4,7 @@ import CoreData
 struct RootTabViews: View {
     @Environment(\.managedObjectContext) private var moc
     
-    @State private var selectedTab = 1
+    @State private var selectedTab = 0
     
     @FetchRequest(sortDescriptors: [], animation: .default)
     private var samples: FetchedResults<SampleQuantityMO>
@@ -15,29 +15,29 @@ struct RootTabViews: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            Text("First View")
-                .tabItem {
-                    Image(systemName: "figure.martial.arts")
-                    Text("Activity")
-                }
-                .tag(0)
+//            Text("First View")
+//                .tabItem {
+//                    Image(systemName: "figure.martial.arts")
+//                    Text("Activity")
+//                }
+//                .tag(0)
             
             SummaryView(
                 samples:  Self.adapt(quantity: samples),
                 editorView: SampleQuantityForm.init(_:)
             )
-                .tabItem {
-                    Image(systemName: "chart.line.uptrend.xyaxis")
-                    Text("Progress")
-                }
-                .tag(1)
+            .tabItem {
+                Image(systemName: "chart.line.uptrend.xyaxis")
+                Text("Summary")
+            }
+            .tag(0)
             
             Text("Third View")
                 .tabItem {
                     Image(systemName: "carrot")
                     Text("Nutrition")
                 }
-                .tag(2)
+                .tag(1)
         }
     }
 }
