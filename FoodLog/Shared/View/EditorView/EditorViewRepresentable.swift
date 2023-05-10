@@ -17,29 +17,6 @@ protocol EditorViewRepresentable: View {
     func didClickCancel()
 }
 
-protocol EditableListViewModel {
-    associatedtype Editor: EditorViewRepresentable
-    var rowItems: [Editor.Model] { get }
-    var editorBuilder: (Editor.Model) -> Editor { get }
-    var selected: Editor.Model? { get set }
-    var isShowingEditor: Bool { get set }
-    
-    @ViewBuilder
-    func buildEditorView() -> NavigationView<Editor>
-    
-    init(list rowItems: [Editor.Model], editorView builder: @escaping (Editor.Model) -> Editor)
-
-}
-
-extension EditableListViewModel {
-    
-    func buildEditorView() -> NavigationView<Editor> {
-        return NavigationView {
-            editorBuilder(selected ?? .template(for: .food))
-        }
-    }
-}
-
 extension EditorViewRepresentable where Model: SampleQuantityRepresentable {
     
     func create(_ model: Model) {

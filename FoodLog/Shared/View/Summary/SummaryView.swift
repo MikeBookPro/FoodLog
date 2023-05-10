@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct SummaryView<Editor: EditorViewRepresentable>: View where Editor.Model == SampleQuantity {
-    @State private var viewModel: SummaryView.ViewModel
+    @State private var viewModel: EditorListViewModel<Editor>
+//    @State private var viewModel: SummaryView.ViewModel
     
     init(list rowItems: [SampleQuantity], @ViewBuilder editorView builder: @escaping (Editor.Model) -> Editor) {
         self._viewModel = .init(initialValue: .init(list: rowItems, editorView: builder))
@@ -21,7 +22,7 @@ struct SummaryView<Editor: EditorViewRepresentable>: View where Editor.Model == 
                 }
                 .onDelete(perform: viewModel.didSwipeDelete(rowsAt:))
             }
-            .navigationTitle(viewModel.navigationTitle)
+            .navigationTitle("Summary")
             .sheet(isPresented: $viewModel.isShowingEditor, content: viewModel.buildEditorView)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -38,28 +39,14 @@ struct SummaryView<Editor: EditorViewRepresentable>: View where Editor.Model == 
 }
 
 // MARK: - View Model
-extension SummaryView {
-    private struct ViewModel: EditableListViewModel where Editor.Model == SampleQuantity {
-        let rowItems: [Editor.Model]
-        let editorBuilder: (Editor.Model) -> Editor
-        var selected: Editor.Model? = nil
-        var isShowingEditor: Bool = false
-        
-        let navigationTitle = "Summary"
-        
-        init(list rowItems: [Editor.Model], editorView builder: @escaping (Editor.Model) -> Editor) {
-            self.rowItems = rowItems
-            self.editorBuilder = builder
-        }
-        
-        func didSwipeDelete(rowsAt offsets: IndexSet) {
-            let targetedIDs: [UUID] = offsets.compactMap { rowItems[$0].id }
-            Task {
-                await withTaskGroup(of: Void.self) { taskGroup in
-                    for id in targetedIDs {
-                        taskGroup.addTask {
-                            await DataManager.shared.delete(sampleWithID: id, shouldSave: true)
-                        }
+private extension EditorListViewModel where Editor.Model == SampleQuantity {
+    func didSwipeDelete(rowsAt offsets: IndexSet) {
+        let targetedIDs: [UUID] = offsets.compactMap { rowItems[$0].id }
+        Task {
+            await withTaskGroup(of: Void.self) { taskGroup in
+                for id in targetedIDs {
+                    taskGroup.addTask {
+                        await DataManager.shared.delete(sampleWithID: id, shouldSave: true)
                     }
                 }
             }

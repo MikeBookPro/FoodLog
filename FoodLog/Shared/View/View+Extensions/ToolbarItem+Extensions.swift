@@ -17,4 +17,12 @@ extension ToolbarItem where Content == Button<Label<Text, Image>>, ID == String 
             }
         }
     }
+    
+    static func edit(id: ID, placement: ToolbarItemPlacement = .navigationBarTrailing, action: @escaping () -> Void) -> ToolbarItem<ID, Content> {
+        ToolbarItem(id: id, placement: placement) {
+            Button(role: .destructive, action: action) {
+                Label("Edit", systemImage: "pencil")
+            }
+        }
+    }
 }

@@ -2,9 +2,10 @@ import SwiftUI
 
 struct FoodItemForm: EditorViewRepresentable {
     typealias Model = FoodItem
-    
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.editMode) private var editMode
     @FocusState private var activeField: ViewModel.InputFocus?
+//    @State private var editMode: EditMode = .active
     @State private var viewModel: Self.ViewModel
     
     init(_ model: FoodItem) {
@@ -29,20 +30,47 @@ struct FoodItemForm: EditorViewRepresentable {
                 }
             }
         }
+        .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
         .toolbar {
-            ToolbarItem.cancel(id: "\(viewName).toolbar.cancel", action: didClickCancel)
-            ToolbarItem.save(id: "\(viewName).toolbar.save", action: didClickSave)
+            if editMode?.wrappedValue == .active {
+                ToolbarItem.cancel(id: "\(viewName).toolbar.cancel", action: didClickCancel)
+                ToolbarItem.save(id: "\(viewName).toolbar.save", action: didClickSave)
+            } else {
+                ToolbarItem.edit(id: "\(viewName).toolbar.edit", action: didClickEdit)
+            }
         }
+        
     }
     
     func didClickSave() {
+        let isEditing = editMode?.wrappedValue != .inactive
+        let shouldDismiss = editMode?.wrappedValue == .transient
+        guard isEditing else { return }
         viewModel.user(didTap: .save)
-        dismiss()
+        if shouldDismiss {
+            dismiss()
+        } else {
+            editMode?.wrappedValue = .inactive
+        }
+        
     }
     
     func didClickCancel() {
+        let isEditing = editMode?.wrappedValue != .inactive
+        let shouldDismiss = editMode?.wrappedValue == .transient
+        guard isEditing else { return }
         viewModel.user(didTap: .cancel)
-        dismiss()
+        if shouldDismiss {
+            dismiss()
+        } else {
+            editMode?.wrappedValue = .inactive
+        }
+    }
+    
+    func didClickEdit() {
+        let isViewing = editMode?.wrappedValue == .inactive
+        guard isViewing else { return }
+        editMode?.wrappedValue = .active
     }
 }
 
@@ -98,7 +126,7 @@ extension FoodItemForm {
         let title: LocalizedStringKey
         
         private init(forNutrient qty: Quantity) {
-            self.id = qty.id ?? .init()
+            self.id = qty.id
             self.identifier = qty.identifier
             self.measurement = qty.measurement
             self.title = IdentifierToLocalizedString.value(mappedTo: qty.identifier)
@@ -119,7 +147,9 @@ struct FoodItemForm_Previews: PreviewProvider {
             NavigationView {
                 FoodItemForm(PreviewData.Food.mayonnaise)
                     .environment(\.locale, .init(identifier: localeIdentifier))
+                    .environment(\.editMode, .constant(.inactive))
             }
+            
             .previewDisplayName("Locale: \(localeIdentifier)")
         }
     }

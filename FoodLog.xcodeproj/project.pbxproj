@@ -11,6 +11,7 @@
 		BE0849052A0AC13500A1251B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0849042A0AC13500A1251B /* View+Extensions.swift */; };
 		BE08490A2A0AD78400A1251B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE0849092A0AD78400A1251B /* Localizable.strings */; };
 		BE0849102A0AD83800A1251B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE08490E2A0AD83800A1251B /* Localizable.strings */; };
+		BE1844302A0C1D7C00FB574C /* ListEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18442F2A0C1D7C00FB574C /* ListEditorViewModel.swift */; };
 		BE2B4AC72A094C0100434D59 /* FoodEventHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */; };
 		BE2B4AC92A094C1700434D59 /* FoodConsumptionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */; };
 		BE2B4ACB2A094F4A00434D59 /* FoodItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */; };
@@ -58,6 +59,7 @@
 		BE0849042A0AC13500A1251B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		BE0849092A0AD78400A1251B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BE08490F2A0AD83800A1251B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
+		BE18442F2A0C1D7C00FB574C /* ListEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEditorViewModel.swift; sourceTree = "<group>"; };
 		BE2B4AC62A094C0100434D59 /* FoodEventHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEventHistory.swift; sourceTree = "<group>"; };
 		BE2B4AC82A094C1700434D59 /* FoodConsumptionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumptionEvent.swift; sourceTree = "<group>"; };
 		BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemForm.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				BEEC9D352A056CD3000C1CC1 /* EditorRow.swift */,
 				BEEC9D372A0582FA000C1CC1 /* EditorRowStyle+ViewModifiers.swift */,
 				BEDD5CDD2A05DD7B00C2820B /* EditorViewRepresentable.swift */,
+				BE18442F2A0C1D7C00FB574C /* ListEditorViewModel.swift */,
 			);
 			path = EditorView;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				BEEC9D362A056CD3000C1CC1 /* EditorRow.swift in Sources */,
 				BE7756C429FF273900E7C985 /* Quantity.swift in Sources */,
 				BED7084729FED01E00ADFBBD /* PersistentStore.swift in Sources */,
+				BE1844302A0C1D7C00FB574C /* ListEditorViewModel.swift in Sources */,
 				BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */,
 				BED10BC729E7405700A75BA1 /* Adapter.swift in Sources */,
 				BE76C8E52A073433002E1F8C /* String+Extensions.swift in Sources */,
