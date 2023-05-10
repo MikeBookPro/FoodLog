@@ -37,3 +37,9 @@ class UnitUnknown: Dimension {
         UnitUnknown.unknown as! Self
     }
 }
+
+
+extension Dimension {
+//    static var empty: Measurement<Dimension> { Measurement(value: .zero, unit: Self.baseUnit()) }
+    var empty: Measurement<Dimension> { Measurement(value: .zero, unit: self) }
+}

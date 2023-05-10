@@ -118,6 +118,14 @@ enum PreviewData {
         )
     }
     
+    static let foodItems: [FoodItem] = [
+        PreviewData.Food.cheese,
+        PreviewData.Food.egg,
+        PreviewData.Food.mayonnaise,
+        PreviewData.Food.sardines,
+        PreviewData.Food.tuna,
+    ]
+    
     static func consumptionEvents(forFood item: FoodItem, count: Int) -> [FoodConsumptionEvent] {
         let servingSize = item.nutritionInfo.servingSize.measurement.value
         let range = (servingSize / 2)...(servingSize * 2)

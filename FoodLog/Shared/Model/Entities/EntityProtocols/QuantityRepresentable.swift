@@ -1,11 +1,22 @@
 import Foundation
 
 // MARK: - Reference Quantities
-protocol QuantityRepresentable: Identifiable {
+protocol QuantityRepresentable: Identifiable, Equatable, Hashable {
     var identifier: QuantityIdentifier { get }
     var measurement: Measurement<Dimension> { get }
-    var id: UUID? { get }
+    var id: UUID { get }
 }
+
+extension QuantityRepresentable {
+    static func == (_ lhs: Self, _ rhs: Self) -> Bool { lhs.id == rhs.id }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(identifier)
+    }
+}
+
+
 
 protocol ReferenceQuantityRepresentable: QuantityRepresentable {}
 protocol ObservedQuantityRepresentable: QuantityRepresentable {

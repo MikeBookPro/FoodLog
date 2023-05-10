@@ -1,13 +1,12 @@
 import Foundation
 
-struct Quantity: QuantityRepresentable {
+struct Quantity: QuantityRepresentable, EditableModel {
     let identifier: QuantityIdentifier
-    let id: UUID?
+    let id: UUID
     var measurement: Measurement<Dimension>
     
-    
     init(identifier: QuantityIdentifier, measurement: Measurement<Dimension>, id: UUID? = nil) {
-        self.id = id
+        self.id = id ?? .init()
         self.identifier = identifier
         self.measurement = measurement
     }
@@ -17,6 +16,17 @@ struct Quantity: QuantityRepresentable {
             identifier: opaque.identifier,
             measurement: opaque.measurement,
             id: opaque.id
+        )
+    }
+    
+    // MARK: EditableModel
+    static func template(for identifier: QuantityIdentifier) -> Self {
+        .init(
+            identifier: identifier,
+            measurement: .init(
+                value: .zero,
+                unit: IdentifierToDimensionAdapter.value(mappedTo: identifier)
+            )
         )
     }
     

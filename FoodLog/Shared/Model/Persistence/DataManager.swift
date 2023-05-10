@@ -22,11 +22,10 @@ struct DataManager {
     }
     
     private func fetch(sample model: some SampleQuantityRepresentable) async -> SampleQuantityMO? {
-        guard let measurementID = model.id else { return nil }
         let sample: SampleQuantityMO? = await context.perform {
             let fetchRequest: NSFetchRequest<SampleQuantityMO> = SampleQuantityMO.fetchRequest()
             fetchRequest.fetchLimit = 1
-            fetchRequest.predicate = .init(format: "measurementID == %@", measurementID as CVarArg)
+            fetchRequest.predicate = .init(format: "measurementID == %@", model.id as CVarArg)
             return try? context.fetch(fetchRequest).first
         }
         return sample
@@ -47,7 +46,7 @@ struct DataManager {
     @discardableResult
     func create<Sample>(sample model: some SampleQuantityRepresentable) async -> Sample where Sample: SampleQuantityMO {
         let sampleMO = Sample(context: context)
-        sampleMO.measurementID = model.id ?? UUID()
+        sampleMO.measurementID = model.id
         return await update(sample: sampleMO, with: model, shouldSave: true)
     }
     
@@ -68,7 +67,7 @@ struct DataManager {
     
     @discardableResult
     public func upsert<Sample>(sample model: some SampleQuantityRepresentable) async -> Sample where Sample: SampleQuantityMO {
-        print("\(#file.split(separator: "/").last ?? "-"):\(#function): sample.id -> \(model.id?.uuidString ?? "-")")
+        print("\(#file.split(separator: "/").last ?? "-"):\(#function): sample.id -> \(model.id.uuidString)")
         if let existing = await fetch(sample: model) as? Sample {
             return await update(sample: existing, with: model, shouldSave: true)
         }

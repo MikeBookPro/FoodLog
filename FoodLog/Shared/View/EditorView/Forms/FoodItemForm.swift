@@ -29,7 +29,6 @@ struct FoodItemForm: EditorViewRepresentable {
                 }
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem.cancel(id: "\(viewName).toolbar.cancel", action: didClickCancel)
             ToolbarItem.save(id: "\(viewName).toolbar.save", action: didClickSave)

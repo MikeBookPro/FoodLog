@@ -1,12 +1,15 @@
 import SwiftUI
 
-struct DietaryHistoryList: View {
+struct DietaryHistoryList<FoodListView: View>: View {
 //struct DietaryHistoryList<Editor: EditorViewRepresentable>: View where Editor.Model == FoodConsumptionEvent {
     @State private var viewModel: Self.ViewModel
     
+    private let foodItemList: () -> FoodListView
+    
 //    private let editorBuilder: (Editor.Model) -> Editor
 //    init(consumptionEvents: [FoodConsumptionEvent],  @ViewBuilder editorView: @escaping ((Editor.Model) -> Editor)? = nil) {
-    init(consumptionEvents: [FoodConsumptionEvent]) {
+    init(consumptionEvents: [FoodConsumptionEvent], @ViewBuilder foodList viewBuilder: @escaping () -> FoodListView) {
+        self.foodItemList = viewBuilder
         self._viewModel = .init(initialValue: ViewModel(consumptionEvents: consumptionEvents))
 //        self.editorBuilder = editorView
     }
@@ -56,17 +59,12 @@ struct DietaryHistoryList: View {
                 }
             }
             .navigationTitle("Dietary History")
-            .fullScreenCover(isPresented: $viewModel.isShowingFoodList) {
-                NavigationView {
-                    Text("Food List here")
-                        .navigationTitle("Food List")
-//                    editorBuilder(selected ?? .template(for: .bodyMass))
-//                        .navigationTitle("\(selected == nil ? "New" : "Edit") Sample")
-                }
-            }
+            .sheet(isPresented: $viewModel.isShowingFoodList, content: foodItemList)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: { viewModel.isShowingFoodList = true }, label: { Label("Food Reference", systemImage: "refrigerator") })
+                    Button(action: { viewModel.isShowingFoodList = true }, label: {
+                        Label("Food Reference", systemImage: "refrigerator")
+                    })
                 }
             }
         }
@@ -107,7 +105,12 @@ struct DietaryHistoryList_Previews: PreviewProvider {
     var dict = Dictionary(grouping: consumptionEvents, by: \.date)
     
     static var previews: some View {
-        DietaryHistoryList(consumptionEvents: consumptionEvents)
+        DietaryHistoryList(consumptionEvents: consumptionEvents) {
+            FoodReferenceList(
+                list: PreviewData.foodItems,
+                editorView: FoodItemForm.init(_:)
+            )
+        }
     }
 }
 #endif

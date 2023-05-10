@@ -23,7 +23,7 @@ struct RootTabViews: View {
 //                .tag(0)
             
             SummaryView(
-                samples:  Self.adapt(quantity: samples),
+                list:  Self.adapt(quantity: samples),
                 editorView: SampleQuantityForm.init(_:)
             )
             .tabItem {

@@ -1,16 +1,16 @@
 import SwiftUI
 
 struct SummaryView<Editor: EditorViewRepresentable>: View where Editor.Model == SampleQuantity {
-    @State private var viewModel: SummaryView.ViewModel<Editor>
+    @State private var viewModel: SummaryView.ViewModel
     
-    init(samples: [SampleQuantity], @ViewBuilder editorView: @escaping (Editor.Model) -> Editor) {
-        self._viewModel = .init(initialValue: .init(samples: samples, editorBuilder: editorView))
+    init(list rowItems: [SampleQuantity], @ViewBuilder editorView builder: @escaping (Editor.Model) -> Editor) {
+        self._viewModel = .init(initialValue: .init(list: rowItems, editorView: builder))
     }
     
     var body: some View {
         NavigationView {
             List(selection: $viewModel.selected) {
-                ForEach(viewModel.samples, id: \.self) { sample in
+                ForEach(viewModel.rowItems, id: \.self) { sample in
                     NavigationLink {
                         MeasurementSampleView(sample: sample, editorToggle: $viewModel.isShowingEditor)
                     } label: {
@@ -39,24 +39,21 @@ struct SummaryView<Editor: EditorViewRepresentable>: View where Editor.Model == 
 
 // MARK: - View Model
 extension SummaryView {
-    private struct ViewModel<Editor: EditorViewRepresentable>where Editor.Model == SampleQuantity {
-        let samples: [SampleQuantity]
+    private struct ViewModel: EditableListViewModel where Editor.Model == SampleQuantity {
+        let rowItems: [Editor.Model]
         let editorBuilder: (Editor.Model) -> Editor
-        var selected: SampleQuantity? = nil
+        var selected: Editor.Model? = nil
         var isShowingEditor: Bool = false
         
         let navigationTitle = "Summary"
         
-        @ViewBuilder
-        func buildEditorView() -> some View {
-            NavigationView {
-                editorBuilder(selected ?? .template(for: .bodyMass))
-                    .navigationTitle("\(selected == nil ? "New" : "Edit") Sample")
-            }
+        init(list rowItems: [Editor.Model], editorView builder: @escaping (Editor.Model) -> Editor) {
+            self.rowItems = rowItems
+            self.editorBuilder = builder
         }
         
         func didSwipeDelete(rowsAt offsets: IndexSet) {
-            let targetedIDs: [UUID] = offsets.compactMap { samples[$0].id }
+            let targetedIDs: [UUID] = offsets.compactMap { rowItems[$0].id }
             Task {
                 await withTaskGroup(of: Void.self) { taskGroup in
                     for id in targetedIDs {
@@ -75,7 +72,7 @@ extension SummaryView {
 struct ActivitySummaryList_Previews: PreviewProvider {
     static var previews: some View {
         SummaryView(
-            samples: PreviewData.quantitySamples(for: .bodyMass, count: 10, in: 95.0...125.0),
+            list: PreviewData.quantitySamples(for: .bodyMass, count: 10, in: 95.0...125.0),
             editorView: SampleQuantityForm.init(_:)
         )
     }

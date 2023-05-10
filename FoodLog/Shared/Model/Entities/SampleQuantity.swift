@@ -1,6 +1,6 @@
 import Foundation
 
-struct SampleQuantity: SampleQuantityRepresentable, ImplementationWrapper, Equatable, Hashable {
+struct SampleQuantity: SampleQuantityRepresentable, ImplementationWrapper, EditableModel, Equatable, Hashable {
     // MARK: Sample Quantity Representable
     let date: Date
     
@@ -13,12 +13,15 @@ struct SampleQuantity: SampleQuantityRepresentable, ImplementationWrapper, Equat
         self.date = date
     }
     
+    // MARK: EditableModel
     static func template(for identifier: QuantityIdentifier) -> Self {
         return .init(
             quantity: .init(
                 identifier: identifier,
-                measurement: .init(value: .zero, unit: IdentifierToDimensionAdapter.value(mappedTo: identifier)),
-                id: UUID()
+                measurement: .init(
+                    value: .zero,
+                    unit: IdentifierToDimensionAdapter.value(mappedTo: identifier)
+                )
             ),
             date: .now
         )
