@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct EditorRow<Value, Label: View, Content: View>: View {
+    @Environment(\.editMode) private var editMode
     @Binding var value: Value
     let labelView: Label
     let viewBuilder: (Binding<Value>) -> Content
@@ -25,10 +26,18 @@ struct EditorRow<Value, Label: View, Content: View>: View {
     
     var body: some View {
         LabeledContent {
-            viewBuilder($value)
-                .multilineTextAlignment(.trailing)
-                .font(.body)
-                .padding(.vertical, 8)
+            if editMode?.wrappedValue == .active {
+                viewBuilder($value)
+                    .multilineTextAlignment(.trailing)
+                    .font(.body)
+                    .padding(.vertical, 8)
+            } else {
+                Text("VIEW-ONLY")
+                    .multilineTextAlignment(.trailing)
+                    .font(.body)
+                    .padding(.vertical, 8)
+            }
+            
         } label: {
             labelView
                 .font(.headline)
@@ -42,6 +51,8 @@ struct EditorRow<Value, Label: View, Content: View>: View {
 struct EditorRow_Previews: PreviewProvider {
     
     private struct Shim: View {
+        @Environment(\.editMode) private var editMode
+        
         private struct ViewModel {
             enum Field: Hashable { case date, firstName, details, amount, measure }
             
@@ -90,6 +101,11 @@ struct EditorRow_Previews: PreviewProvider {
                         Text(vm.measure.unit.symbol)
                     }
                     
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
+                    }
                 }
             }
             

@@ -5,7 +5,6 @@ struct FoodItemForm: EditorViewRepresentable {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.editMode) private var editMode
     @FocusState private var activeField: ViewModel.InputFocus?
-//    @State private var editMode: EditMode = .active
     @State private var viewModel: Self.ViewModel
     
     init(_ model: FoodItem) {
@@ -99,13 +98,10 @@ extension FoodItemForm {
         
         var nutrientRows: [NutrientRowViewModel]
         
-        
         init(foodItem model: FoodItem) {
             self.foodItem = model
             self.nutrientRows = NutrientRowViewModel.rows(forFood: model)
         }
-        
-        
         
         func user(didTap target: TapTarget) {
             switch target {
