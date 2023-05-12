@@ -20,12 +20,12 @@ struct SampleQuantityForm: EditorViewRepresentable {
         
     var body: some View {
         Form {
-            EditorRow("Date", editing: $date) { boundValue in 
+            EditorRow("Date", editing: $date, readFormat: .dateTime.day().month(.abbreviated).year()) { boundValue in
                 DatePicker("", selection: boundValue, in: (.distantPast)...(.now), displayedComponents: [.hourAndMinute, .date])
                     .focused($activeField, equals: .date)
             }
             
-            EditorRow("Value", editing: $value) { boundValue in
+            EditorRow("Value", editing: $value, readFormat: .number.precision(.fractionLength(0...2))) { boundValue in
                 TextField("Enter value", value: boundValue, format: .number.precision(.fractionLength(0...2)))
                     .focused($activeField, equals: .value)
                     .editorRow(decimalStyle: [.decimalInput])

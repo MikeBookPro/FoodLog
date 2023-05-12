@@ -15,12 +15,12 @@ struct FoodItemForm: EditorViewRepresentable {
         Form {
             Section("Nutrition Info") {
                 ForEach(Array(zip(viewModel.nutrientRows.indices, viewModel.nutrientRows)), id: \.0) { (i, row) in
-                    EditorRow(row.title, editing: $viewModel.nutrientRows[i].measurement.value) {
-                        TextField(
-                            "Enter value",
-                            value: $0,
-                            format: .number.precision(.fractionLength(0...2))
-                        )
+                    EditorRow(
+                        row.title,
+                        editing: $viewModel.nutrientRows[i].measurement,
+                        readFormat: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2)))
+                    ) { boundValue in
+                        TextField("Enter value", value: boundValue.value, format: .number.precision(.fractionLength(0...2)))
                         .focused($activeField, equals: .quantity(row.identifier))
                         .editorRow(decimalStyle: [.decimalInput])
                         

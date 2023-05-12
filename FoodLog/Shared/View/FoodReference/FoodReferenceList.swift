@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct FoodReferenceList<Editor: EditorViewRepresentable>: View where Editor.Model == FoodItem {
-//    @Environment(\.editMode) private var editMode
     @State private var editMode: EditMode = .inactive
     @State private var viewModel: EditorListViewModel<Editor>
     
@@ -15,8 +14,6 @@ struct FoodReferenceList<Editor: EditorViewRepresentable>: View where Editor.Mod
                 ForEach(viewModel.rowItems, id: \.self) { rowItem in
                     NavigationLink {
                         viewModel.editorBuilder(rowItem)
-                            .environment(\.editMode, $editMode)
-//                        MeasurementSampleView(sample: sample, editorToggle: $viewModel.isShowingEditor)
                     } label: {
                         Text(rowItem.name)
                     }
