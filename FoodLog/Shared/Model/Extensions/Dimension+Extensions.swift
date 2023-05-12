@@ -42,4 +42,78 @@ class UnitUnknown: Dimension {
 extension Dimension {
 //    static var empty: Measurement<Dimension> { Measurement(value: .zero, unit: Self.baseUnit()) }
     var empty: Measurement<Dimension> { Measurement(value: .zero, unit: self) }
+
+    static let massDimensions: [UnitMass] = [
+        .micrograms,
+        .milligrams,
+        .grams,
+        .kilograms,
+        .metricTons,
+//        .shortTons,
+//        .carats,
+        .ounces,
+        .pounds,
+//        .stones,
+//        .slugs
+    ]
+    
+    static let lengthDimensions: [UnitLength] = [
+//        .megameters,
+        .kilometers,
+//        .hectometers,
+//        .decameters,
+        .meters,
+//        .decimeters,
+        .centimeters,
+        .millimeters,
+//        .micrometers,
+//        .nanometers,
+//        .picometers,
+        .inches,
+        .feet,
+        .yards,
+        .miles,
+        .scandinavianMiles,
+//        .lightyears,
+//        .nauticalMiles,
+//        .fathoms,
+//        .furlongs,
+//        .astronomicalUnits,
+//        .parsecs
+    ]
+    
+    static let volumeDimensions: [UnitVolume] = [
+//        .megaliters,
+//        .kiloliters,
+        .liters,
+//        .deciliters,
+//        .centiliters,
+        .milliliters,
+        .cubicKilometers,
+//        .cubicMeters,
+//        .cubicDecimeters,
+//        .cubicCentimeters,
+//        .cubicMillimeters,
+//        .cubicInches,
+//        .cubicFeet,
+//        .cubicYards,
+//        .cubicMiles,
+//        .acreFeet,
+//        .bushels,
+        .teaspoons,
+        .tablespoons,
+        .fluidOunces,
+        .cups,
+        .pints,
+        .quarts,
+        .gallons,
+//        .imperialTeaspoons,
+//        .imperialTablespoons,
+//        .imperialFluidOunces,
+//        .imperialPints,
+//        .imperialQuarts,
+//        .imperialGallons,
+//        .metricCups
+    ]
+
 }

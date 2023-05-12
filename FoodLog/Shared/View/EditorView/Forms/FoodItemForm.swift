@@ -1,5 +1,63 @@
 import SwiftUI
 
+enum UnitType: String, CaseIterable {
+    case mass = "Mass"
+    case length = "Length"
+    case volume = "Volume"
+    //... Add more as needed
+    
+    init(unit: Dimension) {
+        if Dimension.massDimensions.contains(where: { $0.isEqual(unit) }) {
+            self = .mass
+        } else if Dimension.lengthDimensions.contains(where: { $0.isEqual(unit) }) {
+            self = .length
+        } else if Dimension.volumeDimensions.contains(where: { $0.isEqual(unit) }) {
+            self = .volume
+        } else {
+            self = .mass
+            
+        }
+    }
+    
+    var dimensions: [Dimension] {
+        switch self {
+            case .mass: return Dimension.massDimensions
+            case .length: return Dimension.lengthDimensions
+            case .volume: return Dimension.volumeDimensions
+        }
+    }
+}
+
+struct UnitTypePicker: View {
+    @Binding var selected: UnitType
+
+    var body: some View {
+        Picker("Unit Type", selection: $selected) {
+            ForEach(UnitType.allCases, id: \.self) {
+                Text($0.rawValue)
+                    .tag($0)
+            }
+        }
+        .pickerStyle(SegmentedPickerStyle())
+    }
+}
+
+
+
+struct DimensionPicker: View {
+    @Binding var selected: Dimension
+    let options: [Dimension]
+    
+    var body: some View {
+        Picker("", selection: $selected) {
+            ForEach(options, id: \.self) {
+                Text($0.symbol)
+                    .tag($0)
+            }
+        }
+    }
+}
+
 struct FoodItemForm: EditorViewRepresentable {
     typealias Model = FoodItem
     @Environment(\.dismiss) private var dismiss
@@ -13,7 +71,28 @@ struct FoodItemForm: EditorViewRepresentable {
     
     var body: some View {
         Form {
-            Section("Nutrition Info") {
+            Section(IdentifierToLocalizedString.value(mappedTo: .servingSize)) {
+                
+                UnitTypePicker(selected: $viewModel.servingSize.unitType)
+                
+                
+                EditorRow(
+                    "Amount",
+                    editing: $viewModel.servingSize.measurement,
+                    readFormat: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2)))
+                ) { boundValue in
+                    TextField("Enter value", value: boundValue.value, format: .number.precision(.fractionLength(0...2)))
+                        .focused($activeField, equals: .servingSize)
+                    .editorRow(decimalStyle: [.decimalInput])
+                    
+                    DimensionPicker(selected: $viewModel.servingSize.unit, options: UnitType(unit: viewModel.servingSize.unit).dimensions )
+                        .scaledToFit()
+                }
+//                UnitTypePicker(selected: $viewModel.servingSize.unit)
+                
+            }
+            
+            Section("Nutrition info") {
                 ForEach(Array(zip(viewModel.nutrientRows.indices, viewModel.nutrientRows)), id: \.0) { (i, row) in
                     EditorRow(
                         row.title,
@@ -78,10 +157,14 @@ extension FoodItemForm {
     private struct ViewModel {
         enum TapTarget { case cancel, save }
         enum InputFocus: Hashable {
+            case basicInfo
+            case servingSize
             case quantity(_ identifier: QuantityIdentifier)
             
             private var sectionKey: String {
                 switch self {
+                    case .basicInfo: return "basicInfo"
+                    case .servingSize: return "servingSize"
                     case .quantity(identifier: _): return "quantity"
                 }
             }
@@ -90,17 +173,22 @@ extension FoodItemForm {
                 hasher.combine(self.sectionKey)
                 switch self {
                     case .quantity(identifier: let identifier): hasher.combine(identifier)
+                    default: return
                 }
             }
         }
         
         let foodItem: FoodItem
         
+        var isShowingUnitRow = false
+        
         var nutrientRows: [NutrientRowViewModel]
+        var servingSize: NutrientRowViewModel
         
         init(foodItem model: FoodItem) {
             self.foodItem = model
             self.nutrientRows = NutrientRowViewModel.rows(forFood: model)
+            self.servingSize = NutrientRowViewModel(forNutrient: model.nutritionInfo.servingSize)
         }
         
         func user(didTap target: TapTarget) {
@@ -115,17 +203,31 @@ extension FoodItemForm {
     }
     
     
-    private struct NutrientRowViewModel: Identifiable {
+     struct NutrientRowViewModel: Identifiable {
         let id: UUID
         let identifier: QuantityIdentifier
         var measurement: Measurement<Dimension>
+        
+        var unitType: UnitType
+        var unit: Dimension {
+            get { measurement.unit }
+            set {
+                
+                let newUnitType = UnitType(unit: newValue)
+                let newUnit = newUnitType.dimensions.contains(where: { $0.isEqual(newValue) }) ? newValue : newUnitType.dimensions[0]
+                measurement = .init(value: measurement.value, unit: newUnit)
+                unitType = newUnitType
+            }
+        }
+        
         let title: LocalizedStringKey
         
-        private init(forNutrient qty: Quantity) {
+        init(forNutrient qty: Quantity) {
             self.id = qty.id
             self.identifier = qty.identifier
             self.measurement = qty.measurement
             self.title = IdentifierToLocalizedString.value(mappedTo: qty.identifier)
+            self.unitType = UnitType(unit: qty.measurement.unit)
         }
         
         static func rows(forFood item: FoodItem) -> [NutrientRowViewModel] {
@@ -143,7 +245,7 @@ struct FoodItemForm_Previews: PreviewProvider {
             NavigationView {
                 FoodItemForm(PreviewData.Food.mayonnaise)
                     .environment(\.locale, .init(identifier: localeIdentifier))
-                    .environment(\.editMode, .constant(.inactive))
+                    .environment(\.editMode, .constant(.active))
             }
             
             .previewDisplayName("Locale: \(localeIdentifier)")
@@ -151,3 +253,11 @@ struct FoodItemForm_Previews: PreviewProvider {
     }
 }
 #endif
+
+//                    Button {
+//                        withAnimation { viewModel.isShowingUnitRow.toggle() }
+//                    } label: {
+//                        Label(boundValue.wrappedValue.unit.symbol, systemImage: "chevron.right")
+//                            .labelStyle(.iconOnly)
+//                            .rotationEffect(.degrees(viewModel.isShowingUnitRow ? 90 : 0 ))
+//                    }
