@@ -1,48 +1,5 @@
 import SwiftUI
 
-enum UnitType: String, CaseIterable {
-    case mass = "Mass"
-    case length = "Length"
-    case volume = "Volume"
-    //... Add more as needed
-    
-    init(unit: Dimension) {
-        if Dimension.massDimensions.contains(where: { $0.isEqual(unit) }) {
-            self = .mass
-        } else if Dimension.lengthDimensions.contains(where: { $0.isEqual(unit) }) {
-            self = .length
-        } else if Dimension.volumeDimensions.contains(where: { $0.isEqual(unit) }) {
-            self = .volume
-        } else {
-            self = .mass
-            
-        }
-    }
-    
-    var dimensions: [Dimension] {
-        switch self {
-            case .mass: return Dimension.massDimensions
-            case .length: return Dimension.lengthDimensions
-            case .volume: return Dimension.volumeDimensions
-        }
-    }
-}
-
-struct UnitTypePicker: View {
-    @Binding var selected: UnitType
-
-    var body: some View {
-        Picker("Unit Type", selection: $selected) {
-            ForEach(UnitType.allCases, id: \.self) {
-                Text($0.rawValue)
-                    .tag($0)
-            }
-        }
-        .pickerStyle(SegmentedPickerStyle())
-    }
-}
-
-
 
 struct DimensionPicker: View {
     @Binding var selected: Dimension
@@ -73,7 +30,7 @@ struct FoodItemForm: EditorViewRepresentable {
         Form {
             Section(IdentifierToLocalizedString.value(mappedTo: .servingSize)) {
                 
-                UnitTypePicker(selected: $viewModel.servingSize.unitType)
+//                UnitTypePicker(selected: $viewModel.servingSize.unitType)
                 
                 
                 EditorRow(
