@@ -15,20 +15,23 @@ struct MeasurementUnitPicker: View {
     }
     
     var body: some View {
-        Picker("Unit Type", selection: $selectedUnitType) {
-            ForEach(unitTypeOptions, id: \.self) {
-                Text($0.rawValue)
-                    .tag($0)
+        VStack {
+            Picker("Unit Type", selection: $selectedUnitType) {
+                ForEach(unitTypeOptions, id: \.self) {
+                    Text($0.rawValue)
+                        .tag($0)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            
+            Picker("Dimension", selection: $selectedDimension) {
+                ForEach(selectedUnitType.dimensions, id: \.self) {
+                    Text($0.symbol)
+                        .tag($0)
+                }
             }
         }
-        .pickerStyle(SegmentedPickerStyle())
         
-        Picker("Dimension", selection: $selectedDimension) {
-            ForEach(selectedUnitType.dimensions, id: \.self) {
-                Text($0.symbol)
-                    .tag($0)
-            }
-        }
         
     }
 }
