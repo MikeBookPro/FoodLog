@@ -28,26 +28,26 @@ struct FoodItemForm: EditorViewRepresentable {
     
     var body: some View {
         Form {
-            Section(IdentifierToLocalizedString.value(mappedTo: .servingSize)) {
-                
-//                UnitTypePicker(selected: $viewModel.servingSize.unitType)
-                
-                
-                EditorRow(
-                    "Amount",
-                    editing: $viewModel.servingSize.measurement,
-                    readFormat: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2)))
-                ) { boundValue in
-                    TextField("Enter value", value: boundValue.value, format: .number.precision(.fractionLength(0...2)))
-                        .focused($activeField, equals: .servingSize)
-                    .editorRow(decimalStyle: [.decimalInput])
-                    
-                    DimensionPicker(selected: $viewModel.servingSize.unit, options: UnitType(unit: viewModel.servingSize.unit).dimensions )
-                        .scaledToFit()
-                }
-//                UnitTypePicker(selected: $viewModel.servingSize.unit)
-                
-            }
+//            Section(IdentifierToLocalizedString.value(mappedTo: .servingSize)) {
+//
+////                UnitTypePicker(selected: $viewModel.servingSize.unitType)
+//
+//
+//                EditorRow(
+//                    "Amount",
+//                    editing: $viewModel.servingSize.measurement,
+//                    readFormat: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2)))
+//                ) { boundValue in
+//                    TextField("Enter value", value: boundValue.value, format: .number.precision(.fractionLength(0...2)))
+//                        .focused($activeField, equals: .servingSize)
+//                    .editorRow(decimalStyle: [.decimalInput])
+//
+//                    DimensionPicker(selected: $viewModel.servingSize.unit, options: UnitType(unit: viewModel.servingSize.unit).dimensions )
+//                        .scaledToFit()
+//                }
+////                UnitTypePicker(selected: $viewModel.servingSize.unit)
+//
+//            }
             
             Section("Nutrition info") {
                 ForEach(Array(zip(viewModel.nutrientRows.indices, viewModel.nutrientRows)), id: \.0) { (i, row) in
@@ -165,17 +165,17 @@ extension FoodItemForm {
         let identifier: QuantityIdentifier
         var measurement: Measurement<Dimension>
         
-        var unitType: UnitType
-        var unit: Dimension {
-            get { measurement.unit }
-            set {
-                
-                let newUnitType = UnitType(unit: newValue)
-                let newUnit = newUnitType.dimensions.contains(where: { $0.isEqual(newValue) }) ? newValue : newUnitType.dimensions[0]
-                measurement = .init(value: measurement.value, unit: newUnit)
-                unitType = newUnitType
-            }
-        }
+//        var unitType: Measure
+//        var unit: Dimension {
+//            get { measurement.unit }
+//            set {
+//
+////                let newUnitType = UnitType(unit: newValue)
+////                let newUnit = newUnitType.dimensions.contains(where: { $0.isEqual(newValue) }) ? newValue : newUnitType.dimensions[0]
+////                measurement = .init(value: measurement.value, unit: newUnit)
+////                unitType = newUnitType
+//            }
+//        }
         
         let title: LocalizedStringKey
         
@@ -184,7 +184,7 @@ extension FoodItemForm {
             self.identifier = qty.identifier
             self.measurement = qty.measurement
             self.title = IdentifierToLocalizedString.value(mappedTo: qty.identifier)
-            self.unitType = UnitType(unit: qty.measurement.unit)
+//            self.unitType = UnitType(unit: qty.measurement.unit)
         }
         
         static func rows(forFood item: FoodItem) -> [NutrientRowViewModel] {

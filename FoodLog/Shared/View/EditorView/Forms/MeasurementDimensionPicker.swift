@@ -2,30 +2,30 @@
 
 import SwiftUI
 
-struct MeasurementUnitPicker<NestedPicker: View, Item: Identifiable>: View {
-    @State private var viewModel: Self.ViewModel
+struct MeasurementUnitPicker: View {
+    private let unitTypeOptions = MeasurementUnitPicker.UnitType.allCases
+    @State private var selectedUnitType: MeasurementUnitPicker.UnitType
+    @Binding var selectedDimension: Dimension
     
-    let nestedPickerBuilder: (Binding<Item?>, [Item]) -> NestedPicker
-    
-    init(@ViewBuilder dimensionPicker pickerBuilder: @escaping (Binding<Item?>, [Item]) -> NestedPicker) {
-        self.viewModel = viewModel
-        self.nestedPickerBuilder = pickerBuilder
+    init(selectedDimension: Binding<Dimension>) {
+        let unitType = MeasurementUnitPicker.UnitType(unit: selectedDimension.wrappedValue)
+        self._selectedDimension = selectedDimension
+        self._selectedUnitType = .init(initialValue: unitType)
+        
     }
     
     var body: some View {
-        Picker("Unit Type", selection: $viewModel.selectedUnitType) {
-            ForEach(viewModel.unitPickerOptions, id: \.self) {
+        Picker("Unit Type", selection: $selectedUnitType) {
+            ForEach(unitTypeOptions, id: \.self) {
                 Text($0.rawValue)
                     .tag($0)
             }
         }
         .pickerStyle(SegmentedPickerStyle())
         
-        nestedPickerBuilder($viewModel.selectedDimension, viewModel.selectedUnitType.dimensions)
-        
-        Picker("Unit Type", selection: $viewModel.selectedUnitType) {
-            ForEach(viewModel.unitPickerOptions, id: \.self) {
-                Text($0.rawValue)
+        Picker("Dimension", selection: $selectedDimension) {
+            ForEach(selectedUnitType.dimensions, id: \.self) {
+                Text($0.symbol)
                     .tag($0)
             }
         }
@@ -62,27 +62,33 @@ extension MeasurementUnitPicker {
             }
         }
     }
-    
-    struct ViewModel {
-        var selectedUnitType: MeasurementUnitPicker.UnitType
-        let unitPickerOptions = MeasurementUnitPicker.UnitType.allCases
+}
+
+
+
+
+
+#if DEBUG
+struct MeasurementDimensionPicker_Previews: PreviewProvider {
+    private struct Shim: View {
+        @State private var dimension: Dimension = UnitMass.grams
         
-        var selectedDimension: Dimension?
-        
-        init(dimension: Dimension) {
-            selectedUnitType = UnitType(unit: dimension)
-            selectedDimension = dimension
+        var body: some View {
+            NavigationView {
+                Form {
+                    LabeledContent("Dimension") {
+                        Text(dimension.symbol)
+                    }
+                    
+                    MeasurementUnitPicker(selectedDimension: $dimension)
+                }
+            }
+            
         }
     }
-}
-
-
-
-
-
-
-struct MeasurementDimensionPicker_Previews: PreviewProvider {
+    
     static var previews: some View {
-        MeasurementDimensionPicker()
+        Shim()
     }
 }
+#endif
