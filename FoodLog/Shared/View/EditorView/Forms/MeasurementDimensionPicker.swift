@@ -1,18 +1,4 @@
-//
-
 import SwiftUI
-
-protocol PickerViewModelable {
-    associatedtype Option: Identifiable
-    var options: [Option] { get }
-    var selected: Binding<Option> { get set }
-    
-    
-}
-
-protocol BuildableView {
-    var viewBuilder: (Option) -> some View
-}
 
 struct MeasurementUnitPicker: View {
     private let unitTypeOptions = MeasurementUnitPicker.UnitType.allCases
@@ -24,7 +10,6 @@ struct MeasurementUnitPicker: View {
         let unitType = MeasurementUnitPicker.UnitType(unit: selectedDimension.wrappedValue)
         self._selectedDimension = selectedDimension
         self._selectedUnitType = .init(initialValue: unitType)
-        
     }
     
     var body: some View {
@@ -56,7 +41,7 @@ struct MeasurementUnitPicker: View {
 
 
 extension MeasurementUnitPicker {
-    enum UnitType: String, CaseIterable {
+    enum UnitType: String, CaseIterable, Identifiable {
         case mass = "Mass"
         case length = "Length"
         case volume = "Volume"
@@ -90,6 +75,8 @@ extension MeasurementUnitPicker {
                 case .volume: return UnitVolume.baseUnit()
             }
         }
+        
+        var id: String { self.baseUnit.symbol }
     }
 }
 

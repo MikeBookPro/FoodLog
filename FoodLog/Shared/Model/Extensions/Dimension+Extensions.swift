@@ -117,3 +117,7 @@ extension Dimension {
     ]
 
 }
+
+extension Dimension: Identifiable {
+    public var id: String { self.symbol }
+}
