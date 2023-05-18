@@ -121,3 +121,13 @@ extension Dimension {
 extension Dimension: Identifiable {
     public var id: String { self.symbol }
 }
+
+//extension Measurement {
+//    
+//    var dimension: Dimension {
+//        get { self.unit }
+//        set {
+//            self
+//        }
+//    }
+//}

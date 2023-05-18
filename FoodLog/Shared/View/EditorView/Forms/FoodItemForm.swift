@@ -38,11 +38,19 @@ struct FoodItemForm: EditorViewRepresentable {
                     editing: $viewModel.servingSize.measurement,
                     readFormat: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2)))
                 ) { boundValue in
-                    
-                    
                     TextField("Enter value", value: boundValue.value, format: .number.precision(.fractionLength(0...2)))
                         .focused($activeField, equals: .servingSize)
-                    .editorRow(decimalStyle: [.decimalInput])
+                        .editorRow(decimalStyle: [.decimalInput])
+                    
+//                    MeasurementPickerHost(selected: boundValue., keyPaths: (unitType: \.rawValue, dimension: \.symbol))
+                    
+//                    MeasurementPickerHost("Select a unit of measure", selected: Dimension(symbol: "g")) { unitType in
+//                        Text(unitType.rawValue)
+//                    } dimensionView: { dimension in
+//                        Text(dimension.symbol)
+//                            .tag()
+//                    }
+
 
 //                    DimensionPicker(selected: $viewModel.servingSize.unit, options: UnitType(unit: viewModel.servingSize.unit).dimensions )
 //                        .scaledToFit()
