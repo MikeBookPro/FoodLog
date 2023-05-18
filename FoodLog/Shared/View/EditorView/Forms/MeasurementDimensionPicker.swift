@@ -2,9 +2,22 @@
 
 import SwiftUI
 
+protocol PickerViewModelable {
+    associatedtype Option: Identifiable
+    var options: [Option] { get }
+    var selected: Binding<Option> { get set }
+    
+    
+}
+
+protocol BuildableView {
+    var viewBuilder: (Option) -> some View
+}
+
 struct MeasurementUnitPicker: View {
     private let unitTypeOptions = MeasurementUnitPicker.UnitType.allCases
-    @State private var selectedUnitType: MeasurementUnitPicker.UnitType
+    @State private var selectedUnitType: MeasurementUnitPicker.UnitType 
+    
     @Binding var selectedDimension: Dimension
     
     init(selectedDimension: Binding<Dimension>) {
@@ -23,6 +36,9 @@ struct MeasurementUnitPicker: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
+//            .onReceive([self.selectedUnitType].publisher.first()) { unitType in
+//                self.selectedDimension = unitType.baseUnit
+//            }
             
             Picker("Dimension", selection: $selectedDimension) {
                 ForEach(selectedUnitType.dimensions, id: \.self) {
@@ -31,6 +47,8 @@ struct MeasurementUnitPicker: View {
                 }
             }
         }
+        
+        
         
         
     }
@@ -64,6 +82,14 @@ extension MeasurementUnitPicker {
                 case .volume: return Dimension.volumeDimensions
             }
         }
+        
+        var baseUnit: Dimension {
+            switch self {
+                case .mass: return UnitMass.baseUnit()
+                case .length: return UnitLength.baseUnit()
+                case .volume: return UnitVolume.baseUnit()
+            }
+        }
     }
 }
 
@@ -79,8 +105,10 @@ struct MeasurementDimensionPicker_Previews: PreviewProvider {
         var body: some View {
             NavigationView {
                 Form {
-                    LabeledContent("Dimension") {
-                        Text(dimension.symbol)
+                    Section {
+                        LabeledContent("Dimension") {
+                            Text(dimension.symbol)
+                        }
                     }
                     
                     MeasurementUnitPicker(selectedDimension: $dimension)
