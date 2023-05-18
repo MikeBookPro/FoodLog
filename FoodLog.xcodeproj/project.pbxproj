@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE0601632A12B10E0087930D /* MeasurementDimensionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0601622A12B10E0087930D /* MeasurementDimensionPicker.swift */; };
 		BE0849022A0AB8E900A1251B /* ToolbarItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0849012A0AB8E900A1251B /* ToolbarItem+Extensions.swift */; };
 		BE0849052A0AC13500A1251B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0849042A0AC13500A1251B /* View+Extensions.swift */; };
 		BE08490A2A0AD78400A1251B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE0849092A0AD78400A1251B /* Localizable.strings */; };
@@ -58,7 +57,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BE0601622A12B10E0087930D /* MeasurementDimensionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementDimensionPicker.swift; sourceTree = "<group>"; };
 		BE0849012A0AB8E900A1251B /* ToolbarItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolbarItem+Extensions.swift"; sourceTree = "<group>"; };
 		BE0849042A0AC13500A1251B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		BE0849092A0AD78400A1251B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -343,7 +341,6 @@
 			children = (
 				BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */,
 				BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */,
-				BE0601622A12B10E0087930D /* MeasurementDimensionPicker.swift */,
 				BE2D633D2A16112F003E1ED4 /* MeasurementPickerHost.swift */,
 			);
 			path = Forms;
@@ -444,7 +441,6 @@
 				BED7084529FC760900ADFBBD /* ManagedObjectWrappers.swift in Sources */,
 				BEDD5CDE2A05DD7B00C2820B /* EditorViewRepresentable.swift in Sources */,
 				BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */,
-				BE0601632A12B10E0087930D /* MeasurementDimensionPicker.swift in Sources */,
 				BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */,
 				BE7756C829FF27B700E7C985 /* NutritionInfo.swift in Sources */,
 				BE2B4AC72A094C0100434D59 /* FoodEventHistory.swift in Sources */,

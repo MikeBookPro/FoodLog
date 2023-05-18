@@ -5,7 +5,7 @@ struct FoodConsumptionEvent: Identifiable, Hashable, Equatable {
     let quantity: Quantity
     let date: Date
     
-    var id: UUID { self.quantity.id ?? .init() }
+    var id: UUID { self.quantity.id }
     
     init(food item: FoodItem, sample: Quantity? = nil, date: Date = .now) {
         self.foodItem = item

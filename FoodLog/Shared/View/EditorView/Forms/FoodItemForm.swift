@@ -28,26 +28,28 @@ struct FoodItemForm: EditorViewRepresentable {
     
     var body: some View {
         Form {
-//            Section(IdentifierToLocalizedString.value(mappedTo: .servingSize)) {
-//
-////                UnitTypePicker(selected: $viewModel.servingSize.unitType)
-//
-//
-//                EditorRow(
-//                    "Amount",
-//                    editing: $viewModel.servingSize.measurement,
-//                    readFormat: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2)))
-//                ) { boundValue in
-//                    TextField("Enter value", value: boundValue.value, format: .number.precision(.fractionLength(0...2)))
-//                        .focused($activeField, equals: .servingSize)
-//                    .editorRow(decimalStyle: [.decimalInput])
-//
+            Section(IdentifierToLocalizedString.value(mappedTo: .servingSize)) {
+
+//                UnitTypePicker(selected: $viewModel.servingSize.unitType)
+
+
+                EditorRow(
+                    "Amount",
+                    editing: $viewModel.servingSize.measurement,
+                    readFormat: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2)))
+                ) { boundValue in
+                    
+                    
+                    TextField("Enter value", value: boundValue.value, format: .number.precision(.fractionLength(0...2)))
+                        .focused($activeField, equals: .servingSize)
+                    .editorRow(decimalStyle: [.decimalInput])
+
 //                    DimensionPicker(selected: $viewModel.servingSize.unit, options: UnitType(unit: viewModel.servingSize.unit).dimensions )
 //                        .scaledToFit()
-//                }
-////                UnitTypePicker(selected: $viewModel.servingSize.unit)
-//
-//            }
+                }
+//                UnitTypePicker(selected: $viewModel.servingSize.unit)
+
+            }
             
             Section("Nutrition info") {
                 ForEach(Array(zip(viewModel.nutrientRows.indices, viewModel.nutrientRows)), id: \.0) { (i, row) in

@@ -144,7 +144,6 @@ enum IdentifierToDimensionAdapter: Adapter {
 
 enum IdentifierToLocalizedString {
     static func value(mappedTo source: QuantityIdentifier) -> LocalizedStringKey {
-        let option = IdentifierToOptionAdapter.value(mappedTo: source)
         switch source {
             case .unknown: return "QuantityIdentifierLabel_unknown"
             case .height: return "QuantityIdentifierLabel_height"
