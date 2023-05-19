@@ -1,10 +1,7 @@
-included:
-  - ${PWD}/Sources
-  - ${PWD}/Plugins
-  - ${PWD}/Tests
-
 excluded:
   - ${PWD}/DerivedData
+  - Package.swift
+
 
 disabled_rules:
   - discarded_notification_center_observer
@@ -65,6 +62,26 @@ custom_rules:
     message: "Use explicit type annotation when initializing empty arrays and dictionaries"
     severity: warning
 
+  blank_line_after_single_line_guard:
+    regex: "guard [^\n]*? else \\{ return (:?\\w+ )?\\}\n[^\n]"
+    message: "Prefer a blank line after a guard with a return."
+
+  swiftlint_disable_without_this_or_next:
+    regex: "// swiftlint:disable (?!implicitly_unwrapped_optional|force_unwrapping)"
+    message: "Prefer using swiftlint:disable:this or swiftlint:disable:next over swiftlint:disable"
+
+  one_let_per_line:
+    regex: " let [^\n]*?, let "
+    message: "Place each let statement and condition on its own line"
+
+  test_classes_should_be_final:
+    regex: "(?<!final )class.*XCTestCase\\b"
+    message: "Make test classes final"
+
+  prefer_final_classes:
+    regex: "(?<!(?:final|open) )class (?!func|var)[^\n]*\\{"
+    message: "Most classes should be declared as final even when not declared as open"
+
 
 attributes:
   always_on_same_line:
@@ -74,9 +91,13 @@ attributes:
     - "@objc"
 
 force_cast: warning
+
 force_try: warning
+
 function_body_length:
     warning: 60
+
+large_tuple: 3
 
 legacy_hashing: error
 
@@ -92,6 +113,7 @@ indentation_width:
   indentation_width: 2
 
 line_length:
+  warning: 120
   ignores_urls: true
   ignores_function_declarations: true
   ignores_comments: true
@@ -102,6 +124,12 @@ multiline_arguments:
 
 private_over_fileprivate:
   validate_extensions: true
+
+switch_case_alignment:
+  indented_cases: true
+
+trailing_comma:
+  mandatory_comma: true
 
 trailing_whitespace:
   ignores_empty_lines: false
