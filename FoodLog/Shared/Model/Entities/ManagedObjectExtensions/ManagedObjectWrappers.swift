@@ -24,7 +24,7 @@ import CoreData
 // MARK: - Nutrient Quantity
 // extension NutrientQuantityMO: ImplementationWrapper {
 //    var wrappedNutritionInfo: (any NutritionInfoRepresentable)? {
-//        guard let nutritionInfo = self.nutritionInfo else { return nil }
+//        guard let nutritionInfo = self.nutritionInfo else { return nil } // swiftlint:disable:this blank_line_after_single_line_guard
 //        return nutritionInfo.wrapped
 //    }
 //
@@ -46,10 +46,10 @@ import CoreData
 // MARK: - Serving Size
 // extension ServingSizeMO: ImplementationWrapper {
 //    var wrappedNutritionInfo: (any NutritionInfoRepresentable)? {
-//        guard let nutritionInfo = self.nutritionInfo else { return nil }
+//        guard let nutritionInfo = self.nutritionInfo else { return nil } // swiftlint:disable:this blank_line_after_single_line_guard
 //        return nutritionInfo.wrapped
 //    }
-//    
+//
 //    var wrapped: some DietaryQuantityRepresentable {
 //        return DietaryQuantity(
 //            quantity: .init(
@@ -66,18 +66,18 @@ import CoreData
 
 // MARK: - Sample Quantity
 extension SampleQuantityMO: ImplementationWrapper {
-    var wrapped: some SampleQuantityRepresentable {
-        let identifier = QuantityIdentifier(string: self.quantityIdentifier)
-        return SampleQuantity(
-            quantity: .init(
-                identifier: identifier,
-                measurement: .init(
-                    value: self.measurementValue,
-                    unit: IdentifierToDimensionAdapter.value(mappedTo: identifier)
-                ),
-                id: self.measurementID
-            ),
-            date: self.date ?? .now
-        )
-    }
+  var wrapped: some SampleQuantityRepresentable {
+    let identifier = QuantityIdentifier(string: self.quantityIdentifier)
+    return SampleQuantity(
+      quantity: .init(
+        identifier: identifier,
+        measurement: .init(
+          value: self.measurementValue,
+          unit: IdentifierToDimensionAdapter.value(mappedTo: identifier)
+        ),
+        id: self.measurementID
+      ),
+      date: self.date ?? .now
+    )
+  }
 }

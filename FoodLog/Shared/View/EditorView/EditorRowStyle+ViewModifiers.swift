@@ -1,75 +1,73 @@
 import SwiftUI
 
 struct EditorRowTextStyle: ViewModifier {
-    @FocusState private var hasFocus: Bool
-    let configuration: EditorRowStyle.TextOptions
+  @FocusState private var hasFocus: Bool
+  let configuration: EditorRowStyle.TextOptions
 
-    func body(content: Content) -> some View {
-        content
-            .submitLabel(configuration.contains(.preferContinue) ? .continue : .done)
-            .keyboardType(.alphabet)
-            .onSubmit(of: .text) {
-                hasFocus = false
-            }
-
-    }
+  func body(content: Content) -> some View {
+    content
+      .submitLabel(configuration.contains(.preferContinue) ? .continue : .done)
+      .keyboardType(.alphabet)
+      .onSubmit(of: .text) {
+        hasFocus = false
+      }
+  }
 }
 
 struct EditorRowDecimalStyle: ViewModifier {
-    @FocusState private var hasFocus: Bool
-    let configuration: EditorRowStyle.NumericOptions
+  @FocusState private var hasFocus: Bool
+  let configuration: EditorRowStyle.NumericOptions
 
-    func body(content: Content) -> some View {
-        content
-            .focused($hasFocus)
-            .keyboardType(configuration.contains(.decimalInput) ? .decimalPad : .numberPad)
-            .toolbar {
-                if hasFocus {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button(configuration.contains(.preferContinue) ? "Continue" : "Done", role: .destructive) {
-                            hasFocus = false
-                        }
-                    }
-                }
+  func body(content: Content) -> some View {
+    content
+      .focused($hasFocus)
+      .keyboardType(configuration.contains(.decimalInput) ? .decimalPad : .numberPad)
+      .toolbar {
+        if hasFocus {
+          ToolbarItemGroup(placement: .keyboard) {
+            Spacer()
+            Button(configuration.contains(.preferContinue) ? "Continue" : "Done", role: .destructive) {
+              hasFocus = false
             }
-    }
+          }
+        }
+      }
+  }
 }
 
 enum EditorRowStyle {
-    struct NumericOptions: OptionSet {
-        let rawValue: Int64
+  struct NumericOptions: OptionSet {
+    let rawValue: Int64
 
-        static let standard: Self = [.decimalInput, .preferDone]
+    static let standard: Self = [.decimalInput, .preferDone]
 
-        static let unknown = Self(rawValue: 1 << 0)
-        static let decimalInput = Self(rawValue: 1 << 1)
-        static let preferContinue = Self(rawValue: 1 << 2)
-        static let preferDone = Self(rawValue: 1 << 3)
-    }
+    static let unknown = Self(rawValue: 1 << 0)
+    static let decimalInput = Self(rawValue: 1 << 1)
+    static let preferContinue = Self(rawValue: 1 << 2)
+    static let preferDone = Self(rawValue: 1 << 3)
+  }
 
-    struct TextOptions: OptionSet {
-        let rawValue: Int64
+  struct TextOptions: OptionSet {
+    let rawValue: Int64
 
-        static let standard: Self = [.preferDone]
+    static let standard: Self = [.preferDone]
 
-        static let unknown = Self(rawValue: 1 << 0)
-        static let preferContinue = Self(rawValue: 1 << 1)
-        static let preferDone = Self(rawValue: 1 << 3)
-    }
-
+    static let unknown = Self(rawValue: 1 << 0)
+    static let preferContinue = Self(rawValue: 1 << 1)
+    static let preferDone = Self(rawValue: 1 << 3)
+  }
 }
 
 extension View {
-    @warn_unqualified_access
-    func editorRow(decimalStyle options: EditorRowStyle.NumericOptions, onSubmit submit: (() -> Void)? = nil) -> some View {
-        self.modifier(EditorRowDecimalStyle(configuration: options))
-    }
+  @warn_unqualified_access
+  func editorRow(decimalStyle options: EditorRowStyle.NumericOptions, onSubmit submit: (() -> Void)? = nil) -> some View {
+    self.modifier(EditorRowDecimalStyle(configuration: options))
+  }
 
-    @warn_unqualified_access
-    func editorRow(textStyle options: EditorRowStyle.TextOptions) -> some View {
-        self.modifier(EditorRowTextStyle(configuration: options))
-    }
+  @warn_unqualified_access
+  func editorRow(textStyle options: EditorRowStyle.TextOptions) -> some View {
+    self.modifier(EditorRowTextStyle(configuration: options))
+  }
 }
 
 //        static let  option  = Self(rawValue: 1 << 3)

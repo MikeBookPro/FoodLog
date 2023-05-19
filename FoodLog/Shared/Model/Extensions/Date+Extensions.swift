@@ -1,7 +1,7 @@
 import Foundation
 
 extension Date {
-    var abbreviatedDateString: String {
-        self.formatted(date: .abbreviated, time: .omitted)
-    }
+  var abbreviatedDateString: String {
+    self.formatted(date: .abbreviated, time: .omitted)
+  }
 }

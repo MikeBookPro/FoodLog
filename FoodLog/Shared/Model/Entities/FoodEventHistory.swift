@@ -1,6 +1,6 @@
 import Foundation
 
 struct FoodEventHistory {
-    let foodItem: FoodItem
-    let consumptionEvents: [FoodConsumptionEvent]
+  let foodItem: FoodItem
+  let consumptionEvents: [FoodConsumptionEvent]
 }

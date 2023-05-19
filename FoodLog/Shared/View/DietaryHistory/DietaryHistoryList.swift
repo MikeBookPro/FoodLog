@@ -33,7 +33,6 @@ struct DietaryHistoryList<FoodListView: View>: View {
         LabeledContent("Serving size") {
           Text(event.foodItem.nutritionInfo.servingSize.measurement, format: .measurement(width: .abbreviated, usage: .asProvided, numberFormatStyle: .number.precision(.fractionLength(0...1))))
         }
-
       }
     } label: {
       HStack {
@@ -81,11 +80,10 @@ extension DietaryHistoryList {
 
     init(consumptionEvents: [FoodConsumptionEvent]) {
       let foodByDate = Dictionary.init(grouping: consumptionEvents, by: \.date.abbreviatedDateString)
-      self.sectionModels = foodByDate
-        .reduce(into: [SectionModel](), { partialResults, pair in
-          partialResults.append(SectionModel(name: pair.key, items: pair.value))
-        })
-        .sorted(by: { $0.name.abbreviatedDate > $1.name.abbreviatedDate })
+      self.sectionModels = foodByDate.reduce(into: [SectionModel]()) { partialResults, pair in
+        partialResults.append(SectionModel(name: pair.key, items: pair.value))
+      }
+      .sorted { $0.name.abbreviatedDate > $1.name.abbreviatedDate }
     }
   }
 }
@@ -97,7 +95,7 @@ struct DietaryHistoryList_Previews: PreviewProvider {
     PreviewData.consumptionEvents(forFood: PreviewData.Food.egg, count: 5),
     PreviewData.consumptionEvents(forFood: PreviewData.Food.mayonnaise, count: 5),
     PreviewData.consumptionEvents(forFood: PreviewData.Food.sardines, count: 5),
-    PreviewData.consumptionEvents(forFood: PreviewData.Food.tuna, count: 5)
+    PreviewData.consumptionEvents(forFood: PreviewData.Food.tuna, count: 5),
   ].reduce([FoodConsumptionEvent](), +)
 
   let consumptionEvents: [(section: String, items: [FoodConsumptionEvent])]

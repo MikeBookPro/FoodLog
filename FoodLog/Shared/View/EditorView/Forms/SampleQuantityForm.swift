@@ -1,69 +1,67 @@
 import SwiftUI
 
 struct SampleQuantityForm: EditorViewRepresentable {
-    @Environment(\.dismiss) private var dismiss
+  @Environment(\.dismiss) private var dismiss
 
-    private enum Field: Hashable { case date, value }
-    @FocusState private var activeField: Field?
+  private enum Field: Hashable { case date, value }
+  @FocusState private var activeField: Field?
 
-    @State private var value: Double
-    @State private var date: Date
-    private let identifier: QuantityIdentifier
-    private let existingID: UUID?
+  @State private var value: Double
+  @State private var date: Date
+  private let identifier: QuantityIdentifier
+  private let existingID: UUID?
 
-    init(_ model: SampleQuantity) {
-        self._value = .init(initialValue: model.measurement.value)
-        self._date = .init(initialValue: model.date)
-        self.identifier = model.identifier
-        self.existingID = model.id
+  init(_ model: SampleQuantity) {
+    self._value = .init(initialValue: model.measurement.value)
+    self._date = .init(initialValue: model.date)
+    self.identifier = model.identifier
+    self.existingID = model.id
+  }
+
+  var body: some View {
+    Form {
+      EditorRow("Date", editing: $date, readFormat: .dateTime.day().month(.abbreviated).year()) { boundValue in
+        DatePicker("", selection: boundValue, in: (.distantPast)...(.now), displayedComponents: [.hourAndMinute, .date])
+          .focused($activeField, equals: .date)
+      }
+
+      EditorRow("Value", editing: $value, readFormat: .number.precision(.fractionLength(0...2))) { boundValue in
+        TextField("Enter value", value: boundValue, format: .number.precision(.fractionLength(0...2)))
+          .focused($activeField, equals: .value)
+          .editorRow(decimalStyle: [.decimalInput])
+      }
     }
-
-    var body: some View {
-        Form {
-            EditorRow("Date", editing: $date, readFormat: .dateTime.day().month(.abbreviated).year()) { boundValue in
-                DatePicker("", selection: boundValue, in: (.distantPast)...(.now), displayedComponents: [.hourAndMinute, .date])
-                    .focused($activeField, equals: .date)
-            }
-
-            EditorRow("Value", editing: $value, readFormat: .number.precision(.fractionLength(0...2))) { boundValue in
-                TextField("Enter value", value: boundValue, format: .number.precision(.fractionLength(0...2)))
-                    .focused($activeField, equals: .value)
-                    .editorRow(decimalStyle: [.decimalInput])
-            }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem.cancel(id: "\(String(describing: Self.self)).toolbar.cancel", action: didClickCancel)
-            ToolbarItem.save(id: "\(String(describing: Self.self)).toolbar.save", action: didClickSave)
-        }
+    .navigationBarTitleDisplayMode(.inline)
+    .toolbar {
+      ToolbarItem.cancel(id: "\(String(describing: Self.self)).toolbar.cancel", action: didClickCancel)
+      ToolbarItem.save(id: "\(String(describing: Self.self)).toolbar.save", action: didClickSave)
     }
+  }
 
-    func didClickSave() {
-        let measurement = Measurement(value: value, unit: IdentifierToDimensionAdapter.value(mappedTo: identifier))
-        let model = SampleQuantity(quantity: .init(identifier: identifier, measurement: measurement, id: existingID), date: date)
-        if existingID == nil {
-            self.create(model)
-        } else {
-            self.update(model)
-        }
-        dismiss()
+  func didClickSave() {
+    let measurement = Measurement(value: value, unit: IdentifierToDimensionAdapter.value(mappedTo: identifier))
+    let model = SampleQuantity(quantity: .init(identifier: identifier, measurement: measurement, id: existingID), date: date)
+    if existingID == nil {
+      self.create(model)
+    } else {
+      self.update(model)
     }
+    dismiss()
+  }
 
-    func didClickCancel() {
-        dismiss()
-    }
-
+  func didClickCancel() {
+    dismiss()
+  }
 }
 
 #if DEBUG
 struct SampleQuantityForm_Previews: PreviewProvider {
-    static let sample = PreviewData.quantitySamples(for: .bodyMass, count: 1, in: 117.0...125.0).first!
+  static let sample = PreviewData.quantitySamples(for: .bodyMass, count: 1, in: 117.0...125.0).first! // swiftlint:disable:this force_unwrapping
 
-    static var previews: some View {
-        NavigationView {
-            SampleQuantityForm(sample)
-        }
-
+  static var previews: some View {
+    NavigationView {
+      SampleQuantityForm(sample)
     }
+  }
 }
 #endif

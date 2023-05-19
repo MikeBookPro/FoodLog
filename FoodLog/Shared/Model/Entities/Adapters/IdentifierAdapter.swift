@@ -71,7 +71,7 @@ enum IdentifierDimension {
     .carbohydrates,
     .fiber,
     .sugar,
-    .protein
+    .protein,
   ]
   static let prefersMilligrams: QuantityIdentifierOption = [
     .cholesterol,
@@ -90,7 +90,7 @@ enum IdentifierDimension {
     .thiamin,
     .vitaminB6,
     .vitaminC,
-    .zinc
+    .zinc,
   ]
   static let prefersMicrograms: QuantityIdentifierOption = [
     .biotin,
@@ -100,12 +100,12 @@ enum IdentifierDimension {
     .molybdenum,
     .selenium,
     .vitaminB12,
-    .vitaminK
+    .vitaminK,
   ]
   static let prefersInternationalUnits: QuantityIdentifierOption = [
     .vitaminA,
     .vitaminD,
-    .vitaminE
+    .vitaminE,
   ]
   static let prefersCalories: QuantityIdentifierOption = [ .energyConsumed ]
 }
@@ -140,7 +140,7 @@ enum IdentifierToDimensionAdapter: Adapter {
 }
 
 enum IdentifierToLocalizedString {
-  static func value(mappedTo source: QuantityIdentifier) -> LocalizedStringKey {
+  static func value(mappedTo source: QuantityIdentifier) -> LocalizedStringKey { // swiftlint:disable:this cyclomatic_complexity
     switch source {
       case .unknown: return "QuantityIdentifierLabel_unknown"
       case .height: return "QuantityIdentifierLabel_height"
@@ -193,4 +193,3 @@ enum IdentifierToLocalizedString {
     }
   }
 }
-

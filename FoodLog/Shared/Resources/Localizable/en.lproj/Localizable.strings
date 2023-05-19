@@ -1,9 +1,9 @@
-/* 
+/*
   Localizable.strings
   FoodLog
 
   Created by Michael Thornton on 5/9/23.
-  
+
 */
 "NutritionFactsHeader_nutritionFacts" = "Nutrition Facts";
 "NutritionFactsHeader_servingSize" = "Serving size";

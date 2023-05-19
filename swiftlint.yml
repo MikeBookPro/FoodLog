@@ -4,8 +4,6 @@ excluded:
 
 
 disabled_rules:
-  - discarded_notification_center_observer
-  - notification_center_detachment
   - orphaned_doc_comment
   - todo
   - unused_capture_list
@@ -55,13 +53,6 @@ opt_in_rules:
 
 
 custom_rules:
-  array_constructor:
-    name: "Array/Dictionary initializer"
-    regex: '[let,var] .+ = (\[.+\]\(\))'
-    capture_group: 1
-    message: "Use explicit type annotation when initializing empty arrays and dictionaries"
-    severity: warning
-
   blank_line_after_single_line_guard:
     regex: "guard [^\n]*? else \\{ return (:?\\w+ )?\\}\n[^\n]"
     message: "Prefer a blank line after a guard with a return."
@@ -89,6 +80,9 @@ attributes:
     - "@IBAction"
     - "@NSManaged"
     - "@objc"
+    - "@Environment"
+    - "@State"
+    - "@FocusState"
 
 force_cast: warning
 
@@ -105,6 +99,9 @@ identifier_name:
   excluded:
     - i
     - id
+    - mo
+    - o
+    - vm
     - x
     - y
     - z
@@ -121,6 +118,9 @@ line_length:
 multiline_arguments:
   first_argument_location: next_line
   only_enforce_after_first_closure_on_first_line: true
+
+nesting:
+  type_level: 2
 
 private_over_fileprivate:
   validate_extensions: true
