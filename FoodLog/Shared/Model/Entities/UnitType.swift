@@ -4,8 +4,8 @@ enum UnitType: String, CaseIterable, Identifiable {
     case mass = "Mass"
     case length = "Length"
     case volume = "Volume"
-    //... Add more as needed
-    
+    // ... Add more as needed
+
     init(unit: Dimension) {
         if Dimension.massDimensions.contains(where: { $0.isEqual(unit) }) {
             self = .mass
@@ -15,10 +15,10 @@ enum UnitType: String, CaseIterable, Identifiable {
             self = .volume
         } else {
             self = .mass
-            
+
         }
     }
-    
+
     var dimensions: [Dimension] {
         switch self {
             case .mass: return Dimension.massDimensions
@@ -26,7 +26,7 @@ enum UnitType: String, CaseIterable, Identifiable {
             case .volume: return Dimension.volumeDimensions
         }
     }
-    
+
     var baseUnit: Dimension {
         switch self {
             case .mass: return UnitMass.baseUnit()
@@ -34,6 +34,6 @@ enum UnitType: String, CaseIterable, Identifiable {
             case .volume: return UnitVolume.baseUnit()
         }
     }
-    
+
     var id: String { self.baseUnit.symbol }
 }

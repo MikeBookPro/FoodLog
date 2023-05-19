@@ -3,7 +3,7 @@ import SwiftUI
 @propertyWrapper
 struct Dimensioned: DynamicProperty {
     var wrappedValue: QuantityIdentifier
-    
+
     var projectedValue: Dimension {
         IdentifierToDimensionAdapter.value(mappedTo: wrappedValue)
     }
@@ -11,10 +11,10 @@ struct Dimensioned: DynamicProperty {
 
 #if DEBUG
 private struct DimensionView: View {
-    
+
     @Dimensioned
     var identifier: QuantityIdentifier
-    
+
     var body: some View {
         VStack {
             LabeledContent("ID") {

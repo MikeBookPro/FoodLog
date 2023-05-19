@@ -4,7 +4,7 @@ import SwiftUI
 enum IdentifierToOptionAdapter: Adapter {
     typealias Source = QuantityIdentifier
     typealias Destination = QuantityIdentifierOption
-    
+
     static func value(mappedTo source: QuantityIdentifier) -> QuantityIdentifierOption {
         switch source {
             case .unknown: return .unknown
@@ -117,30 +117,27 @@ enum IdentifierToDimensionAdapter: Adapter {
         if IdentifierDimension.prefersGrams.contains(option) { return UnitMass.grams }
         if IdentifierDimension.prefersMilligrams.contains(option) { return UnitMass.milligrams }
         if IdentifierDimension.prefersMicrograms.contains(option) { return UnitMass.micrograms }
-        
+
         // MARK: - Unit Energy
         if IdentifierDimension.prefersCalories.contains(option) { return UnitEnergy.kilocalories}
-        
+
         // MARK: - Unit Length
         if IdentifierDimension.prefersCentimeters.contains(option) { return UnitLength.centimeters }
-        
+
         // MARK: - Unit Count
         if IdentifierDimension.prefersPercent.contains(option) { return UnitCount.percent }
-        
+
         // MARK: - Unit Pharmacology
         if IdentifierDimension.prefersInternationalUnits.contains(option) { return UnitPharmacology.internationalUnit }
-        
-        
+
         return UnitUnknown.unknown
     }
-    
-    
+
     static func value(mappedTo source: QuantityIdentifier) -> Dimension {
         let option = IdentifierToOptionAdapter.value(mappedTo: source)
         return preferredUnit(forSelected: option)
     }
 }
-
 
 enum IdentifierToLocalizedString {
     static func value(mappedTo source: QuantityIdentifier) -> LocalizedStringKey {

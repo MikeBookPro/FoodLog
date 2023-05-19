@@ -8,9 +8,9 @@ protocol ImplementationWrapper {
 // MARK: Quantity Representable
 extension ImplementationWrapper where Self: QuantityRepresentable, Wrapped: QuantityRepresentable {
     var identifier: QuantityIdentifier { wrapped[keyPath: \.identifier] }
-    
+
     var id: UUID { wrapped[keyPath: \.id] }
-    
+
     var measurement: Measurement<Dimension> { wrapped[keyPath: \.measurement] }
 }
 

@@ -3,11 +3,11 @@ import SwiftUI
 struct FoodReferenceList<Editor: EditorViewRepresentable>: View where Editor.Model == FoodItem {
     @State private var editMode: EditMode = .inactive
     @State private var viewModel: EditorListViewModel<Editor>
-    
+
     init(list rowItems: [Editor.Model], @ViewBuilder editorView builder: @escaping (Editor.Model) -> Editor) {
         self._viewModel = .init(initialValue: .init(list: rowItems, editorView: builder))
     }
-    
+
     var body: some View {
         NavigationView {
             List(selection: $viewModel.selected) {

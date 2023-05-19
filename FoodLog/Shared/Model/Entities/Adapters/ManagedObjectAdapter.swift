@@ -20,5 +20,3 @@ enum ManagedObjectAdapter {
         static func value(mappedTo source: SampleQuantityMO) -> some SampleQuantityRepresentable { source.wrapped }
     }
 }
-
-

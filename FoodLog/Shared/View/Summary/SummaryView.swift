@@ -3,11 +3,11 @@ import SwiftUI
 struct SummaryView<Editor: EditorViewRepresentable>: View where Editor.Model == SampleQuantity {
     @State private var viewModel: EditorListViewModel<Editor>
 //    @State private var viewModel: SummaryView.ViewModel
-    
+
     init(list rowItems: [SampleQuantity], @ViewBuilder editorView builder: @escaping (Editor.Model) -> Editor) {
         self._viewModel = .init(initialValue: .init(list: rowItems, editorView: builder))
     }
-    
+
     var body: some View {
         NavigationView {
             List(selection: $viewModel.selected) {
@@ -31,7 +31,7 @@ struct SummaryView<Editor: EditorViewRepresentable>: View where Editor.Model == 
             }
         }
     }
-    
+
     // MARK: - User Actions
     private func presentEditor() {
         viewModel.isShowingEditor = true

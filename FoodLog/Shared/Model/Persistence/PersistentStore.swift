@@ -1,10 +1,10 @@
-//import Foundation
-//import SwiftUI
-//import Combine
-//import CoreData
+// import Foundation
+// import SwiftUI
+// import Combine
+// import CoreData
 //
 //
-//final class DataStore: ObservableObject {
+// final class DataStore: ObservableObject {
 //    @Published private(set) var sampleQuantities = [UUID: SampleQuantity]()
 //    
 //    init(sampleQuantities: [UUID: SampleQuantity] = [:]) {
@@ -46,10 +46,10 @@
 //            self?.sampleQuantities = updatedSamples
 //        }
 //    }
-//}
+// }
 //
 //
-//actor PersistentDataStore {
+// actor PersistentDataStore {
 //    public static let shared = PersistentDataStore()
 //    
 //    private(set) var sampleQuantities = [UUID: SampleQuantity]()
@@ -85,5 +85,5 @@
 //        await dataManager.delete(sampleWithID: id, shouldSave: true)
 //        sampleQuantities[id] = nil
 //    }
-//}
+// }
 //

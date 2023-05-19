@@ -7,13 +7,13 @@ public enum QuantityIdentifier: String, Identifiable, CaseIterable, Hashable {
     case leanBodyMass = "HKQuantityTypeIdentifierLeanBodyMass"
     case bodyFatPercentage = "HKQuantityTypeIdentifierBodyFatPercentage"
     case waistCircumference = "HKQuantityTypeIdentifierWaistCircumference"
-    
+
     // Health Measurement
     case bloodGlucose = "HKQuantityTypeIdentifierBloodGlucose"
-    
+
     // Dietary Nutrition
     case servingSize = "NotHKQuantityTypeIdentifier-ServingSize"
-    
+
 //    case unknown
 //    case height = "HKQuantityTypeIdentifierHeight"
 //    case bodyMass = "HKQuantityTypeIdentifierBodyMass"
@@ -61,19 +61,18 @@ public enum QuantityIdentifier: String, Identifiable, CaseIterable, Hashable {
     case vitaminK = "HKQuantityTypeIdentifierDietaryVitaminK"
     case water = "HKQuantityTypeIdentifierDietaryWater"
     case zinc = "HKQuantityTypeIdentifierDietaryZinc"
-    
+
     // Characteristic Type
 //    case biologicalSex = "HKCharacteristicTypeIdentifierBiologicalSex
 //    case dateOfBirth = "HKCharacteristicTypeIdentifierDateOfBirth
-    
+
     // Correlation Type
     case food = "HKCorrelationTypeIdentifierFood"
-    
-    
+
     public var id: String { self.rawValue }
-    
+
     public var isHealthKitIdentifier: Bool { self != .servingSize && self != .unknown }
-    
+
     init(string: String?) {
         var identifier = Self.unknown
         if let string, let valid = Self(rawValue: string) {
@@ -81,7 +80,7 @@ public enum QuantityIdentifier: String, Identifiable, CaseIterable, Hashable {
         }
         self = identifier
     }
-    
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.rawValue)
     }
@@ -89,7 +88,7 @@ public enum QuantityIdentifier: String, Identifiable, CaseIterable, Hashable {
 
 struct QuantityIdentifierOption: OptionSet {
     let rawValue: Int64
-    
+
     static let unknown = Self(rawValue: 1 << 0)
     static let height = Self(rawValue: 1 << 1)
     static let bodyMass = Self(rawValue: 1 << 2)
@@ -137,6 +136,6 @@ struct QuantityIdentifierOption: OptionSet {
     static let vitaminK  = Self(rawValue: 1 << 44)
     static let water  = Self(rawValue: 1 << 45)
     static let zinc  = Self(rawValue: 1 << 46)
-    
+
     static let food  = Self(rawValue: 1 << 64)
 }

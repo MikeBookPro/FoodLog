@@ -4,25 +4,24 @@ struct FoodConsumptionEvent: Identifiable, Hashable, Equatable {
     let foodItem: FoodItem
     let quantity: Quantity
     let date: Date
-    
+
     var id: UUID { self.quantity.id }
-    
+
     init(food item: FoodItem, sample: Quantity? = nil, date: Date = .now) {
         self.foodItem = item
         self.quantity = sample ?? .init(identifier: .food, measurement: .init(value: .zero, unit: UnitMass.grams))
         self.date = date
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(foodItem)
         hasher.combine(date)
     }
-    
+
     static func == (lhs: FoodConsumptionEvent, rhs: FoodConsumptionEvent) -> Bool {
         lhs.id == rhs.id
     }
 }
-
 
 /**
  let date = NSDate()

@@ -1,7 +1,7 @@
 import Foundation
 
 struct DietaryQuantity: DietaryQuantityRepresentable, ImplementationWrapper {
-    
+
     // MARK: Nutrient Quantity Representable
     var nutritionInfo: (any NutritionInfoRepresentable)?
 

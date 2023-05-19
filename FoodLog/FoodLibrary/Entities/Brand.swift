@@ -1,86 +1,86 @@
-//import Foundation
+// import Foundation
 //
-//// MARK: - Brand
+// MARK: - Brand
 //
-//public protocol BrandReadable: Identifiable {
+// public protocol BrandReadable: Identifiable {
 //    var id: UUID { get }
 //    var name: String { get }
 //
 //    var productDetails: String? { get }
 //
 //    init(name: String)
-//}
+// }
 //
-//public protocol BrandRepresentable: BrandReadable {
+// public protocol BrandRepresentable: BrandReadable {
 //    init(name: String)
-//}
+// }
 //
-//// MARK: - Nutrient
+// MARK: - Nutrient
 //
-//public protocol NutrientReadable: Identifiable {
+// public protocol NutrientReadable: Identifiable {
 //    var id: String { get }
-//}
+// }
 //
-//public protocol NutrientRepresentable: NutrientReadable {
+// public protocol NutrientRepresentable: NutrientReadable {
 //    init(id: String)
-//}
+// }
 //
-//// MARK: - NutrientQuantity
+// MARK: - NutrientQuantity
 //
-//public protocol NutrientQuantityReadable {
+// public protocol NutrientQuantityReadable {
 //    var nutrient: any NutrientReadable { get }
 //    var quantity: any QuantityReadable { get }
-//}
+// }
 //
-//public protocol NutrientQuantityRepresentable: NutrientQuantityReadable {
+// public protocol NutrientQuantityRepresentable: NutrientQuantityReadable {
 //    init(nutrient: some NutrientRepresentable, quantity: some QuantityRepresentable)
-//}
+// }
 //
-//// MARK: - Nutrition Info
+// MARK: - Nutrition Info
 //
-//public protocol NutritionInfoReadable {
+// public protocol NutritionInfoReadable {
 //    var servingSize: any QuantityReadable { get }
 //    var nutrientQuantities: [any NutrientReadable] { get }
-//}
+// }
 //
-//public protocol NutritionInfoRepresentable: NutritionInfoReadable {
+// public protocol NutritionInfoRepresentable: NutritionInfoReadable {
 //    init(servingSize: some QuantityRepresentable, nutrient: [any NutrientRepresentable])
-//}
+// }
 //
-//// MARK: - Food Item
+// MARK: - Food Item
 //
-//public protocol FoodItemReadable: Identifiable {
+// public protocol FoodItemReadable: Identifiable {
 //    var id: UUID { get }
 //    var nutritionInfo: any NutritionInfoReadable { get }
 //    var itemDetail: any FoodItemDetailReadable { get }
-//}
+// }
 //
-//public protocol FoodItemRepresentable: Identifiable {
+// public protocol FoodItemRepresentable: Identifiable {
 //    init(id: UUID, nutritionInfo: some NutritionInfoRepresentable, itemDetail: some FoodItemDetailRepresentable)
-//}
+// }
 //
-//// MARK: - Tag
+// MARK: - Tag
 //
-//public protocol TagReadable: Identifiable {
+// public protocol TagReadable: Identifiable {
 //    var id: UUID { get }
 //    var text: String { get }
-//}
+// }
 //
-//public protocol TagRepresentable: TagReadable {
+// public protocol TagRepresentable: TagReadable {
 //    init(text: String)
-//}
+// }
 //
-//// MARK: - Food Item Detail
+// MARK: - Food Item Detail
 //
-//public protocol FoodItemDetailReadable {
+// public protocol FoodItemDetailReadable {
 //    var name: String? { get }
 //    var nameSecondary: String? { get }
 //    var preparationDetail: String? { get }
 //    var tags: [any TagReadable] { get }
 //    var brand: any BrandReadable { get }
-//}
+// }
 //
-//public protocol FoodItemDetailRepresentable: FoodItemDetailReadable {
+// public protocol FoodItemDetailRepresentable: FoodItemDetailReadable {
 //    init(
 //        name: String?,
 //        nameSecondary: String?,
@@ -88,4 +88,4 @@
 //        tags: [any TagRepresentable],
 //        brand: some BrandRepresentable
 //    )
-//}
+// }

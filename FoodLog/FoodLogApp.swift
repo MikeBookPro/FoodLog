@@ -14,4 +14,3 @@ struct FoodLogApp: App {
     }
   }
 }
-

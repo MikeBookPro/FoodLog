@@ -1,5 +1,5 @@
 import Foundation
 
-//protocol EventRepresentable {
+// protocol EventRepresentable {
 //    var date: Date { get }
-//}
+// }

@@ -1,12 +1,12 @@
 import Foundation
 
-struct FoodItem: EditableModel, Hashable, Equatable, Identifiable  {
+struct FoodItem: EditableModel, Hashable, Equatable, Identifiable {
     let id: UUID
     let name: String
     let brand: Brand?
     let nutritionInfo: NutritionInfo
     let tags: [String]
-    
+
     init(id: UUID? = nil, name: String, brand: Brand? = nil, nutritionInfo: NutritionInfo, tags: [String] = []) {
         self.id = id ?? .init()
         self.name = name
@@ -14,7 +14,7 @@ struct FoodItem: EditableModel, Hashable, Equatable, Identifiable  {
         self.nutritionInfo = nutritionInfo
         self.tags = tags
     }
-    
+
     // MARK: EditableModel
     static func template(for identifier: QuantityIdentifier) -> FoodItem {
         FoodItem(
@@ -39,14 +39,14 @@ struct FoodItem: EditableModel, Hashable, Equatable, Identifiable  {
             )
         )
     }
-    
+
     // MARK: Hashable
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(name)
         hasher.combine(tags)
     }
-    
+
     // MARK: Equatable
     static func == (lhs: FoodItem, rhs: FoodItem) -> Bool {
         lhs.id == rhs.id

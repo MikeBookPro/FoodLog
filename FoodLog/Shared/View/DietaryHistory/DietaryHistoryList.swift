@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DietaryHistoryList<FoodListView: View>: View {
-  //struct DietaryHistoryList<Editor: EditorViewRepresentable>: View where Editor.Model == FoodConsumptionEvent {
+  // struct DietaryHistoryList<Editor: EditorViewRepresentable>: View where Editor.Model == FoodConsumptionEvent {
   @State private var viewModel: Self.ViewModel
 
   private let foodItemList: () -> FoodListView
@@ -75,7 +75,7 @@ extension DietaryHistoryList {
   private struct ViewModel {
     typealias SectionModel = (name: String, items: [FoodConsumptionEvent])
 
-    var selected: FoodConsumptionEvent? = nil
+    var selected: FoodConsumptionEvent?
     var isShowingFoodList = false
     let sectionModels: [SectionModel]
 
@@ -114,4 +114,3 @@ struct DietaryHistoryList_Previews: PreviewProvider {
   }
 }
 #endif
-

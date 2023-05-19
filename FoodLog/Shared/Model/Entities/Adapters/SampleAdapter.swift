@@ -16,5 +16,5 @@ struct BodyWeightSampleAdapter {
             date: mo.date ?? .now
         )
     }
-    
+
 }

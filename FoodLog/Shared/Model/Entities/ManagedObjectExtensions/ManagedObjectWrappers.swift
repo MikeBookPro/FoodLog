@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 
 // MARK: - Nutrition Info
-//extension NutritionInfoMO: ImplementationWrapper  {
+// extension NutritionInfoMO: ImplementationWrapper  {
 //    private var wrappedServingSize: any DietaryQuantityRepresentable {
 //        if let serving = self.servingSize {
 //            return serving.wrapped
@@ -19,10 +19,10 @@ import CoreData
 //    var wrapped: some NutritionInfoRepresentable {
 //        NutritionInfo(servingSize: wrappedServingSize, nutrientQuantities: wrappedNutrientQuantities)
 //    }
-//}
+// }
 
 // MARK: - Nutrient Quantity
-//extension NutrientQuantityMO: ImplementationWrapper {
+// extension NutrientQuantityMO: ImplementationWrapper {
 //    var wrappedNutritionInfo: (any NutritionInfoRepresentable)? {
 //        guard let nutritionInfo = self.nutritionInfo else { return nil }
 //        return nutritionInfo.wrapped
@@ -41,10 +41,10 @@ import CoreData
 //            nutritionInfo: self.wrappedNutritionInfo
 //        )
 //    }
-//}
+// }
 
 // MARK: - Serving Size
-//extension ServingSizeMO: ImplementationWrapper {
+// extension ServingSizeMO: ImplementationWrapper {
 //    var wrappedNutritionInfo: (any NutritionInfoRepresentable)? {
 //        guard let nutritionInfo = self.nutritionInfo else { return nil }
 //        return nutritionInfo.wrapped
@@ -62,7 +62,7 @@ import CoreData
 //            nutritionInfo: self.wrappedNutritionInfo
 //        )
 //    }
-//}
+// }
 
 // MARK: - Sample Quantity
 extension SampleQuantityMO: ImplementationWrapper {

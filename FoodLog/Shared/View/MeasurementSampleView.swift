@@ -8,7 +8,7 @@ struct MeasurementSampleView: View {
     private let identifier: QuantityIdentifier
     private let measurement: Measurement<Dimension>
     private let date: Date
-    
+
     init(sample: some SampleQuantityRepresentable, editorToggle isShowingEditor: Binding<Bool>) {
         self._isShowingEditor = isShowingEditor
         self.id = sample.id
@@ -16,7 +16,7 @@ struct MeasurementSampleView: View {
         self.measurement = sample.measurement
         self.date = sample.date
     }
-    
+
     var body: some View {
         VStack {
             if let id {
@@ -26,14 +26,13 @@ struct MeasurementSampleView: View {
                 }
                 .font(.headline)
             }
-            
-            
+
             LabeledContent("Weight") {
                 Text(measurement, format: .measurement(width: .abbreviated, usage: .asProvided, numberFormatStyle: .number.precision(.fractionLength(0...2))))
                     .font(.body)
             }
             .font(.headline)
-            
+
             LabeledContent("Date") {
                 Text(date, format: .dateTime
                     .day()
@@ -43,7 +42,7 @@ struct MeasurementSampleView: View {
                 .font(.body)
             }
             .font(.headline)
-            
+
             LabeledContent("Time") {
                 Text(date, format: .dateTime
                     .hour(.defaultDigits(amPM: .abbreviated))
@@ -53,7 +52,7 @@ struct MeasurementSampleView: View {
                 .font(.body)
             }
             .font(.headline)
-            
+
         }
         .padding()
         .toolbar {
@@ -76,7 +75,7 @@ struct MeasurementSampleView_Previews: PreviewProvider {
         ),
         date: .now
     )
-    
+
     static var previews: some View {
         MeasurementSampleView(sample: bodyWeightSample, editorToggle: .constant(false))
     }

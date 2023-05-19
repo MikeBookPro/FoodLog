@@ -9,22 +9,20 @@ protocol QuantityRepresentable: Identifiable, Equatable, Hashable {
 
 extension QuantityRepresentable {
     static func == (_ lhs: Self, _ rhs: Self) -> Bool { lhs.id == rhs.id }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(identifier)
     }
 }
 
-
-
 protocol ReferenceQuantityRepresentable: QuantityRepresentable {}
 protocol ObservedQuantityRepresentable: QuantityRepresentable {
     var date: Date? { get }
 }
-//protocol EventSampleRepresentable: QuantityRepresentable {
+// protocol EventSampleRepresentable: QuantityRepresentable {
 //    var event: any EventRepresentable { get }
-//}
+// }
 
 extension ReferenceQuantityRepresentable {
     static func == (_ lhs: any ReferenceQuantityRepresentable, _ rhs: any ReferenceQuantityRepresentable) -> Bool {
@@ -53,7 +51,7 @@ protocol DietaryQuantityRepresentable: ReferenceQuantityRepresentable {
 
 // MARK: - Timestamped Quantities
 
-//TODO: Will need to make a bunch of different SampleQuantity (probably)
+// TODO: Will need to make a bunch of different SampleQuantity (probably)
 protocol SampleQuantityRepresentable: ReferenceQuantityRepresentable, Equatable, Hashable {
     var date: Date { get }
 }
