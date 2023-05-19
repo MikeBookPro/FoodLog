@@ -28,7 +28,7 @@ struct MeasurementSampleView: View {
       }
 
       LabeledContent("Weight") {
-        Text(measurement, format: .measurement(width: .abbreviated, usage: .asProvided, numberFormatStyle: .number.precision(.fractionLength(0...2))))
+        Text(measurement, format: .measurementStyle)
           .font(.body)
       }
       .font(.headline)

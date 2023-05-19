@@ -31,6 +31,7 @@
 		BE7BD2762A0464F1007E49B9 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7BD2752A0464F1007E49B9 /* PreviewData.swift */; };
 		BE7BD2782A0474E3007E49B9 /* RootTabViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7BD2772A0474E3007E49B9 /* RootTabViews.swift */; };
 		BE8B550F2A17E93C00172C67 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BE8B550E2A17E93C00172C67 /* swiftlint.yml */; };
+		BE8B55122A18044200172C67 /* FormatStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B55112A18044200172C67 /* FormatStyle+Extensions.swift */; };
 		BE92CB8629E48046006A158E /* FoodLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8529E48046006A158E /* FoodLogApp.swift */; };
 		BE92CB8829E48046006A158E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8729E48046006A158E /* Persistence.swift */; };
 		BE92CB8B29E48046006A158E /* FoodLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE92CB8929E48046006A158E /* FoodLog.xcdatamodeld */; };
@@ -82,6 +83,7 @@
 		BE7BD2752A0464F1007E49B9 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		BE7BD2772A0474E3007E49B9 /* RootTabViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabViews.swift; sourceTree = "<group>"; };
 		BE8B550E2A17E93C00172C67 /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
+		BE8B55112A18044200172C67 /* FormatStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+Extensions.swift"; sourceTree = "<group>"; };
 		BE92CB8229E48046006A158E /* FoodLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE92CB8529E48046006A158E /* FoodLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogApp.swift; sourceTree = "<group>"; };
 		BE92CB8729E48046006A158E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				BEB6939F2A04875F00F9620B /* UUID+Extensions.swift */,
 				BE76C8E42A073433002E1F8C /* String+Extensions.swift */,
 				BE76C8E62A07344D002E1F8C /* Date+Extensions.swift */,
+				BE8B55112A18044200172C67 /* FormatStyle+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				BE7413BF29E73852008DC255 /* Dimensioned.swift in Sources */,
 				BE7413BB29E70DED008DC255 /* Dimension+Extensions.swift in Sources */,
 				BE7756C829FF27B700E7C985 /* NutritionInfo.swift in Sources */,
+				BE8B55122A18044200172C67 /* FormatStyle+Extensions.swift in Sources */,
 				BE2B4AC72A094C0100434D59 /* FoodEventHistory.swift in Sources */,
 				BEEC9D362A056CD3000C1CC1 /* EditorRow.swift in Sources */,
 				BE7756C429FF273900E7C985 /* Quantity.swift in Sources */,

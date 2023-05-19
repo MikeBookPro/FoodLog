@@ -117,7 +117,7 @@ struct EditorRow_Previews: PreviewProvider {
       var givenName: String = ""
       var details: String = ""
       var amount: Double = 15.5
-      var measure: Measurement<UnitMass> = .init(value: 16.5, unit: .grams)
+      var measure: Measurement<Dimension> = .init(value: 16.5, unit: UnitMass.grams)
 
       func displayText(forDate value: Date) -> String {
         value.formatted(.dateTime
@@ -141,12 +141,15 @@ struct EditorRow_Previews: PreviewProvider {
     @State private var vm = ViewModel()
     @FocusState private var activeField: Shim.Field?
 
-    let dateFormat: any FormatStyle = .dateTime.day().month(.wide).year().hour(.defaultDigits(amPM: .abbreviated)).minute(.twoDigits).timeZone()
-
     var body: some View {
       NavigationView {
-        EditorRow("Date", editing: $vm.date, readFormat: .dateTime.day().month(.wide).year().hour(.defaultDigits(amPM: .abbreviated)).minute(.twoDigits).timeZone()) { boundValue in
-          DatePicker("", selection: boundValue, in: (.distantPast)...(.now), displayedComponents: [.hourAndMinute, .date])
+        EditorRow("Date", editing: $vm.date, readFormat: .dateTimeStyle) { boundValue in
+          DatePicker(
+            "",
+            selection: boundValue,
+            in: (.distantPast)...(.now),
+            displayedComponents: [.hourAndMinute, .date]
+          )
         }
 
         EditorRow("Details", editing: $vm.details) { boundValue in
@@ -169,14 +172,14 @@ struct EditorRow_Previews: PreviewProvider {
             .editorRow(textStyle: [.standard])
         }
 
-        EditorRow("Amount", editing: $vm.amount, readFormat: .number.precision(.fractionLength(0...2))) { boundValue in
-          TextField("Enter value", value: boundValue, format: .number.precision(.fractionLength(0...2)))
+        EditorRow("Amount", editing: $vm.amount, readFormat: .twoDecimalMaxStyle) { boundValue in
+          TextField("Enter value", value: boundValue, format: .twoDecimalMaxStyle)
             .focused($activeField, equals: .amount)
             .editorRow(decimalStyle: [.decimalInput])
         }
 
-        EditorRow("Measurement", editing: $vm.measure, readFormat: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2)))) { boundValue in
-          TextField("Enter value", value: boundValue.value, format: .number.precision(.fractionLength(0...2)))
+        EditorRow("Measurement", editing: $vm.measure, readFormat: .measurementStyle) { boundValue in
+          TextField("Enter value", value: boundValue.value, format: .twoDecimalMaxStyle)
             .focused($activeField, equals: .measure)
             .editorRow(decimalStyle: [.decimalInput])
 

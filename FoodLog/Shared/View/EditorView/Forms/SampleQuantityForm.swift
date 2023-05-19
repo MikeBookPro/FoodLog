@@ -40,7 +40,8 @@ struct SampleQuantityForm: EditorViewRepresentable {
 
   func didClickSave() {
     let measurement = Measurement(value: value, unit: IdentifierToDimensionAdapter.value(mappedTo: identifier))
-    let model = SampleQuantity(quantity: .init(identifier: identifier, measurement: measurement, id: existingID), date: date)
+    let qty = Quantity(identifier: identifier, measurement: measurement, id: existingID)
+    let model = SampleQuantity(quantity: qty, date: date)
     if existingID == nil {
       self.create(model)
     } else {
@@ -56,7 +57,7 @@ struct SampleQuantityForm: EditorViewRepresentable {
 
 #if DEBUG
 struct SampleQuantityForm_Previews: PreviewProvider {
-  static let sample = PreviewData.quantitySamples(for: .bodyMass, count: 1, in: 117.0...125.0).first! // swiftlint:disable:this force_unwrapping
+  static let sample = PreviewData.quantitySamples(for: .bodyMass, in: 117.0...125.0).first! // swiftlint:disable:this force_unwrapping line_length
 
   static var previews: some View {
     NavigationView {

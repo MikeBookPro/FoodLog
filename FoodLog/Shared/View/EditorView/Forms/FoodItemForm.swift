@@ -196,7 +196,7 @@ extension FoodItemForm {
 
 #if DEBUG
 struct FoodItemForm_Previews: PreviewProvider {
-  static let sample = PreviewData.quantitySamples(for: .bodyMass, count: 1, in: 117.0...125.0).first! // swiftlint:disable:this force_unwrapping
+  static let sample = PreviewData.quantitySamples(for: .bodyMass, in: 117.0...125.0).first! // swiftlint:disable:this force_unwrapping line_length
 
   static var previews: some View {
     ForEach(["en", "es"], id: \.self) { localeIdentifier in

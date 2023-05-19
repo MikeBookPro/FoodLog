@@ -16,7 +16,7 @@ struct SummaryView<Editor: EditorViewRepresentable>: View where Editor.Model == 
             MeasurementSampleView(sample: sample, editorToggle: $viewModel.isShowingEditor)
           } label: {
             Text(sample.date, format: Date.FormatStyle.init(date: .numeric, time: .shortened))
-            Text(sample.measurement, format: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
+            Text(sample.measurement, format: .measurementStyle)
           }
           .padding(.vertical, 8)
         }

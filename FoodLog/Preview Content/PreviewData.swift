@@ -29,7 +29,7 @@ enum PreviewData {
     }
   }
 
-  static func quantitySamples(for identifier: QuantityIdentifier, count: Int, in range: ClosedRange<Double>) -> [SampleQuantity] {
+  static func quantitySamples(for identifier: QuantityIdentifier, count: Int = 1, in range: ClosedRange<Double>) -> [SampleQuantity] {
     let quantities = Self.quantities(for: identifier, count: count, in: range)
     let dates = Self.consecutiveDates(count: count)
     return zip(quantities, dates).map(SampleQuantity.init(quantity:date:))

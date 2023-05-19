@@ -110,7 +110,7 @@ private struct MeasurementPickerHostViewModel {
 struct MeasurementPickerHost_Previews: PreviewProvider {
   private struct Shim: View {
     enum Configuration: String, CaseIterable, Identifiable {
-      case customLabel, stringLabel, keyPathBody, noLabel
+      case customLabel, stringLabel, noLabel
       var id: String { self.rawValue }
     }
 
@@ -143,9 +143,6 @@ struct MeasurementPickerHost_Previews: PreviewProvider {
               Text($0.symbol)
                 .font(.headline)
             }
-
-          case .keyPathBody:
-            MeasurementPickerHost("Text KeyPath", selected: $measure, keyPaths: (unitType: \.rawValue, dimension: \.symbol))
 
           case .noLabel:
             MeasurementPickerHost(selected: $measure, keyPaths: (unitType: \.rawValue, dimension: \.symbol))

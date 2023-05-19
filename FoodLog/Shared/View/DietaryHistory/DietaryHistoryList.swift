@@ -27,11 +27,11 @@ struct DietaryHistoryList<FoodListView: View>: View {
         }
 
         LabeledContent("Amount") {
-          Text(event.quantity.measurement, format: .measurement(width: .abbreviated, usage: .asProvided, numberFormatStyle: .number.precision(.fractionLength(0...1))))
+          Text(event.quantity.measurement, format: .measurementStyle)
         }
 
         LabeledContent("Serving size") {
-          Text(event.foodItem.nutritionInfo.servingSize.measurement, format: .measurement(width: .abbreviated, usage: .asProvided, numberFormatStyle: .number.precision(.fractionLength(0...1))))
+          Text(event.foodItem.nutritionInfo.servingSize.measurement, format: .measurementStyle)
         }
       }
     } label: {
