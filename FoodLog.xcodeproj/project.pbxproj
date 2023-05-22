@@ -43,6 +43,7 @@
 		BEB6939E2A0483A300F9620B /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6939D2A0483A300F9620B /* FoodItem.swift */; };
 		BEB693A02A04875F00F9620B /* UUID+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6939F2A04875F00F9620B /* UUID+Extensions.swift */; };
 		BEB693A22A0488EF00F9620B /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB693A12A0488EF00F9620B /* Brand.swift */; };
+		BEBAE5FA2A1BCBC1005B3F1C /* NutritionInfoForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBAE5F92A1BCBC1005B3F1C /* NutritionInfoForm.swift */; };
 		BED10BC729E7405700A75BA1 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC629E7405700A75BA1 /* Adapter.swift */; };
 		BED10BCA29E740B000A75BA1 /* IdentifierAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED10BC929E740B000A75BA1 /* IdentifierAdapter.swift */; };
 		BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */; };
@@ -97,6 +98,7 @@
 		BEB6939D2A0483A300F9620B /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
 		BEB6939F2A04875F00F9620B /* UUID+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+Extensions.swift"; sourceTree = "<group>"; };
 		BEB693A12A0488EF00F9620B /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		BEBAE5F92A1BCBC1005B3F1C /* NutritionInfoForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionInfoForm.swift; sourceTree = "<group>"; };
 		BED10BC629E7405700A75BA1 /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
 		BED10BC929E740B000A75BA1 /* IdentifierAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierAdapter.swift; sourceTree = "<group>"; };
 		BED7083629FC2F1100ADFBBD /* QuantityRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityRepresentable.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */,
 				BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */,
 				BE2D633D2A16112F003E1ED4 /* MeasurementPickerHost.swift */,
+				BEBAE5F92A1BCBC1005B3F1C /* NutritionInfoForm.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				BE7756C429FF273900E7C985 /* Quantity.swift in Sources */,
 				BED7084729FED01E00ADFBBD /* PersistentStore.swift in Sources */,
 				BE1844302A0C1D7C00FB574C /* ListEditorViewModel.swift in Sources */,
+				BEBAE5FA2A1BCBC1005B3F1C /* NutritionInfoForm.swift in Sources */,
 				BED7083729FC2F1100ADFBBD /* QuantityRepresentable.swift in Sources */,
 				BE2D63402A162E97003E1ED4 /* UnitType.swift in Sources */,
 				BED10BC729E7405700A75BA1 /* Adapter.swift in Sources */,
