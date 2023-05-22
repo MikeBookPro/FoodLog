@@ -26,7 +26,7 @@ struct EditorRow<Value: Equatable, Label: View, EditView: View, ReadView: View>:
   }
 
   init<ValueStyle: FormatStyle>(
-    _ textKey: SwiftUI.LocalizedStringKey,
+    _ textKey: SwiftUI.LocalizedStringKey = LocalizedStringKey(""),
     editing value: Binding<Value>,
     readFormat style: ValueStyle,
     @ViewBuilder editView buildEditor: @escaping (Binding<Value>) -> EditView
@@ -46,7 +46,7 @@ struct EditorRow<Value: Equatable, Label: View, EditView: View, ReadView: View>:
 
   init(
     editing value: Binding<Value>,
-    @ViewBuilder label buildLabel: () -> Label,
+    @ViewBuilder labelView buildLabel: () -> Label,
     @ViewBuilder readView buildReader: @escaping (Value) -> ReadView,
     @ViewBuilder editView buildEditor: @escaping (Binding<Value>) -> EditView
   ) {
@@ -82,26 +82,6 @@ struct EditorRow<Value: Equatable, Label: View, EditView: View, ReadView: View>:
         .font(.headline)
         .fixedSize()
     }
-  }
-
-  // TODO: Move these to be shared, probably replace with FormatStyle
-  static func displayText(forDate value: Date) -> String {
-    value.formatted(.dateTime
-      .day()
-      .month(.wide)
-      .year()
-      .hour(.defaultDigits(amPM: .abbreviated))
-      .minute(.twoDigits)
-      .timeZone()
-    )
-  }
-
-  static func displayText(forDouble value: Double) -> String {
-    value.formatted(.number.precision(.fractionLength(0...2)))
-  }
-
-  static func displayText<UnitType: Dimension>(forMeasurement value: Measurement<UnitType>) -> String {
-    value.formatted(.measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2))))
   }
 }
 

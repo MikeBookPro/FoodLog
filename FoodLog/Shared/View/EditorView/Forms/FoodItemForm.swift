@@ -1,24 +1,10 @@
 import SwiftUI
 
-struct DimensionPicker: View {
-  @Binding var selected: Dimension
-  let options: [Dimension]
-
-  var body: some View {
-    Picker("", selection: $selected) {
-      ForEach(options, id: \.self) {
-        Text($0.symbol)
-          .tag($0)
-      }
-    }
-  }
-}
-
 struct FoodItemForm: EditorViewRepresentable {
   typealias Model = FoodItem
   @Environment(\.dismiss) private var dismiss
   @Environment(\.editMode) private var editMode
-  @FocusState private var activeField: ViewModel.InputFocus?
+  @FocusState private var activeField: Self.ViewModel.InputFocus?
   @State private var viewModel: Self.ViewModel
 
   init(_ model: FoodItem) {
@@ -28,26 +14,24 @@ struct FoodItemForm: EditorViewRepresentable {
   var body: some View {
     Form {
       Section(IdentifierToLocalizedString.value(mappedTo: .servingSize)) {
-        EditorRow(
-          "Amount",
-          editing: $viewModel.servingSize.measurement,
-          readFormat: .measurement(width: .abbreviated, numberFormatStyle: .number.precision(.fractionLength(0...2)))
-        ) { boundValue in
-          TextField("Enter value", value: boundValue.value, format: .number.precision(.fractionLength(0...2)))
-            .focused($activeField, equals: .servingSize)
-            .editorRow(decimalStyle: [.decimalInput])
-
-          //                    MeasurementPickerHost(selected: boundValue., keyPaths: (unitType: \.rawValue, dimension: \.symbol))
-
-          //                    MeasurementPickerHost("Select a unit of measure", selected: Dimension(symbol: "g")) { unitType in
-          //                        Text(unitType.rawValue)
-          //                    } dimensionView: { dimension in
-          //                        Text(dimension.symbol)
-          //                            .tag()
-          //                    }
-
-          //                    DimensionPicker(selected: $viewModel.servingSize.unit, options: UnitType(unit: viewModel.servingSize.unit).dimensions )
-          //                        .scaledToFit()
+        EditorRow(editing: $viewModel.servingSize.measurement) {
+          Text(editMode?.wrappedValue == .inactive ? "Amount" : "")
+        } readView: { measurement in
+          Text(measurement, format: .measurementStyle)
+        } editView: { boundMeasure in
+          VStack {
+            MeasurementPickerHost(selected: boundMeasure, keyPaths: (\.rawValue, \.symbol)) {
+              LabeledContent {
+                TextField("Enter value", value: boundMeasure.value, format: .number.precision(.fractionLength(0...2)))
+                  .focused($activeField, equals: .servingSize)
+                  .editorRow(decimalStyle: [.decimalInput])
+              } label: {
+                Text("Amount")
+                  .font(.headline)
+                  .fixedSize()
+              }
+            }
+          }
         }
       }
 
