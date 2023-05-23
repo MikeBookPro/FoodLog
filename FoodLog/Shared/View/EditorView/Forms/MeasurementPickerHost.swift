@@ -36,8 +36,7 @@ struct MeasurementPickerHost<UnitView: View, DimensionView: View, LabelView: Vie
   }
 
   init(
-    _ label: String? = nil,
-    selected measure: Binding<Measurement<Dimension>>,
+    _ label: String? = nil,    selected measure: Binding<Measurement<Dimension>>,
     @ViewBuilder unitView: @escaping (UnitType) -> UnitView,
     @ViewBuilder dimensionView: @escaping (Dimension) -> DimensionView
   ) where LabelView == Text {

@@ -1,7 +1,9 @@
 import Foundation
 
 enum PreviewData {
-  static func quantities(for identifier: QuantityIdentifier, count: Int, in range: ClosedRange<Double> ) -> [Quantity] {
+
+
+  static func quantities(for identifier: QuantityIdentifier, count: Int = 1, in range: ClosedRange<Double> = 0...10.0) -> [Quantity] {
     let dimension: Dimension = IdentifierToDimensionAdapter.value(mappedTo: identifier)
     return Array(0..<count).reduce(into: [Quantity]()) { partialResult, _ in
       partialResult.append(

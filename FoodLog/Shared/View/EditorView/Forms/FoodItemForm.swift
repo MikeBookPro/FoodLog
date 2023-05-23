@@ -4,7 +4,7 @@ struct FoodItemForm: EditorViewRepresentable {
   typealias Model = FoodItem
   @Environment(\.dismiss) private var dismiss
   @Environment(\.editMode) private var editMode
-  @FocusState private var activeField: Self.ViewModel.InputFocus?
+  @FocusState private var activeField: Self.InputFocus?
   @State private var viewModel: Self.ViewModel
 
   init(_ model: FoodItem) {
@@ -13,31 +13,7 @@ struct FoodItemForm: EditorViewRepresentable {
 
   var body: some View {
     Form {
-      Section(IdentifierToLocalizedString.value(mappedTo: .servingSize)) {
-        EditorRow(editing: $viewModel.servingSize.measurement) {
-          Text(editMode?.wrappedValue == .inactive ? "Amount" : "")
-        } readView: { measurement in
-          Text(measurement, format: .measurementStyle)
-        } editView: { boundMeasure in
-          VStack {
-            MeasurementPickerHost(selected: boundMeasure, keyPaths: (\.rawValue, \.symbol)) {
-              LabeledContent {
-                TextField("Enter value", value: boundMeasure.value, format: .number.precision(.fractionLength(0...2)))
-                  .focused($activeField, equals: .servingSize)
-                  .editorRow(decimalStyle: [.decimalInput])
-              } label: {
-                Text("Amount")
-                  .font(.headline)
-                  .fixedSize()
-              }
-            }
-          }
-        }
-      }
-
-      Section("Nutrition info") {
-        NutritionInfoForm(nutritionInfo: viewModel.foodItem.nutritionInfo)
-      }
+      NutritionInfoForm(nutritionInfo: viewModel.foodItem.nutritionInfo)
     }
     .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
     .toolbar {
@@ -86,66 +62,47 @@ struct FoodItemForm: EditorViewRepresentable {
 
 // MARK: - View Model
 extension FoodItemForm {
-  private struct ViewModel {
-    enum TapTarget { case cancel, save }
-    enum InputFocus: Hashable {
-      case basicInfo
-      case servingSize
-      case quantity(_ identifier: QuantityIdentifier)
+  enum InputFocus: Hashable {
+    case basicInfo
 
-      private var sectionKey: String {
-        switch self {
-          case .basicInfo: return "basicInfo"
-          case .servingSize: return "servingSize"
-          case .quantity: return "quantity"
-        }
-      }
-
-      func hash(into hasher: inout Hasher) {
-        hasher.combine(self.sectionKey)
-        switch self {
-          case .quantity(identifier: let identifier): hasher.combine(identifier)
-          default: return
-        }
+    private var sectionKey: String {
+      switch self {
+        case .basicInfo: return "basicInfo"
       }
     }
 
+    func hash(into hasher: inout Hasher) {
+      hasher.combine(self.sectionKey)
+    }
+  }
+
+  enum TapTarget { case cancel, save }
+
+  struct ActionOption: OptionSet {
+    let rawValue: UInt16
+
+    static let toggleEditMode = Self(rawValue: 1 << 0)
+    static let dismissView = Self(rawValue: 1 << 1)
+  }
+
+  private struct ViewModel {
     let foodItem: FoodItem
-
     var isShowingUnitRow = false
-
-    var servingSize: RowViewModel
+    var servingSize: QuantityRowViewModel
 
     init(foodItem model: FoodItem) {
       self.foodItem = model
-      self.servingSize = RowViewModel(forNutrient: model.nutritionInfo.servingSize)
+      self.servingSize = QuantityRowViewModel(qty: model.nutritionInfo.servingSize)
     }
 
-    func user(didTap target: TapTarget) {
+
+    func user(didTap target: FoodItemForm.TapTarget) {
       switch target {
         case .cancel:
           print("TODO: Cancel")
         case .save:
           print("TODO: Save")
       }
-    }
-  }
-
-  struct RowViewModel: Identifiable {
-    let title: LocalizedStringKey
-    let id: UUID
-    let identifier: QuantityIdentifier
-    var measurement: Measurement<Dimension>
-
-    init(forNutrient qty: Quantity) {
-      self.id = qty.id
-      self.identifier = qty.identifier
-      self.measurement = qty.measurement
-      self.title = IdentifierToLocalizedString.value(mappedTo: qty.identifier)
-    }
-
-    static func rows(for nutritionInfo: NutritionInfo) -> [Self] {
-      nutritionInfo.nutrientQuantities.compactMap(Self.init(forNutrient:))
     }
   }
 }

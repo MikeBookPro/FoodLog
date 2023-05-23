@@ -11,17 +11,23 @@ struct NutritionInfoForm: View {
   }
 
   var body: some View {
-    ForEach(Array(zip(viewModel.rows.indices, viewModel.rows)), id: \.0) { i, row in
-      EditorRow(
-        row.title,
-        editing: $viewModel.rows[i].measurement,
-        readFormat: .measurementStyle
-      ) { boundValue in
-        TextField("Enter value", value: boundValue.value, format: .twoDecimalMaxStyle)
-          .focused($activeField, equals: .quantity(row.identifier))
-          .editorRow(decimalStyle: [.decimalInput])
+    Section(IdentifierToLocalizedString.value(mappedTo: .servingSize)) {
+      ServingSizeForm(quantity: $viewModel.nutritionInfo.servingSize)
+    }
 
-        Text(row.measurement.unit.symbol)
+    Section("Nutrition info") {
+      ForEach(Array(zip(viewModel.rows.indices, viewModel.rows)), id: \.0) { i, row in
+        EditorRow(
+          row.title,
+          editing: $viewModel.rows[i].measurement,
+          readFormat: .measurementStyle
+        ) { boundValue in
+          TextField("Enter value", value: boundValue.value, format: .twoDecimalMaxStyle)
+            .focused($activeField, equals: .quantity(row.identifier))
+            .editorRow(decimalStyle: [.decimalInput])
+
+          Text(row.measurement.unit.symbol)
+        }
       }
     }
   }
@@ -40,30 +46,12 @@ extension NutritionInfoForm {
   }
 
   private struct ViewModel {
-    let nutritionInfo: NutritionInfo
-    var rows: [RowViewModel]
+    var nutritionInfo: NutritionInfo
+    var rows: [QuantityRowViewModel]
 
     init(model: NutritionInfo) {
       self.nutritionInfo = model
-      self.rows = RowViewModel.rows(for: model)
-    }
-  }
-
-  struct RowViewModel: Identifiable {
-    let title: LocalizedStringKey
-    let id: UUID
-    let identifier: QuantityIdentifier
-    var measurement: Measurement<Dimension>
-
-    init(forNutrient qty: Quantity) {
-      self.id = qty.id
-      self.identifier = qty.identifier
-      self.measurement = qty.measurement
-      self.title = IdentifierToLocalizedString.value(mappedTo: qty.identifier)
-    }
-
-    static func rows(for nutritionInfo: NutritionInfo) -> [Self] {
-      nutritionInfo.nutrientQuantities.compactMap(Self.init(forNutrient:))
+      self.rows = QuantityRowViewModel.rows(for: model.nutrientQuantities)
     }
   }
 }
@@ -77,9 +65,7 @@ struct NutritionInfoForm_Previews: PreviewProvider {
       Form {
         NutritionInfoForm(nutritionInfo: value)
       }
-      .toolbar {
-        EditButton()
-      }
+      .toolbar { EditButton() }
     }
   }
 
