@@ -13,7 +13,10 @@ struct FoodItemForm: EditorViewRepresentable {
 
   var body: some View {
     Form {
-      NutritionInfoForm(nutritionInfo: viewModel.foodItem.nutritionInfo)
+      NutritionInfoForm(
+        servingSize: $viewModel.nutritionInfo.servingSize.measurement,
+        nutrientRows: $viewModel.nutrientRows
+      )
     }
     .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
     .toolbar {
@@ -87,12 +90,16 @@ extension FoodItemForm {
 
   private struct ViewModel {
     let foodItem: FoodItem
+    var nutritionInfo: NutritionInfo
     var isShowingUnitRow = false
     var servingSize: QuantityRowViewModel
+    var nutrientRows: [QuantityRowViewModel]
 
     init(foodItem model: FoodItem) {
       self.foodItem = model
+      self.nutritionInfo = model.nutritionInfo
       self.servingSize = QuantityRowViewModel(qty: model.nutritionInfo.servingSize)
+      self.nutrientRows = QuantityRowViewModel.rows(for: model.nutritionInfo.nutrientQuantities)
     }
 
 

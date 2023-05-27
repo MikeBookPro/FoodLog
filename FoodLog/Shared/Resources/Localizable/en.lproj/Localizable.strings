@@ -12,6 +12,12 @@
 "NutritionFactsHeader_percentDailyValue" = "% Daily Value";
 "NutritionFactsHeader_measure" = "Measure";
 
+// MARK: - Sample Quantity Form
+"SampleQuantityForm_FieldLabel_value" = "Value";
+
+// MARK: - Nutrition Into Form
+"NutritionInfoForm_FieldLabel_amount" = "Amount";
+
 // MARK: - Quantity Identifier Label
 "QuantityIdentifierLabel_height" = "";
 "QuantityIdentifierLabel_bodyMass" = "";

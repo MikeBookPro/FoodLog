@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct QuantityRowViewModel: Identifiable {
+struct QuantityRowViewModel: Identifiable, Equatable {
   let title: LocalizedStringKey
   let id: UUID
   let identifier: QuantityIdentifier
@@ -15,5 +15,11 @@ struct QuantityRowViewModel: Identifiable {
 
   static func rows(for quantities: [Quantity]) -> [Self] {
     quantities.compactMap(Self.init(qty:))
+  }
+
+  static func == (lhs: Self, rhs: Self) -> Bool {
+    lhs.id == rhs.id &&
+    lhs.identifier == rhs.identifier &&
+    lhs.measurement == rhs.measurement
   }
 }

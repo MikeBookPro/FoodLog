@@ -1,35 +1,35 @@
 import SwiftUI
 
 // MARK: - View
-struct MeasurementPickerHost<UnitView: View, DimensionView: View, LabelView: View>: View {
+struct MeasurementPickerHost<UnitTypeView: View, UnitView: View, LabelView: View>: View {
   @State private var viewModel: MeasurementPickerHostViewModel
-  @Binding var boundMeasure: Measurement<Dimension>
+  @Binding var unit: Dimension
 
-  private let unitViewBuilder: (UnitType) -> UnitView
-  private let dimensionViewBuilder: (Dimension) -> DimensionView
+  private let unitTypeViewBuilder: (UnitType) -> UnitTypeView
+  private let unitViewBuilder: (Dimension) -> UnitView
   private let labelBuilder: () -> LabelView
 
   init(
     _ label: String? = nil,
-    selected measure: Binding<Measurement<Dimension>>,
-    keyPaths toTextFor: (unitType: KeyPath<UnitType, String>, dimension: KeyPath<Dimension, String>)
-  ) where LabelView == Text, UnitView == Text, DimensionView == Text {
-    self.init(label, selected: measure) {
+    selected unit: Binding<Dimension>,
+    keyPaths toTextFor: (unitType: KeyPath<UnitType, String>, unit: KeyPath<Dimension, String>)
+  ) where LabelView == Text, UnitTypeView == Text, UnitView == Text {
+    self.init(label, selected: unit) {
       Text($0[keyPath: toTextFor.unitType])
-    } dimensionView: {
-      Text($0[keyPath: toTextFor.dimension])
+    } unitView: {
+      Text($0[keyPath: toTextFor.unit])
     }
   }
 
   init(
-    selected measure: Binding<Measurement<Dimension>>,
-    keyPaths toTextFor: (unitType: KeyPath<UnitType, String>, dimension: KeyPath<Dimension, String>),
+    selected unit: Binding<Dimension>,
+    keyPaths toTextFor: (unitType: KeyPath<UnitType, String>, unit: KeyPath<Dimension, String>),
     @ViewBuilder labelView labelBuilder: @escaping () -> LabelView
-  ) where UnitView == Text, DimensionView == Text {
-    self.init(selected: measure) {
+  ) where UnitTypeView == Text, UnitView == Text {
+    self.init(selected: unit) {
       Text($0[keyPath: toTextFor.unitType])
-    } dimensionView: {
-      Text($0[keyPath: toTextFor.dimension])
+    } unitView: {
+      Text($0[keyPath: toTextFor.unit])
     } labelView: {
       labelBuilder()
     }
@@ -37,59 +37,54 @@ struct MeasurementPickerHost<UnitView: View, DimensionView: View, LabelView: Vie
 
   init(
     _ label: String? = nil,
-    selected measure: Binding<Measurement<Dimension>>,
-    @ViewBuilder unitView: @escaping (UnitType) -> UnitView,
-    @ViewBuilder dimensionView: @escaping (Dimension) -> DimensionView
+    selected unit: Binding<Dimension>,
+    @ViewBuilder unitTypeView: @escaping (UnitType) -> UnitTypeView,
+    @ViewBuilder unitView: @escaping (Dimension) -> UnitView
   ) where LabelView == Text {
-    self.init(selected: measure, unitView: unitView, dimensionView: dimensionView) { Text(label ?? "") }
+    self.init(selected: unit, unitTypeView: unitTypeView, unitView: unitView) { Text(label ?? "") }
   }
 
   init(
-    selected measure: Binding<Measurement<Dimension>>,
-    @ViewBuilder unitView: @escaping (UnitType) -> UnitView,
-    @ViewBuilder dimensionView: @escaping (Dimension) -> DimensionView,
+    selected unit: Binding<Dimension>,
+    @ViewBuilder unitTypeView: @escaping (UnitType) -> UnitTypeView,
+    @ViewBuilder unitView: @escaping (Dimension) -> UnitView,
     @ViewBuilder labelView: @escaping () -> LabelView
   ) {
-    _viewModel = .init(initialValue: .init(selected: measure.wrappedValue))
-    _boundMeasure = measure
+    _viewModel = .init(initialValue: .init(selected: unit.wrappedValue))
+    _unit = unit
+    unitTypeViewBuilder = unitTypeView
     unitViewBuilder = unitView
-    dimensionViewBuilder = dimensionView
     labelBuilder = labelView
   }
 
   @ViewBuilder
   private func unitTypePickerContent() -> some View {
-    ForEach(viewModel.availableUnitTypes, id: \.self, content: unitViewBuilder)
+    ForEach(viewModel.availableUnitTypes, id: \.self, content: unitTypeViewBuilder)
   }
 
   @ViewBuilder
-  private func dimensionPickerContent() -> some View {
-    ForEach(viewModel.selectedUnitType.dimensions, id: \.self) { dimension in
-      dimensionViewBuilder(dimension)
-        .tag(Measurement(value: self.boundMeasure.value, unit: dimension))
+  private func unitPickerContent() -> some View {
+    ForEach(viewModel.unitType.dimensions, id: \.self) { dimension in
+      unitViewBuilder(dimension) // .tag(Measurement(value: self.boundMeasure.value, unit: dimension))
     }
   }
 
   var body: some View {
     Group {
-      Picker(selection: $viewModel.selectedUnitType, content: unitTypePickerContent) { EmptyView() }
+      Picker(selection: $viewModel.unitType, content: unitTypePickerContent) { EmptyView() }
         .labelsHidden()
         .pickerStyle(SegmentedPickerStyle())
 
-      Picker(selection: $viewModel.selectedMeasure, content: dimensionPickerContent) {
+      Picker(selection: $unit, content: unitPickerContent) {
         labelBuilder()
       }
     }
-    .onReceive([viewModel].publisher.first()) { vm in
-      let (unitType, measure) = (vm.selectedUnitType, vm.selectedMeasure)
-      let lastDimension = vm.lastSelections[unitType, default: unitType.baseUnit]
-      let didChangeUnitType = !unitType.dimensions.contains(measure.unit)
-
-      if didChangeUnitType {
-        self.viewModel.selectedMeasure = .init(value: measure.value, unit: lastDimension)
-      } else {
-        self.viewModel.lastSelections[unitType] = measure.unit // changed the
-        self.boundMeasure = measure.converted(to: measure.unit)
+    .onChange(of: viewModel.unitType) { unitType in
+      unit = viewModel.lastSelections[unitType, default: unitType.baseUnit]
+    }
+    .onChange(of: unit) {
+      if viewModel.unitType.dimensions.contains($0) {
+        viewModel.lastSelections[viewModel.unitType] = $0
       }
     }
   }
@@ -98,16 +93,14 @@ struct MeasurementPickerHost<UnitView: View, DimensionView: View, LabelView: Vie
 // MARK: - View Model
 private struct MeasurementPickerHostViewModel {
   let availableUnitTypes = UnitType.allCases
-  var selectedUnitType: UnitType
-  var selectedMeasure: Measurement<Dimension>
+  var unitType: UnitType
   var lastSelections = UnitType.allCases.reduce(into: [UnitType: Dimension]()) { partialResult, unitType in
     partialResult[unitType] = unitType.baseUnit
   }
 
-  init(selected measure: Measurement<Dimension>) {
-    self.selectedUnitType = UnitType(unit: measure.unit)
-    self.selectedMeasure = measure
-    self.lastSelections[selectedUnitType] = measure.unit
+  init(selected unit: Dimension) {
+    self.unitType = UnitType(unit: unit)
+    self.lastSelections[unitType] = unit
   }
 }
 
@@ -120,7 +113,8 @@ struct MeasurementPickerHost_Previews: PreviewProvider {
       var id: String { self.rawValue }
     }
 
-    @State private var measure: Measurement<Dimension> = .init(value: 10.0, unit: UnitMass.grams)
+    @State private var value: Double = 10.0
+    @State private var unit: Dimension = UnitMass.grams
 
     let config: Configuration
 
@@ -128,34 +122,41 @@ struct MeasurementPickerHost_Previews: PreviewProvider {
       VStack {
         switch config {
           case .customLabel:
-            MeasurementPickerHost(selected: $measure) { unitType in
+            MeasurementPickerHost(selected: $unit) { unitType in
               Text(unitType.rawValue)
                 .font(.title)
-            } dimensionView: { dimension in
+            } unitView: { dimension in
               Text(dimension.symbol)
-                .font(.caption2)
-                .tag(Measurement(value: measure.value, unit: dimension))
+                .font(.caption2) // .tag(Measurement(value: value, unit: dimension))
             } labelView: {
-              Text("Custom Label")
-                .font(.largeTitle)
+              LabeledContent("Label") {
+                TextField("Measurement Value", value: $value, format: .twoDecimalMaxStyle)
+                  .textFieldStyle(.roundedBorder)
+                  .editorRow(decimalStyle: [.decimalInput])
+              }
             }
 
           case .stringLabel:
-            MeasurementPickerHost("String Label", selected: $measure) {
+            MeasurementPickerHost("String Label", selected: $unit) {
               Text($0.rawValue)
                 .font(.headline)
-            } dimensionView: {
+            } unitView: {
               Text($0.symbol)
                 .font(.headline)
             }
 
           case .noLabel:
-            MeasurementPickerHost(selected: $measure, keyPaths: (unitType: \.rawValue, dimension: \.symbol))
+            MeasurementPickerHost(selected: $unit, keyPaths: (unitType: \.rawValue, unit: \.symbol))
         }
       }
 
-      LabeledContent("Selected Dimension", value: measure.unit.symbol)
-        .font(.caption2)
+      Group {
+        LabeledContent("Selected Dimension", value: unit.symbol)
+        LabeledContent("Measurement") {
+          Text(Measurement(value: value, unit: unit), format: .measurementStyle)
+        }
+      }
+      .font(.caption2)
     }
   }
 
