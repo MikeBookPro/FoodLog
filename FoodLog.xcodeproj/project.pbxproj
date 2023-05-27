@@ -352,8 +352,8 @@
 			isa = PBXGroup;
 			children = (
 				BE5825F129E5F845006F75E0 /* SampleQuantityForm.swift */,
-				BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */,
 				BE2D633D2A16112F003E1ED4 /* MeasurementPickerHost.swift */,
+				BE2B4ACA2A094F4A00434D59 /* FoodItemForm.swift */,
 				BEBAE5F92A1BCBC1005B3F1C /* NutritionInfoForm.swift */,
 				BE85EB312A1D2F5D0075F826 /* ServingSizeForm.swift */,
 				BE85EB332A1D30BE0075F826 /* QuantityRowViewModel.swift */,
