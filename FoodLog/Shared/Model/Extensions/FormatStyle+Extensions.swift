@@ -14,14 +14,29 @@ extension FormatStyle where Self == Measurement<Dimension>.FormatStyle {
 // MARK: Date Style
 extension FormatStyle where Self == Date.FormatStyle {
   static var dateTimeStyle: Self {
-    return .dateTime
-      .day()
-      .month(.wide)
-      .year()
-      .hour(.defaultDigits(amPM: .abbreviated))
-      .minute(.twoDigits)
-      .timeZone()
+    .dateTime
+    .day()
+    .month(.wide)
+    .year()
+    .hour(.defaultDigits(amPM: .abbreviated))
+    .minute(.twoDigits)
+    .timeZone()
   }
+
+  static var dateOnlyStyle: Self {
+    .dateTime
+    .day()
+    .month(.wide)
+    .year()
+  }
+
+  static var timeOnlyStyle: Self {
+    .dateTime
+    .hour(.defaultDigits(amPM: .abbreviated))
+    .minute(.twoDigits)
+    .timeZone()
+  }
+
 }
 
 // MARK: Double Style

@@ -24,35 +24,24 @@ struct MeasurementSampleView: View {
           Text(id.uuidString)
             .font(.body)
         }
-        .font(.headline)
       }
 
       LabeledContent("Weight") {
         Text(measurement, format: .measurementStyle)
           .font(.body)
       }
-      .font(.headline)
 
       LabeledContent("Date") {
-        Text(date, format: .dateTime
-          .day()
-          .month(.wide)
-          .year()
-        )
+        Text(date, format: .dateOnlyStyle)
         .font(.body)
       }
-      .font(.headline)
 
       LabeledContent("Time") {
-        Text(date, format: .dateTime
-          .hour(.defaultDigits(amPM: .abbreviated))
-          .minute(.twoDigits)
-          .timeZone()
-        )
+        Text(date, format: .timeOnlyStyle)
         .font(.body)
       }
-      .font(.headline)
     }
+    .font(.headline)
     .padding()
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {

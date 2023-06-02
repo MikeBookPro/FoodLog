@@ -19,7 +19,6 @@ struct FoodReferenceList<Editor: EditorViewRepresentable>: View where Editor.Mod
           }
           .padding(.vertical, 8)
         }
-        //                .onDelete(perform: viewModel.didSwipeDelete(rowsAt:))
       }
       .navigationTitle("Food Reference")
       .sheet(isPresented: $viewModel.isShowingEditor, content: viewModel.buildEditorView)
