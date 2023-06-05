@@ -36,7 +36,6 @@ extension FormatStyle where Self == Date.FormatStyle {
     .minute(.twoDigits)
     .timeZone()
   }
-
 }
 
 // MARK: Double Style
