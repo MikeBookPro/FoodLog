@@ -1,11 +1,12 @@
 import Foundation
 
 struct NutritionInfo {
-  var servingSize: Quantity
-  var nutrientQuantities: [Quantity]
+  var servingSize: Measurement<Dimension>
+  var nutrientMeasurements: [HealthMeasurement<Nutrient>]
+  var scannedLabel: ScannedLabel?
 
-  init(servingSize: Quantity, nutrientQuantities: [Quantity]) {
+  init(servingSize: Measurement<Dimension>, nutrientMeasurements: [HealthMeasurement<Nutrient>]) {
     self.servingSize = servingSize
-    self.nutrientQuantities = nutrientQuantities
+    self.nutrientMeasurements = nutrientMeasurements
   }
 }

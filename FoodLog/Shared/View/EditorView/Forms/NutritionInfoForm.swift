@@ -3,79 +3,59 @@
 import SwiftUI
 
 struct NutritionInfoForm: View {
-  @FocusState private var activeField: Self.InputFocus?
-  @Binding var servingSize: Measurement<Dimension>
-  @Binding var nutrientRows: [QuantityRowViewModel]
+  @Binding var nutritionInfo: NutritionInfo
 
   var body: some View {
-    Section(IdentifierToLocalizedString.value(mappedTo: .servingSize)) {
-      MeasurementForm(measure: $servingSize)
+    Section("Serving size") {
+      MeasurementForm(measure: $nutritionInfo.servingSize)
     }
 
     Section("Nutrition info") {
-      ForEach(Array(zip(nutrientRows.indices, nutrientRows)), id: \.0) { i, row in
-        EditorRow(
-          row.title,
-          editing: $nutrientRows[i].measurement,
-          readFormat: .measurementStyle
-        ) { boundValue in
-          TextField("Enter value", value: boundValue.value, format: .twoDecimalMaxStyle)
-            .focused($activeField, equals: .quantity(row.identifier))
-            .editorRow(decimalStyle: [.decimalInput])
-
-          Text(row.measurement.unit.symbol)
-        }
+      ForEach(nutritionInfo.nutrientMeasurements.indices, id: \.self) {
+        editorRow(at: $0)
       }
     }
   }
-}
 
-// MARK: - View Model
-extension NutritionInfoForm {
-  enum InputFocus: Hashable {
-    case quantity(_ identifier: QuantityIdentifier)
+  private func editorRow(at index: Int) -> some View {
+    let nutrientMeasure = nutritionInfo.nutrientMeasurements[index]
+    return EditorRow(
+      NutrientNameAdapter.value(mappedTo: nutrientMeasure.healthID),
+      editing: $nutritionInfo.nutrientMeasurements[index].measurement,
+      readFormat: .measurementStyle
+    ) { boundValue in
+      TextField("Enter value", value: boundValue.value, format: .twoDecimalMaxStyle)
+        .editorRow(decimalStyle: [.decimalInput])
 
-    func hash(into hasher: inout Hasher) {
-      guard case let .quantity(identifier) = self else { return }
-
-      hasher.combine(identifier)
+      Text(nutrientMeasure.measurement.unit.symbol)
     }
   }
 }
 
-#if DEBUG
 struct NutritionInfoForm_Previews: PreviewProvider {
   private struct ShimForm: View {
-    @State private var egg = PreviewData.Food.egg.nutritionInfo
+    @State private var egg = PreviewData.NutritionInfo.egg
 
     var body: some View {
       NavigationView {
         Shim(boundValue: $egg)
+          .navigationTitle(Text(egg.servingSize, format: .measurementStyle))
       }
     }
   }
 
   private struct Shim: View {
     @Binding var boundValue: NutritionInfo
-    @State var servingSize: Measurement<Dimension>
-    @State var nutrientRows: [QuantityRowViewModel]
+    @State var editedValue: NutritionInfo
 
     init(boundValue: Binding<NutritionInfo>) {
       _boundValue = boundValue
-      _servingSize = .init(initialValue: boundValue.wrappedValue.servingSize.measurement)
-      _nutrientRows = .init(initialValue: boundValue.wrappedValue.nutrientQuantities.map(QuantityRowViewModel.init(qty:))) // swiftlint:disable:this line_length
+      _editedValue = .init(initialValue: boundValue.wrappedValue)
     }
 
     var body: some View {
       Form {
-        Section("View Only") {
-          LabeledContent("Serving size") {
-            Text(boundValue.servingSize.measurement, format: .measurementStyle)
-              .foregroundColor(.red)
-          }
-        }
-
-        NutritionInfoForm(servingSize: $servingSize, nutrientRows: $nutrientRows)
+        NutritionInfoForm(nutritionInfo: $editedValue)
       }
       .environment(\.editMode, .constant(.active))
       .toolbar {
@@ -85,17 +65,11 @@ struct NutritionInfoForm_Previews: PreviewProvider {
     }
 
     private func didClickSave() {
-      boundValue = .init(
-        servingSize: .init(identifier: .servingSize, measurement: servingSize, id: boundValue.servingSize.id),
-        nutrientQuantities: nutrientRows.map {
-          Quantity(identifier: $0.identifier, measurement: $0.measurement, id: $0.id)
-        }
-      )
+      boundValue = editedValue
     }
 
     private func didClickCancel() {
-      servingSize = boundValue.servingSize.measurement
-      nutrientRows = boundValue.nutrientQuantities.map(QuantityRowViewModel.init(qty:))
+      editedValue = boundValue
     }
   }
 
@@ -103,4 +77,3 @@ struct NutritionInfoForm_Previews: PreviewProvider {
     ShimForm()
   }
 }
-#endif

@@ -6,7 +6,7 @@
 
 */
 "NutritionFactsHeader_nutritionFacts" = "Nutrition Facts";
-"NutritionFactsHeader_servingSize" = "Serving size";
+"Serving size" = "Serving size";
 "NutritionFactsHeader_servingsPerContainer" = "servings per container";
 "NutritionFactsHeader_amountPerServing" = "Amount per serving";
 "NutritionFactsHeader_percentDailyValue" = "% Daily Value";

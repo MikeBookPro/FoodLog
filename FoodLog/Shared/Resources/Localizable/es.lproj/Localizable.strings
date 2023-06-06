@@ -6,7 +6,7 @@
 
 */
 "NutritionFactsHeader_title" = "Datos de Nutrición";
-"NutritionFactsHeader_servingSize" = "Tamaño por ración";
+"Serving size" = "Tamaño por ración";
 "NutritionFactsHeader_servingsPerContainer" = "Raciones por envase";
 "NutritionFactsHeader_amountPerServing" = "Cantidad por ración";
 "NutritionFactsHeader_percentDailyValue" = "% Valor Diario";
